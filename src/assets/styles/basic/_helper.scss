@@ -1,0 +1,97 @@
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.center-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-header {
+    font-family: Lobster;
+    font-size: 2.5rem;
+    color: $primary-clr-900;
+}
+
+.sub-header {
+    font-family: Lobster;
+    font-size: 2rem;
+    color: $primary-clr-800;
+    text-decoration: underline;
+}
+
+/* FLEXBOX */
+.flex {
+    display: flex;
+
+    &.flex-column {
+        flex-direction: column;
+    }
+
+    &.justify-center {
+        justify-content: center;
+    }
+
+    &.space-between {
+        justify-content: space-between;
+    }
+
+    &.align-center {
+        align-items: center;
+    }
+
+    &.gap1 {
+        gap: 1em;
+    }
+}
+
+/* BUTTONS */
+.main-btn {
+    padding: 0.5em 1em;
+    color: $primary-clr-100;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 0 5px $primary-clr-900;
+    background-color: $primary-clr-500;
+
+    &:hover {
+        background-color: darken($primary-clr-500, 5%);
+    }
+}
+
+.sub-btn {
+    pad: 0.5em;
+    border: none;
+    background-color: darken($primary-clr-200, 5%);
+    border-radius: 6px;
+
+    &:hover {
+        background-color: darken($primary-clr-200, 8%);
+    }
+
+    &.active {
+        background-color: darken($primary-clr-200, 15%)
+    }
+}
+
+/* FONT AWESOME */
+
+.fa-solid {
+    font-family: fa-solid;
+}
+
+.fa-solid.fa-user::before {
+    content: "\f007";
+}
+
+.fa-solid.fa-lock-keyhole::before {
+    content: "\f023";
+}
+
+/* DEBUG */
+.debug>* {
+    border: 1px solid red;
+}

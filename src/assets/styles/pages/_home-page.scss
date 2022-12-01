@@ -1,0 +1,77 @@
+.home-page {
+
+    .hero {
+        margin-bottom: 1em;
+        min-height: 18.75rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1em;
+
+        h1,
+        h2 {
+            font-family: Lobster;
+            color: $primary-clr-900;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-inline-start: 1em;
+        }
+    }
+
+    .blink-img {
+        opacity: 1;
+        transition: .5s;
+        max-height: 200px;
+
+        &.invisible {
+            opacity: 0;
+        }
+    }
+
+    .login,
+    .get-started {
+        text-align: center;
+
+        &>a {
+            padding: 1em;
+            color: $primary-clr-100;
+            background-color: $primary-clr-900;
+            border-radius: 7px;
+            box-shadow: 0 0 7px darken($primary-clr-900, 15%);
+
+            &:hover {
+                background-color: lighten($primary-clr-900, 5%);
+            }
+
+            &:first-of-type {
+                background-color: $primary-clr-800;
+                margin-inline-end: 1em;
+
+                &:hover {
+                    background-color: lighten($primary-clr-800, 5%);
+                }
+            }
+
+        }
+    }
+
+    .get-started>a:first-of-type {
+        position: relative;
+        display: inline-block;
+        text-align: start;
+        width: 10em;
+
+        &::after {
+            content: '➤';
+            position: absolute;
+            right: 1em;
+        }
+    }
+}
