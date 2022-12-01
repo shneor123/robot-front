@@ -1,13 +1,18 @@
 /* SETUP */
-@import './setup/typography';
-@import './setup/vars';
-@import './setup/functions';
-@import './setup/mixins';
+@import 'setup/typography';
+@import 'setup/vars';
+@import 'setup/functions';
+@import 'setup/mixins';
 
 /* BASIC */
-@import './basic/base';
-@import './basic/helper';
-@import './basic/layout';
+@import 'basic/base';
+@import 'basic/helper';
+@import 'basic/layout';
 
 /* PAGES */
-@import './pages/home-page';
+@import 'pages/home-page';
+@import 'pages/about-page';
+
+
+/* GENERAL */
+@import 'general/app-header';

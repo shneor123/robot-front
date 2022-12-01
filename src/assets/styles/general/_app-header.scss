@@ -1,0 +1,124 @@
+.app-header {
+    border-bottom: 2px solid $primary-clr-900;
+    margin-bottom: 1em;
+
+    &>main {
+        display: flex;
+        justify-content: space-between;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            margin: 0.2em 0;
+
+            h2 {
+                font-family: Lobster;
+                font-size: 2rem;
+                color: $primary-clr-900;
+            }
+
+            img {
+                max-height: 60px;
+            }
+        }
+
+        &>.header-navbar {
+            display: flex;
+            align-items: center;
+            gap: 1.7em;
+
+            .full-screen-nav {
+                display: none;
+            }
+        }
+    }
+
+    .hamburger-menu {
+        position: relative;
+
+        .menu-btn {
+            cursor: pointer;
+
+            .hamburger-btn{
+                font-size: 1.5rem;
+            }
+
+            .user-img{
+                display: none;
+            }
+        }
+    }
+
+    .hamburger-menu>main {
+        padding: 1em;
+        width: 300px;
+        position: absolute;
+        right: 0;
+        bottom: -20px;
+        z-index: 100;
+        transform: translateY(100%);
+        border-radius: 6px;
+        background-color: $primary-clr-100;
+        box-shadow: 0 0 7px $primary-clr-900;
+
+        &>header {
+            margin-bottom: 2em;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+
+        .hamburger-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+        }
+
+        .logout-btn {
+            margin-top: 1.5em;
+            padding: 0.5em 1em;
+            float: right;
+            color: $primary-clr-900;
+            border: 1px solid $primary-clr-900;
+            border-radius: 6em;
+            background-color: $primary-clr-100;
+
+            &:hover {
+                color: $primary-clr-100;
+                background-color: $primary-clr-500;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .app-header {
+        &>main>.header-navbar .full-screen-nav {
+            display: block;
+
+            &>*:not(:last-child) {
+                margin-inline-end: 1em;
+            }
+        }
+
+        .hamburger-menu {
+            position: relative;
+
+            .menu-btn {
+                .hamburger-btn{
+                    display: none;
+                }
+
+                .user-img{
+                    display: flex;
+                }
+            }
+
+            .small-screen-nav-item {
+                display: none;
+            }
+        }
+
+    }
+}
