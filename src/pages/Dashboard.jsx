@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-// import { RobotPreview } from '../cmps/robot-preview'
+import { RobotPreview } from '../cmps/RobotPreview'
 import { VerticalBarChart } from '../cmps/verticalBarChart'
 import { robotService } from '../services/robot.service'
 import starFullImg from '../assets/img/star-full.png'
@@ -45,15 +45,15 @@ export const Dashboard = () => {
                 </li>
                 <li>
                     <h3>Most expensive robot</h3>
-                    {/* <RobotPreview robot={statisticData.mostExpensive} /> */}
+                    <RobotPreview robot={statisticData.mostExpensive} />
                 </li>
                 <li>
                     <h3>Least expensive robot</h3>
-                    {/* <RobotPreview robot={statisticData.leastExpensive} /> */}
+                    <RobotPreview robot={statisticData.leastExpensive} />
                 </li>
                 <li className='higher-rate'>
                     <h3>Highest rate robot</h3>
-                    {/* <RobotPreview robot={statisticData.highestRate.robot} /> */}
+                    <RobotPreview robot={statisticData.highestRate.robot} />
                     <div className='star-rate'>
                         <p>{statisticData.highestRate.avgRate.toFixed(1)}</p>
                         <img src={starFullImg} alt="star-full" />

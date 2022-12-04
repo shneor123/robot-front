@@ -50,9 +50,17 @@ export const RobotFilter = ({ filterBy, onSetFilterBy }) => {
             <span onClick={() => setIsSelectMenuOpen(!isSelectMenuOpen)}>
                 <input type="text" value={tempFilterBy?.labels?.join(', ') || ''} disabled />
             </span>
-            {labels && isSelectMenuOpen && <select className="labels-select" name="labels" id="filter-labels" multiple onChange={onInputChange} size={labels.length}>
-                {labels.map(label => <option key={label}>{label}</option>)}
-            </select>}
+            {labels && isSelectMenuOpen &&
+                <select className="labels-select"
+                    name="labels" id="filter-labels"
+                    multiple
+                    onChange={onInputChange}
+                    size={labels.length}
+                >
+                    {labels.map(label =>
+                        <option key={label}>{label}</option>
+                    )}
+                </select>}
         </div>
 
         <div className='sort-container'>

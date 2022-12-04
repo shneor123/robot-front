@@ -33,6 +33,7 @@ export const AppHeader = () => {
                 <div className='hamburger-menu'>
                     <div className='menu-btn'>
                         <div className='hamburger-btn' onClick={() => setIsMenuOpen(!isMenuOpen)}>☰</div>
+                        {/* {user && user?.username.charAt(0).toUpperCase()} */}
                         <UserImg user={user} linkOnAvatar={'/login'} clickEv={() => { if (user) setIsMenuOpen(!isMenuOpen) }} />
                     </div>
                     {isMenuOpen && <main>

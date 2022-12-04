@@ -65,6 +65,7 @@ async function getStatistics() {
 	return await httpService.get(`${BASE_PATH}/statistics`)
 }
 
+
 function getRandomRobotImg() {
 	const id = utilService.makeId(16)
 	return `https://robohash.org/${id}?set=set3`
