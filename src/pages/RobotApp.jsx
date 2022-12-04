@@ -8,6 +8,7 @@ import { loadRobots } from '../store/actions/robot.action'
 export const RobotApp = () => {
   const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
   const { user } = useSelector(storeState => storeState.userModule)
+  console.log(user)
 
   const dispatch = useDispatch()
 

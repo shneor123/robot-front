@@ -10,9 +10,11 @@ export const robotService = {
 	remove,
 	getEmptyRobot,
 	getRandomRobotImg,
+	getLabels
 }
 
 const STORAGE_KEY = 'robot'
+const gLabels = ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor"]
 
 
 async function query(filterBy) {
@@ -58,10 +60,14 @@ function getRandomRobotImg() {
 	return `https://robohash.org/${id}?set=set3`
 }
 
+async function getLabels() {
+	return gLabels.sort()
+}
 
 
 
-// //  // TEST DATA
+
+//  // TEST DATA
 // storageService.post(STORAGE_KEY, {
 // 	name: "Tot Demo",
 // 	price: 0,

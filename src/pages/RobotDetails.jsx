@@ -21,6 +21,7 @@ export const RobotDetails = () => {
   const [robot, setRobot] = useState(null)
   const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false)
 
+
   useEffect(() => {
     loadRobot(params.id)
   }, [params, robots])
@@ -50,5 +51,15 @@ export const RobotDetails = () => {
     <p className='labels'><strong>Labels:</strong> {robot.labels.join(', ')}</p>
     <p className='date'><strong>Creation Date:</strong> {utilService.dateToString(robot.createdAt)}</p>
     <p className='price'><strong>Price:</strong> ${utilService.numberWithCommas(robot.price)}</p>
+
+    {user && <div className='buttons-container'>
+      {(!user.isAdmin) && (
+        <>
+          <Link to={`/robots/edit/${robot._id}`}>Edit</Link>
+          <button onClick={() => setIsQuestionModalOpen(true)}>Delete</button>
+        </>
+      )}
+    </div>}
+
   </section>
 }

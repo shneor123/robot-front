@@ -5,6 +5,8 @@ import { HomePage } from "./pages/HomePage";
 import { RobotApp } from "./pages/RobotApp";
 import { RobotDetails } from "./pages/RobotDetails";
 import { AppHeader } from "./cmps/general/AppHeader";
+import { RobotEdit } from "./cmps/RobotEdit";
+import { LoginSignup } from "./pages/login-signup";
 
 
 
@@ -17,6 +19,10 @@ function App() {
         <Route element={<AboutPage />} path={'/about'} />
         <Route element={<RobotApp />} path={'/robots'} />
         <Route element={<RobotDetails />} path={'/robots/:id'} />
+        <Route element={<RobotEdit />} path={'/robots/edit/:id'} />
+        <Route element={<RobotEdit />} path={'/robots/edit/'} />
+        <Route element={<LoginSignup />} path={'/login'} />
+        <Route element={<LoginSignup />} path={'/signup'} />
       </Routes>
     </Router>
   )
