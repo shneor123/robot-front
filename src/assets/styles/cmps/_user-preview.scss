@@ -1,0 +1,28 @@
+.user-preview {
+    flex-wrap: wrap;
+
+    &,
+    &>* {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        button,
+        a {
+            align-self: stretch;
+        }
+    }
+
+    .details .admin-img {
+        max-height: 40px;
+    }
+
+    .buttons {
+        gap: 0.5em;
+
+        &>* {
+            font-size: 1em;
+            padding: 0.3em 0.7em;
+        }
+    }
+}

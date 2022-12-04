@@ -1,0 +1,17 @@
+.vertical-bar-chart {    
+    width: calc(100% - 2em);
+    overflow: hidden;
+    flex-grow: 1;
+    display: flex;
+    
+
+    .chart-container {
+        flex-basis: 0;
+        flex-grow: 1;
+        overflow: hidden;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

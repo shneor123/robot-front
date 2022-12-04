@@ -1,0 +1,20 @@
+.review-preview {
+    &>*:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
+
+    .title {
+        font-weight: bold;
+    }
+
+    .preview-footer {
+        display: flex;
+        gap: 0.5em;
+        color: $clr-grey;
+        font-size: 0.8em;
+
+        .writer:hover {
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,57 +1,13 @@
-.about-page-container {
+.about-page {
+    height: 100%;
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    gap: 5%;
+    flex-direction: column;
+    gap: 1em;
 
-    &>* {
-        flex-basis: 45%;
-        flex-grow: 1;
+    .fake {
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: underline;
+        color: $clr-danger;
     }
-
-    .about-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 70vh;
-        gap: 5px;
-
-        &>* {
-            // background-color: $clr1;
-            border-radius: 10px;
-            // border: 1px solid $clr4;
-            padding: 8px;
-        }
-    }
-
-    .map {
-        // border: 1px solid $clr4;
-        min-height: 70vh;
-
-        &>* {
-            border-radius: 25px;
-        }
-    }
-
-    .visit-us-container {
-        display: flex;
-        flex-direction: column;
-
-        h2,
-        h3 {
-            margin: 6px auto;
-        }
-
-        h3 {
-            cursor: pointer;
-            padding: 0 10px;
-            border-radius: 5px;
-
-            &:hover {
-                font-size: 18px;
-                text-decoration: solid gray underline;
-            }
-        }
-    }
-
 }

@@ -1,29 +1,41 @@
 /* SETUP */
-@import 'setup/typography';
-@import 'setup/vars';
-@import 'setup/functions';
-@import 'setup/mixins';
+@import './setup/typography';
+@import './setup/vars';
+@import './setup/functions';
+@import './setup/mixins';
 
 /* BASIC */
-@import 'basic/base';
-@import 'basic/helper';
-@import 'basic/layout';
+@import './basic/base';
+@import './basic/helper';
+@import './basic/layout';
 
 /* PAGES */
-@import 'pages/home-page';
-@import 'pages/about-page';
+@import './pages/about-page';
+@import './pages/home-page';
+@import './pages/dashboard';
 @import './pages/robot-app';
 @import './pages/robot-details';
+@import './pages/robot-edit';
 @import './pages/login-signup';
-
-
-/* GENERAL */
-@import 'general/app-header';
-@import 'general/loader';
-
+@import './pages/user-app';
+@import './pages/user-profile';
+@import './pages/user-edit';
 
 /* COMPONENTS */
+@import './cmps/app-header';
 @import './cmps/robot-list';
 @import './cmps/robot-preview';
-@import './cmps/page-bar';
 @import './cmps/robot-filter';
+@import './cmps/review-form';
+@import './cmps/star-rate-picker';
+@import './cmps/review-list';
+@import './cmps/review-preview';
+@import './cmps/page-bar';
+@import './cmps/user-img';
+@import './cmps/user-list';
+@import './cmps/user-preview';
+@import './cmps/question-modal';
+@import './cmps/user-msg';
+@import './cmps/chat-room';
+@import './cmps/google-map';
+@import './cmps/vertical-bar-chart';

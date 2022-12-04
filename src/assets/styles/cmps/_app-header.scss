@@ -92,33 +92,33 @@
     }
 }
 
-@media screen and (min-width: 700px) {
-    .app-header {
-        &>main>.header-navbar .full-screen-nav {
-            display: block;
+// @media screen (min-width: 700px) {
+//     .app-header {
+//         &>main>.header-navbar .full-screen-nav {
+//             display: block;
 
-            &>*:not(:last-child) {
-                margin-inline-end: 1em;
-            }
-        }
+//             &>*:not(:last-child) {
+//                 margin-inline-end: 1em;
+//             }
+//         }
 
-        .hamburger-menu {
-            position: relative;
+//         .hamburger-menu {
+//             position: relative;
 
-            .menu-btn {
-                .hamburger-btn{
-                    display: none;
-                }
+//             .menu-btn {
+//                 .hamburger-btn{
+//                     display: none;
+//                 }
 
-                .user-img{
-                    display: flex;
-                }
-            }
+//                 .user-img{
+//                     display: flex;
+//                 }
+//             }
 
-            .small-screen-nav-item {
-                display: none;
-            }
-        }
+//             .small-screen-nav-item {
+//                 display: none;
+//             }
+//         }
 
-    }
-}
+//     }
+// }

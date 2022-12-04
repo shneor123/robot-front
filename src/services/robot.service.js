@@ -7,15 +7,15 @@ import { httpService } from './http.service'
 export const robotService = {
 	query,
 	getById,
-	save,
 	remove,
+	save,
+	getStatistics,
 	getEmptyRobot,
 	getRandomRobotImg,
 	getLabels,
-	getStatistics
 }
 
-const STORAGE_KEY = 'robot'
+// const STORAGE_KEY = 'robotsDb'
 const BASE_PATH = 'robot'
 
 const gLabels = ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor"]
@@ -71,6 +71,5 @@ function getRandomRobotImg() {
 }
 
 async function getLabels() {
-	/* LOCAL STORAGE */
-	return gLabels.sort()
+	return await httpService.get(`${BASE_PATH}/labels`)
 }

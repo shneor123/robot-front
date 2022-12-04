@@ -1,0 +1,37 @@
+.question-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+
+    .backlog {
+        min-height: 100vh;
+        min-width: 100vw;
+        background-color: rgba(30, 29, 29, 0.5);
+    }
+
+    .modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        min-height: 250px;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 6px;
+        background-color: $primary-clr-100;
+
+        h2 {
+            margin-bottom: 1em;
+        }
+
+        .answers {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

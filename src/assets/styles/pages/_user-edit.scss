@@ -1,0 +1,28 @@
+.user-edit {
+    .error-msg {
+        color: $clr-danger;
+    }
+
+    h2,
+    ul {
+        margin-bottom: 1rem;
+    }
+
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    input[type='checkbox'] {
+        margin-bottom: 0.7rem;
+    }
+
+    input[type='text'],
+    input[type='password'] {
+        width: 250px;
+    }
+
+    fieldset {
+        padding: 0;
+        border: none;
+    }
+}

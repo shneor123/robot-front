@@ -1,0 +1,43 @@
+.robot-edit {
+
+    &>h2 {
+        margin-bottom: 0.5em;
+    }
+
+    &>form>ul {
+        max-width: 450px;
+        margin-bottom: 2em;
+
+        &>* {
+            margin-bottom: 0.7em;
+        }
+
+        .edit-name-container,
+        .edit-img-container>div {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+
+            input {
+                flex-grow: 1;
+            }
+        }
+
+        .edit-img-container {
+            text-align: center;
+            margin-bottom: unset;
+
+            &>img {
+                max-width: 12.5rem;
+            }
+        }
+
+        .edit-labels-container {
+            display: flex;
+        }
+    }
+
+    button[type='submit'] {
+        padding: 0.5em 1em;
+    }
+}
