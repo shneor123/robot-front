@@ -1,5 +1,9 @@
 .review-list {
-    &>*{
+    &>* {
         margin-bottom: 1em;
+        background-color: #fff;
+        font-size: 12px;
+        padding: 10px;
+        border-radius: 4px;
     }
 }

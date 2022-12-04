@@ -123,5 +123,32 @@
             background-color: rgb(159 100 255);
         }
     }
+}
 
+@media screen and (max-height :650px) {
+
+    .chat-room {
+        max-height: 90vh;
+    }
+}
+
+@media screen and (min-width :600px) {
+    .chat-room {
+        width: 500px;
+        max-width: 500px;
+        inset-inline-end: 40px;
+    }
+
+    .chat-room>.chat-open>header .title {
+        align-items: flex-end;
+        flex-direction: row;
+        gap: 1em;
+
+        .user-counter,
+        .typing-msg {
+            margin-bottom: 0.125em;
+            flex-basis: 0;
+            flex-grow: 1;
+        }
+    }
 }

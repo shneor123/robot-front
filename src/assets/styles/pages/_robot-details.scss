@@ -1,30 +1,209 @@
-.robot-details {
+.details-page-container {
+    width: 80%;
+    margin: auto;
 
-    .img {
-        max-width: 12.5rem;
-        display: block;
-    }
+    .details-section {
+        display: flex;
+        justify-content: center;
 
-    .labels,
-    .date {
-        margin-bottom: 0.5em;
-    }
+        .reviews-container .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            width: 80%;
+        }
 
-    .img-container {
-        position: relative;
-        display: inline-block;
-
-        .out-of-stock {
-            position: absolute;
-            right: -10px;
-            bottom: -5px;
-            max-width: 100px;
+        [name="content"] {
+            height: 60px;
+            margin-bottom: 3px;
+            margin-top: -5px;
         }
     }
 
-    .price {
-        margin-bottom: 1em;
+    .back-btn {
+        font-size: 1.2em;
+        border-radius: 5px;
+        border: none;
+        color: $clr4;
+        text-decoration: none;
+        padding: 1px 6px;
+        position: absolute;
+        margin-top: 12px;
     }
+
+    .chat-container,
+    .reviews-container,
+    .details-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 35%;
+        height: 55vh;
+        min-width: 200px;
+        margin: 40px auto;
+        background-color: $clr3;
+        border-radius: 15px;
+        padding: 5px 10px;
+    }
+
+    .chat-container,
+    .details-container,
+    .reviews-container {
+        margin: 40px 10px;
+    }
+
+    .details-container {
+        justify-content: space-around;
+
+        .btns-container {
+            display: flex;
+
+            button,
+            a {
+                width: 38px;
+                height: 38px;
+                margin: 0 3px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                color: $clr4;
+                background-color: $clr1;
+                cursor: pointer;
+                transition: background-color 0.2s ease-in-out;
+
+                &:hover {
+                    color: $clr4;
+                    background-color: $clr2;
+                }
+            }
+        }
+    }
+
+    .chat-container,
+    .reviews-container {
+        justify-content: flex-start;
+
+        .msgs-container,
+        .toy-reviews {
+            flex-grow: 1;
+            margin-top: 5px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+        }
+
+        .msgs-container {
+            background-color: white;
+            border-radius: 15px;
+            border: 1px solid $clr4;
+            margin: 5px 0;
+            padding: 0 5px;
+        }
+
+        .chat-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background-color: $clr4;
+            border-radius: 15px;
+            padding: 5px 10px;
+
+            label {
+                text-align: start;
+                color: white;
+            }
+
+            form {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+            }
+
+            [name="txt"] {
+                flex-grow: 1;
+                width: 80%;
+                height: 83%;
+                border-radius: 10px;
+                padding-left: 7px;
+            }
+        }
+
+        h1 span.toy-name {
+            color: $clr2;
+        }
+
+        .chat-msg,
+        .toy-review {
+            height: fit-content;
+            border-radius: 5px;
+            padding: 5px;
+            text-align: left;
+            position: relative;
+            overflow-wrap: break-word;
+
+            p {
+                overflow-wrap: break-word;
+                text-align: left;
+                margin: 5px 0px;
+            }
+
+            .delete-btn {
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                background: none;
+                color: $clr4;
+                display: none;
+            }
+
+            &:hover .delete-btn {
+                display: unset;
+            }
+        }
+
+    }
+
+    .toy-review {
+        background-color: white;
+    }
+
+    .chat-msg {
+        background-color: $clr3;
+        margin: 3px;
+    }
+
+    h1 {
+        margin-bottom: 5px;
+    }
+
+    h2,
+    p,
+    h4,
+    h5 {
+
+        margin: 2px auto;
+    }
+
+    .out-of-stock {
+        max-height: 60px;
+        position: absolute;
+        right: -10px;
+        bottom: -17px;
+    }
+
+    img {
+        max-height: 220px;
+        max-width: 80%;
+        border-radius: 20px;
+    }
+
 
     .buttons-container {
         margin-bottom: 1em;
@@ -44,12 +223,12 @@
             }
         }
 
-        .review-form-btn{
+        .review-form-btn {
             min-width: 7.5em;
         }
     }
 
-    .signup-link:hover{
+    .signup-link:hover {
         text-decoration: underline;
     }
 }

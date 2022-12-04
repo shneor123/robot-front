@@ -1,7 +1,10 @@
 .user-preview {
     flex-wrap: wrap;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 10px;
 
-    &,
+    // &,
     &>* {
         display: flex;
         align-items: center;
@@ -9,6 +12,7 @@
 
         button,
         a {
+            margin-top: 20px;
             align-self: stretch;
         }
     }

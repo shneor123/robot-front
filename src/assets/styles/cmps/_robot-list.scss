@@ -1,14 +1,14 @@
 .robot-list {
-    margin-bottom: 1em;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1em;
+    // margin-bottom: 1em;
+    // display: grid;
+    // grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    // gap: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: auto;
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
 
-    // display: flex;
-    // flex-wrap: wrap;
-    // gap: 15px;
-    // margin: auto;
-    // margin-top: 10px;
-    // justify-content: center;
-    // width: 100%;
 }

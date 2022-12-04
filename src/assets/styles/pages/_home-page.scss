@@ -75,3 +75,24 @@
         }
     }
 }
+
+@media screen and (min-width: 600px) {
+
+    .home-page .hero {
+        margin-bottom: 3em;
+        gap: unset;
+
+        h1 {
+            font-size: 6rem;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            margin-inline-start: 1.5em;
+        }
+
+        .blink-img {
+            max-height: unset;
+        }
+    }
+}

@@ -1,43 +1,91 @@
-.robot-edit {
+.toy-edit {
+    >h2 {
+        font-size: 35px;
+    }
+}
 
-    &>h2 {
-        margin-bottom: 0.5em;
+.edit-container {
+    width: 43%;
+    min-width: 650px;
+    min-height: 400px;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $clr3;
+    border-radius: 15px;
+    padding: 0 20px;
+    position: relative;
+
+    .basic-details-container {
+        flex-basis: 50%;
+        height: 100%;
+
+        label {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        input {
+            width: 92%;
+            border-radius: 5px;
+            padding-left: 5px;
+            margin-bottom: 14px;
+        }
+
+        .img-edit {
+            margin-bottom: -20px;
+            height: 80px;
+            width: 80px;
+            border-radius: 5px;
+        }
+
+        h3 {
+            display: flex;
+            justify-content: flex-start;
+        }
     }
 
-    &>form>ul {
-        max-width: 450px;
-        margin-bottom: 2em;
+    .stock-labels-container {
+        flex-basis: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-top: 10px;
+        gap: 30px;
 
-        &>* {
-            margin-bottom: 0.7em;
-        }
-
-        .edit-name-container,
-        .edit-img-container>div {
+        .labels {
             display: flex;
-            align-items: center;
-            gap: 0.5em;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
 
-            input {
-                flex-grow: 1;
+            .gap {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
             }
-        }
-
-        .edit-img-container {
-            text-align: center;
-            margin-bottom: unset;
-
-            &>img {
-                max-width: 12.5rem;
-            }
-        }
-
-        .edit-labels-container {
-            display: flex;
         }
     }
 
-    button[type='submit'] {
-        padding: 0.5em 1em;
+    .save-btn {
+        width: 50%;
+        flex-grow: 1;
+        margin: 15px 30%;
+    }
+}
+
+// edit + details
+.back-btn {
+    color: $clr4;
+    background-color: $clr3;
+    position: absolute;
+    left: 20px;
+    margin-top: -27px;
+
+    &:hover {
+        font-weight: 600;
     }
 }

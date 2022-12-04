@@ -30,7 +30,7 @@
             }
 
             .robot-preview {
-                width: 80%;
+                width: 90%;
             }
         }
 
@@ -75,5 +75,14 @@
         gap: 1em;
         overflow: hidden;
         width: 100%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+
+    .dashboard .charts{
+        display: flex;
+        flex-direction: row;
+        gap: 3em;
     }
 }

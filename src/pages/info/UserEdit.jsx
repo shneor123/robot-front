@@ -71,7 +71,7 @@ export const UserEdit = () => {
         navigate(`/users/${user._id}`)
     }
 
-    return <section className="user-edit main-layout">
+    return (<section className="user-edit main-layout">
         <h2 className='page-header'>Edit user</h2>
         <form onSubmit={onSubmit}>
             <ul className='clean-list'>
@@ -103,4 +103,5 @@ export const UserEdit = () => {
             <button className='main-btn'>Save</button>
         </form>
     </section>
+    )
 }

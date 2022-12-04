@@ -45,3 +45,10 @@
         border-inline-start: 13px solid green;
     }
 }
+
+@media screen and (min-width: 600px) {
+    .user-msg {
+        width: unset;
+        min-width: 400px
+    }
+}

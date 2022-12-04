@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom"
+import { HashRouter as Router, Routes, Route } from "react-router-dom"
 import { AboutPage } from "./pages/AboutPage";
 import { HomePage } from "./pages/HomePage";
 import { RobotApp } from "./pages/RobotApp";
@@ -18,8 +18,8 @@ import { Dashboard } from "./pages/Dashboard";
 function App() {
   return (
     <section className="app">
-      <AppHeader />
-      <main>
+      <Router>
+        <AppHeader />
         <Routes>
           <Route element={<LoginSignup />} path={'/login'} />
           <Route element={<LoginSignup />} path={'/signup'} />
@@ -31,13 +31,11 @@ function App() {
           <Route element={<UserEdit />} path={'/users/edit/:id'} />
           <Route element={<UserApp />} path={'/users'} />
           <Route element={<Dashboard />} path={'/dashboard'} />
-
-
           <Route element={<HomePage />} path={'/'} />
           <Route element={<AboutPage />} path={'/about'} />
         </Routes>
-      </main>
-      <UserMsg />
+        <UserMsg />
+      </Router>
     </section>
   )
 }

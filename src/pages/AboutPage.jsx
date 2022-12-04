@@ -14,12 +14,33 @@ export const AboutPage = () => {
     ])
 
     return (
-        <section className="about-page main-layout">
-            <h1 className='page-header'>About us</h1>
-            <p><Link to='/robots'>Robo Store</Link> is a <span className='fake'>fake</span> robot retailer.</p>
-            <p>We ship our products all over the world.</p>
-            <p>The company's stores are located in Israel.</p>
-            <GoogleMap markers={markers.current} defaultLocation={{ lat: 32.209333, lng: 34.855499 }} />
-        </section>
-    );
+        <main className="about-page-container">
+            <div className='about-container'>
+                <div>
+                    <h2 className='page-header'>About us</h2>
+                    <p><Link to='/robots'>Robo Store</Link> is a <span className='fake'>fake</span> robot retailer.</p>
+                    <p>We ship our products all over the world.</p>
+                    <p>The company's stores are located in Israel.</p>
+                    <br />
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore repellat iusto tenetur! Dignissimos vel illum deserunt atque ratione velit numquam porro dolorem earum! Eos consectetur sunt ipsum possimus consequuntur omnis!</p>
+
+                </div>
+                {
+                    <div className='visit-us-container'>
+                        <h2>Our Place To Visit:</h2>
+                        {markers.current.map(branch =>
+                            <h3 key={branch.lat}>
+                                {branch.title}
+                            </h3>
+                        )}
+                    </div>
+                }
+            </div>
+            <div className='visit-us-container '>
+                <div className='map' style={{ borderRadius: '4px', }}>
+                    <GoogleMap markers={markers.current} defaultLocation={{ lat: 32.209333, lng: 34.855499 }} />
+                </div>
+            </div>
+        </main >
+    )
 }
