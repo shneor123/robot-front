@@ -10,6 +10,8 @@ import { LoginSignup } from "./pages/LoginSignup";
 import { UserMsg } from "./cmps/general/userMsg";
 import { UserProfile } from "./pages/info/UserProfile";
 import { UserEdit } from "./pages/info/UserEdit";
+import { UserApp } from "./pages/UserApp";
+import { Dashboard } from "./pages/Dashboard";
 
 
 
@@ -27,6 +29,9 @@ function App() {
           <Route element={<RobotEdit />} path={'/robots/edit/'} />
           <Route element={<UserProfile />} path={'/users/:id'} />
           <Route element={<UserEdit />} path={'/users/edit/:id'} />
+          <Route element={<UserApp />} path={'/users'} />
+          <Route element={<Dashboard />} path={'/dashboard'} />
+
 
           <Route element={<HomePage />} path={'/'} />
           <Route element={<AboutPage />} path={'/about'} />
