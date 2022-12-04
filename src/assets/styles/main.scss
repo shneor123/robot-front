@@ -13,10 +13,12 @@
 @import 'pages/home-page';
 @import 'pages/about-page';
 @import './pages/robot-app';
+@import './pages/robot-details';
 
 
 /* GENERAL */
 @import 'general/app-header';
+@import 'general/loader';
 
 
 /* COMPONENTS */
