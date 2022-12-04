@@ -1,0 +1,52 @@
+.robot-filter {
+    margin-bottom: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    input[name='name'] {
+        min-width: 250px;
+        flex-grow: 1;
+    }
+
+    .in-stock {
+        flex-shrink: 0;
+    }
+
+    .labels-container {
+        position: relative;
+
+        input {
+            width: 300px;
+            background-color: whitesmoke;
+            cursor: pointer;
+        }
+
+        .labels-select {
+            position: absolute;
+            bottom: 0;
+            transform: translate(-100%, 100%);
+            z-index: 10;
+            width: 300px;
+            overflow-y: auto;
+            cursor: pointer;
+        }
+    }
+
+    .sort-container {
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        gap: 0.2em;
+
+        button {
+            height: 90%;
+        }
+    }
+
+    button[type='submit']{
+        align-self: stretch;
+    }
+}
