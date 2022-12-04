@@ -12,7 +12,14 @@
 /* PAGES */
 @import 'pages/home-page';
 @import 'pages/about-page';
+@import './pages/robot-app';
 
 
 /* GENERAL */
 @import 'general/app-header';
+
+
+/* COMPONENTS */
+@import './cmps/robot-list';
+@import './cmps/robot-preview';
+@import './cmps/page-bar';

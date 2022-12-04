@@ -16,7 +16,8 @@ const STORAGE_KEY = 'robot'
 
 
 async function query(filterBy) {
-	return storageService.get(STORAGE_KEY, filterBy)
+	let robots = await storageService.query(STORAGE_KEY, filterBy)
+	return robots
 }
 
 async function getById(robotId) {
@@ -57,13 +58,21 @@ function getRandomRobotImg() {
 	return `https://robohash.org/${id}?set=set3`
 }
 
-// // TEST DATA
+
+
+
+// //  // TEST DATA
 // storageService.post(STORAGE_KEY, {
-//     _id: utilService.makeId(4),  title: "Tot Demo",
-//     isStar: false,
-//     createdAt: utilService.makeId(),
-//     style:{
-//         backgroundColor: "#026aa7",
-//         background: 'url(https://images.unsplash.com/photo-1604147706283-d7119b5b822c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80)',
-//     }
+// 	name: "Tot Demo",
+// 	price: 0,
+// 	labels: [],
+// 	inStock: false,
+// 	img: '',
+// 	createdAt: Date.now(),
 // })
+
+
+
+// storageService.post(STORAGE_KEY, {name: "Tot Demo",price: 0, labels: [],
+// 	inStock: false,img: `https://robohash.org/?set=set3`,createdAt: Date.now(),
+// }).then(x => console.log(x))

@@ -1,0 +1,14 @@
+.page-bar {
+    display: flex;
+    gap: 0.5em;
+
+    button {
+        padding: 0.5em 1em;
+        box-shadow: 0 0 2px $primary-clr-900;
+    }
+
+    li:first-of-type button,
+    li:last-of-type button {
+        color: $primary-clr-100;
+    }
+}

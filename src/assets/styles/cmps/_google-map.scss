@@ -1,0 +1,28 @@
+.google-map {
+    flex-basis: 0;
+    flex-grow: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 5px $clr-black;
+    margin-bottom: 1em;
+
+
+    /* Styling the infoWindow */
+    .gm-style .gm-style-iw {
+        padding: 1em !important;
+        font-weight: bold;
+        top: -10px;
+
+        button {
+            display: none !important;
+        }
+
+        .gm-style-iw-d {
+            overflow: unset !important;
+        }
+    }
+
+    .gm-style-iw-t::after {
+        top: -10px;
+    }
+}
