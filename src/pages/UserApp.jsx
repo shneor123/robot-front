@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { QuestionModal } from '../cmps/users/QuestionModal'
+import { QuestionModal } from '../cmps/general/QuestionModal'
 import { UserList } from '../cmps/users/UserList'
 import { loadUsers, removeUser, updateUser } from '../store/actions/user.action'
 
