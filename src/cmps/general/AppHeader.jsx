@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import logoImg from '../../assets/img/logo.png'
 import { logout } from '../../store/actions/user.action';
 import { UserImg } from '../userImg';
@@ -8,12 +8,15 @@ import { UserImg } from '../userImg';
 export const AppHeader = () => {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { user } = useSelector(stateModule => stateModule.userModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const onLogout = () => {
         dispatch(logout())
         setIsMenuOpen(false)
+        navigate('/login')
+
     }
 
     return (
