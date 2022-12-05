@@ -8,6 +8,12 @@ export const useForm = (initialFields, cb) => {
     const handleChange = ({ target }) => {
         let value = target.type === 'number' ? (+target.value || '') : target.value
         const field = target.name
+        if (field === 'price') value = +value
+        if (field === 'inStock') value = value === 'all' ? 'all' : value === 'true'      
+        if (field === target.name) return value = value
+        if (field === 'labels') value = Array.from(target.selectedOptions).map(option => option.value)
+        setFields((prevFields) => ({ ...prevFields, [field]: value }))
+
         setFields((prevFields) => ({ ...prevFields, [field]: value }))
     }
 
