@@ -13,6 +13,7 @@ export const AppHeader = () => {
     const { user } = useSelector(stateModule => stateModule.userModule)
     const { robots } = useSelector(stateModule => stateModule.robotModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { cart } = useSelector((storeState) => storeState.cartModule)
 
     const onLogout = () => {
         dispatch(logout())
@@ -22,13 +23,12 @@ export const AppHeader = () => {
 
     return (
         <section className="app-header-secend">
+
             <section className="app-header">
                 <main className="main-layout">
                     <Link to={"/"} className="logo">
                         <img src={logoImg} alt="Robo Store logo" />
                         <h2>Robo Store</h2>
-                        <NavLink to={'/cart'}>Cart</NavLink>
-
                     </Link>
                     <section className='header-navbar'>
                         <nav className='full-screen-nav'>

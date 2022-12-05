@@ -1,8 +1,8 @@
-export function addToCart(shop) {
+export function addToCart(cart) {
     return (dispatch) => {
         dispatch({
             type: 'ADD_TO_CART',
-            shop
+            cart
         })
     }
 }

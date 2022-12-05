@@ -1,16 +1,4 @@
 .block {
-  background-color: #e0e0e0;
-  border: 1px solid #a38f8f;
-  padding: 1rem;
-  margin: 0.5rem;
-  height: 80vh;
-  width: 80%;
-  margin-inline-start: 10%;
-  margin-top: 30px;
-  border-radius: 0.5rem;
-  z-index: 1000;
-  box-shadow: 2px 1px 0px 0px gray;
-
 
   .col-1 {
     flex: 1;
@@ -49,7 +37,6 @@
       &:hover {
         background: linear-gradient(to bottom, #476e9e 5%, #1da8e3 100%);
       }
-
     }
 
     &.remove {
@@ -101,31 +88,15 @@
   }
 }
 
-.btn-svg {
+.admin-clear-cart {
   font-size: 0.8rem;
+  position: absolute;
+  top: 25px;
+  padding: 0.2rem;
   border-radius: 0.5rem;
   border: 0.1rem #404040 solid;
   background-color: #4049f0;
-  width: 100%;
+  width: 50%;
+  left: 30%;
   cursor: pointer;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  height: 35px;
-  padding: 5px;
-  width: 40px;
-
-  .shop-icon {
-      background-color: rgb(204, 196, 196);
-      color: black;
-      border-radius: 50%;
-      height: 25px;
-      width: 25px;
-      border: 1px solid black;
-      padding: 4px;
-      position: absolute;
-      top: 20px;
-      left: -5px;
-      // border: none;
-  }
 }

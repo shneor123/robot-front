@@ -1,6 +1,6 @@
 import { RobotPreview } from './RobotPreview'
 
-export const RobotList = ({ robots ,onAddToCart}) => {
+export const RobotList = ({ robots, onAddToCart, onRemoveCart }) => {
 
     return (
         <ul className="robot-list clean-list">
@@ -9,6 +9,7 @@ export const RobotList = ({ robots ,onAddToCart}) => {
                     <RobotPreview
                         robot={robot}
                         onAddToCart={onAddToCart}
+                        onRemoveCart={onRemoveCart}
 
                     />
                 </li>)}

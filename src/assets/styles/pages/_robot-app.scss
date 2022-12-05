@@ -25,6 +25,17 @@
         transition: all 0.5s;
     }
 
+    .pop-up-menu1 {
+        margin-top: 110px;
+        position: absolute;
+        background-color: #fff;
+        right: -340px;
+        top: 0px;
+        z-index: 3;
+        width: rem(420px);
+        transition: all 0.5s;
+    }
+
     .btn-opt {
         cursor: pointer;
         background-color: #091e4214;
@@ -44,6 +55,34 @@
         &:hover {
             background-color: transparent;
             color: #172b4d;
+        }
+    }
+
+
+    .btn-svg {
+        font-size: 0.8rem;
+        border-radius: 0.5rem;
+        border: 0.1rem #404040 solid;
+        background-color: #71727a;
+        width: 100%;
+        cursor: pointer;
+        position: absolute;
+        top: -100px;
+        right: 70px;
+        padding: 5px;
+        width: 40px;
+
+        .shop-icon {
+            background-color: rgb(204, 196, 196);
+            color: black;
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            border: 1px solid black;
+            padding: 4px;
+            position: absolute;
+            top: 20px;
+            left: -5px;
         }
     }
 
