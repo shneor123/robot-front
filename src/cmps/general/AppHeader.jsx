@@ -27,6 +27,8 @@ export const AppHeader = () => {
                     <Link to={"/"} className="logo">
                         <img src={logoImg} alt="Robo Store logo" />
                         <h2>Robo Store</h2>
+                        <NavLink to={'/cart'}>Cart</NavLink>
+
                     </Link>
                     <section className='header-navbar'>
                         <nav className='full-screen-nav'>

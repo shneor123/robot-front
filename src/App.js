@@ -12,6 +12,7 @@ import { UserProfile } from "./pages/info/UserProfile";
 import { UserEdit } from "./pages/info/UserEdit";
 import { UserApp } from "./pages/UserApp";
 import { Dashboard } from "./pages/Dashboard";
+import { CartApp } from "./pages/CartApp";
 
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route element={<Dashboard />} path={'/dashboard'} />
           <Route element={<HomePage />} path={'/'} />
           <Route element={<AboutPage />} path={'/about'} />
+          <Route element={<CartApp />} path={'/cart'} />
         </Routes>
         <UserMsg />
       </Router>

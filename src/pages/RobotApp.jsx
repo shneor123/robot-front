@@ -10,14 +10,13 @@ import { PageBar } from '../cmps/PageBar'
 import { RobotFilter } from '../cmps/RobotFilter'
 import { RobotList } from '../cmps/RobotList'
 import { loadRobots } from '../store/actions/robot.action'
+import { addToCart } from '../store/actions/cart.actions'
 
 export const RobotApp = () => {
-    const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
-    const user = useSelector(storeState => storeState.userModule.user)
     const dispatch = useDispatch()
     const [toggleShow, setToggleShow] = useState(false)
-
-
+    const { user } = useSelector(storeState => storeState.userModule)
+    const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
 
     useEffect(() => {
         dispatch(loadRobots())
@@ -26,6 +25,11 @@ export const RobotApp = () => {
     const onSetFilterBy = (currFilterBy) => {
         dispatch(loadRobots(currFilterBy))
     }
+
+    const onAddToCart = (cart) => {
+        dispatch(addToCart(cart))
+    }
+
     if (!robots) return <Loader />
     return (
         <section className="robot-app main-layout ">
@@ -45,7 +49,7 @@ export const RobotApp = () => {
                     {user && <Link className='add-robot-btn main-btn center-text' to='/robots/edit'>Add new Robot</Link>}
                 </div>}
             </div>
-            {robots?.length > 0 && <RobotList robots={robots} />}
+            {robots?.length > 0 && <RobotList robots={robots}  onAddToCart={onAddToCart} />}
         </section>
     )
 }

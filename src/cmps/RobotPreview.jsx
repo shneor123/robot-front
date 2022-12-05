@@ -4,13 +4,15 @@ import outOfStockImg from '../assets/img/out-of-stock.png'
 import defaultRobotImg from '../assets/img/default-robot.png'
 import { Link, useLocation } from 'react-router-dom'
 
-export const RobotPreview = ({ robot }) => {
+export const RobotPreview = ({ robot, onAddToCart }) => {
     const { pathname } = useLocation()
     return (
         <Link to={`/robots/${robot._id}`} className="robot-preview">
             <div className='toy_row'>
                 <h2 className='name'>{robot.name}</h2>
                 <p className='price'>${utilService.numberWithCommas(robot.price)}</p>
+            {/* <button className="buy" onClick={() => { onAddToCart(robot) }}>Add to Cart</button> */}
+
             </div>
             <div className='img'>
                 <img src={robot.img} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} />
