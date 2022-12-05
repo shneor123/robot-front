@@ -17,7 +17,8 @@ export const StarRatePicker = ({ rate, maxRate, onSetRate }) => {
         return stars
     }
 
-    return <section className="star-rate-picker">
+    return(
+     <section className="star-rate-picker">
         {getStars().map((star, idx) => <span key={idx} className="star"
             onMouseEnter={() => setTempRate(idx + 1)}
             onMouseLeave={() => setTempRate(rate)}
@@ -25,4 +26,5 @@ export const StarRatePicker = ({ rate, maxRate, onSetRate }) => {
             {star}
         </span>)}
     </section>
+    )
 }

@@ -1,13 +1,20 @@
 .review-form {
-    max-width: 300px;
+    max-width: 600px;
     max-height: 0;
+    height: 450px;
     overflow: hidden;
     text-align: center;
     border-radius: 8px;
     background-color: $primary-clr-300;
     box-shadow: 0 0 8px $primary-clr-500;
     transition: .5s;
-    
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -52%);
+    z-index: 100;
+
     &.open {
         max-height: 1000px;
         padding: 1em;

@@ -5,19 +5,6 @@
     .details-section {
         display: flex;
         justify-content: center;
-
-        .reviews-container .review-form {
-            display: flex;
-            flex-direction: column;
-            gap: 0px;
-            width: 80%;
-        }
-
-        [name="content"] {
-            height: 60px;
-            margin-bottom: 3px;
-            margin-top: -5px;
-        }
     }
 
     .back-btn {
@@ -31,7 +18,6 @@
         margin-top: 12px;
     }
 
-    .chat-container,
     .reviews-container,
     .details-container {
         display: flex;
@@ -46,7 +32,6 @@
         padding: 5px 10px;
     }
 
-    .chat-container,
     .details-container,
     .reviews-container {
         margin: 40px 10px;
@@ -81,115 +66,9 @@
         }
     }
 
-    .chat-container,
     .reviews-container {
         justify-content: flex-start;
 
-        .msgs-container,
-        .toy-reviews {
-            flex-grow: 1;
-            margin-top: 5px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overflow-y: auto;
-        }
-
-        .msgs-container {
-            background-color: white;
-            border-radius: 15px;
-            border: 1px solid $clr4;
-            margin: 5px 0;
-            padding: 0 5px;
-        }
-
-        .chat-form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            background-color: $clr4;
-            border-radius: 15px;
-            padding: 5px 10px;
-
-            label {
-                text-align: start;
-                color: white;
-            }
-
-            form {
-                width: 100%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 5px;
-            }
-
-            [name="txt"] {
-                flex-grow: 1;
-                width: 80%;
-                height: 83%;
-                border-radius: 10px;
-                padding-left: 7px;
-            }
-        }
-
-        h1 span.toy-name {
-            color: $clr2;
-        }
-
-        .chat-msg,
-        .toy-review {
-            height: fit-content;
-            border-radius: 5px;
-            padding: 5px;
-            text-align: left;
-            position: relative;
-            overflow-wrap: break-word;
-
-            p {
-                overflow-wrap: break-word;
-                text-align: left;
-                margin: 5px 0px;
-            }
-
-            .delete-btn {
-                position: absolute;
-                top: 1px;
-                right: 1px;
-                background: none;
-                color: $clr4;
-                display: none;
-            }
-
-            &:hover .delete-btn {
-                display: unset;
-            }
-        }
-
-    }
-
-    .toy-review {
-        background-color: white;
-    }
-
-    .chat-msg {
-        background-color: $clr3;
-        margin: 3px;
-    }
-
-    h1 {
-        margin-bottom: 5px;
-    }
-
-    h2,
-    p,
-    h4,
-    h5 {
-
-        margin: 2px auto;
     }
 
     .out-of-stock {
@@ -232,4 +111,15 @@
     .signup-link:hover {
         text-decoration: underline;
     }
+}
+
+.reviews-container {
+    .review-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        width: 80%;
+    }
+
+
 }

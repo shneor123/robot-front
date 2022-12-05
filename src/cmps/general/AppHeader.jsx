@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 
-import { UserImg } from '../userImg';
+import { UserImg } from '../users/userImg';
 import { logout } from '../../store/actions/user.action';
 import logoImg from '../../assets/img/logo.png'
 

@@ -18,8 +18,64 @@
         flex-direction: column;
         gap: 1em;
 
-        &.robots{
+        &.robots {
             margin-bottom: 2em;
+        }
+
+        .review-previews {
+            margin-bottom: 1em;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 3fr));
+            gap: 1em;
+            overflow-y: auto;
+            width: 100%;
+
+            .robot-review {
+                height: fit-content;
+                border-radius: 5px;
+                padding: 5px;
+                text-align: left;
+                position: relative;
+                overflow-wrap: break-word;
+                background-color: white;
+                font-size: rem(14px);
+                margin-right: 2.3vw;
+
+                p {
+                    overflow-wrap: break-word;
+                    text-align: left;
+                    margin: 5px 0px;
+                }
+
+                .delete-btn {
+                    position: absolute;
+                    top: 1px;
+                    right: 1px;
+                    background: none;
+                    color: $clr4;
+                    display: none;
+                    border: none;
+                    font-size: rem(18px);
+                }
+
+                &:hover .delete-btn {
+                    display: unset;
+                }
+            }
+
+            .preview-footer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5em;
+                color: $clr-grey;
+                font-size: rem(8px);
+                position: relative;
+
+                .writer:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }

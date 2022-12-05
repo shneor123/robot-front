@@ -4,16 +4,16 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { PageBar } from '../../cmps/PageBar'
 import { Loader } from '../../cmps/general/loader'
-import { UserImg } from '../../cmps/userImg'
+import { UserImg } from '../../cmps/users/userImg'
 import { RobotList } from '../../cmps/RobotList'
+import { ReviewList } from '../../cmps/review/ReviewList'
+
 import { userService } from '../../services/user.service'
 import { loadRobots } from '../../store/actions/robot.action'
 import editImg from '../../assets/img/edit-icon.png'
-import { ReviewList } from '../../cmps/review/ReviewList'
 
 
 export const UserProfile = () => {
-
     const params = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()

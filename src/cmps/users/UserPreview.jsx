@@ -1,4 +1,4 @@
-import { UserImg } from '../userImg'
+import { UserImg } from './userImg'
 import adminImg from '../../assets/img/admin.png'
 import { Link } from 'react-router-dom'
 
