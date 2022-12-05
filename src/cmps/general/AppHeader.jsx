@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 import { UserImg } from '../userImg';
 import { logout } from '../../store/actions/user.action';
 import logoImg from '../../assets/img/logo.png'
 
 export const AppHeader = () => {
-
+    const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { user } = useSelector(stateModule => stateModule.userModule)
@@ -65,7 +65,10 @@ export const AppHeader = () => {
                 </main>
             </section>
             <div className="header-titles-container">
-                <div className="header-inf"><h3>Robots: {robots.length}</h3></div></div>
+                <div className="header-inf">
+                    {pathname !== '/robots' && pathname !== '/users' ? <h3>Robots: 0</h3> : <h3>Robots: {robots.length}</h3>}
+                </div>
+            </div>
         </section>
     )
 }

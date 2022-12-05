@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai"
+import { IoMdClose } from "react-icons/io";
+
 
 import { Loader } from '../cmps/general/loader'
 import { PageBar } from '../cmps/PageBar'
@@ -28,14 +30,14 @@ export const RobotApp = () => {
     return (
         <section className="robot-app main-layout ">
             <div className={`pop-up-menu ${toggleShow ? "menu-open" : ""}`}>
-                <div className='modal-header'>
-                    <p className="back-menu">
-                        <button onClick={() => setToggleShow(!toggleShow)}
-                            className="btn-opt"><AiOutlineSearch /> Filter cards</button>
-                    </p>
-                </div>
-                
+                <p className="back-menu">
+                    <button onClick={() => setToggleShow(!toggleShow)}
+                        className="btn-opt"><AiOutlineSearch /> Filter cards</button>
+                </p>
                 {toggleShow && <div className='menu-content-wrapper'>
+                    <span style={{ top: '7px' }} onClick={() => setToggleShow(!toggleShow)} className="modal-close-btn">
+                        <IoMdClose size={25} />
+                    </span>
                     <div className='page-bar-container'>
                         <PageBar filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
                     </div>

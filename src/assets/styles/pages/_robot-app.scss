@@ -7,6 +7,13 @@
         gap: 1em;
     }
 
+    .back-menu {
+        position: fixed;
+        left: 140px;
+        top: 120px
+    }
+
+
     .pop-up-menu {
         margin-top: 110px;
         position: absolute;
@@ -18,19 +25,14 @@
         transition: all 0.5s;
     }
 
-    .back-menu {
-        position: fixed;
-        left: 140px;
-        top: 120px
-    }
-
-
     .btn-opt {
         cursor: pointer;
-        background-color: transparent;
-        background-color: initial;
-        border: none;
-        border-radius: 3px;
+        background-color: #091e4214;
+        ;
+        // background-color: initial;
+        border: 1px soid black;
+        // border: none;
+        border-radius: 5px;
         color: #172b4d;
         font-weight: 600;
         line-height: 20px;
@@ -40,7 +42,7 @@
         width: 100%;
 
         &:hover {
-            background-color: #091e4214;
+            background-color: transparent;
             color: #172b4d;
         }
     }
@@ -62,6 +64,15 @@
             top: 8%;
         }
 
+        .modal-close-btn {
+            color: #6b778c;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 2;
+            cursor: pointer;
+        }
+
         .page-bar-container {
             position: absolute;
             left: 30%;
@@ -71,20 +82,6 @@
             border-radius: 15px;
         }
     }
-
-    .modal-header {
-        border-bottom: 1px solid #091e4221;
-        box-sizing: border-box;
-        color: #5e6c84;
-        line-height: 40px;
-        margin: 0 12px;
-        padding: 0 32px;
-        position: relative;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        z-index: 1;
-    }
-
 }
 
 @media screen and (min-width: 500px) {
