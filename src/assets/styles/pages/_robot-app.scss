@@ -6,6 +6,85 @@
         flex-wrap: wrap;
         gap: 1em;
     }
+
+    .pop-up-menu {
+        margin-top: 110px;
+        position: absolute;
+        background-color: #fff;
+        right: -340px;
+        top: 0px;
+        z-index: 3;
+        width: rem(340px);
+        transition: all 0.5s;
+    }
+
+    .back-menu {
+        position: fixed;
+        left: 140px;
+        top: 120px
+    }
+
+
+    .btn-opt {
+        cursor: pointer;
+        background-color: transparent;
+        background-color: initial;
+        border: none;
+        border-radius: 3px;
+        color: #172b4d;
+        font-weight: 600;
+        line-height: 20px;
+        padding: 6px 6px 6px 28px;
+        text-align: left;
+        text-decoration: none;
+        width: 100%;
+
+        &:hover {
+            background-color: #091e4214;
+            color: #172b4d;
+        }
+    }
+
+    .menu-open {
+        right: 0px;
+    }
+
+    .menu-content-wrapper {
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 12px;
+        height: 85vh;
+
+        .add-robot-btn {
+            width: 80%;
+            position: absolute;
+            left: 13%;
+            top: 8%;
+        }
+
+        .page-bar-container {
+            position: absolute;
+            left: 30%;
+            top: 16%;
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 15px;
+        }
+    }
+
+    .modal-header {
+        border-bottom: 1px solid #091e4221;
+        box-sizing: border-box;
+        color: #5e6c84;
+        line-height: 40px;
+        margin: 0 12px;
+        padding: 0 32px;
+        position: relative;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        z-index: 1;
+    }
+
 }
 
 @media screen and (min-width: 500px) {
