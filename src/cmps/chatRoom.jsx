@@ -6,7 +6,7 @@ import {
     socketService, SOCKET_EMIT_SET_ROOM,
     SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_SEND_MSG,
     SOCKET_EVENT_USER_IS_TYPING, SOCKET_EMIT_USER_IS_TYPING,
-    SOCKET_EVENT_USER_COUNT, SOCKET_EMIT_USER_COUNT
+    SOCKET_EVENT_USER_COUNT
 } from '../services/socket.service'
 
 export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
@@ -15,7 +15,7 @@ export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
     const [isUnreadMsg, setIsUnreadMsg] = useState(true)
     const [userTypeFullname, setUserTypeFullname] = useState('')
     const [msg, setMsg] = useState('')
-    const [msgs, setMsgs] = useState(chat? [...chat] : [])
+    const [msgs, setMsgs] = useState(chat ? [...chat] : [])
     const typingTimeoutId = useRef()
     const [connectedUsers, setConnectedUsers] = useState(1)
 
@@ -73,35 +73,35 @@ export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
     }
 
 
-    return <section className={`chat-room ${isOpenMode ? 'open' : 'close'}`}>
-        <img className='chat-close' src={isUnreadMsg ? chatColor : chatBW} alt="chat" onClick={onToggleChatMode} />
+    return (
+        <section className={`chat-room ${isOpenMode ? 'open' : 'close'}`}>
+            <img className='chat-close' src={isUnreadMsg ? chatColor : chatBW} alt="chat" onClick={onToggleChatMode} />
 
-        {isOpenMode && <section className='chat-open'>
-            <header>
-                <div className="title">
-                    <h2>{chatTitle}</h2>
-                    {!userTypeFullname && <p className='user-counter'>{connectedUsers === 1 ? 'You are the only one connected' : `${connectedUsers} users are connected`}</p>}
-                    {userTypeFullname && <p className="typing-msg">{userTypeFullname} is typing...</p>}
-                </div>
-                <button type="button" className='close-btn' onClick={onToggleChatMode}>X</button>
-            </header>
+            {isOpenMode && <section className='chat-open'>
+                <header>
+                    <div className="title">
+                        <h2>{chatTitle}</h2>
+                        {!userTypeFullname && <p className='user-counter'>{connectedUsers === 1 ? 'You are the only one connected' : `${connectedUsers} users are connected`}</p>}
+                        {userTypeFullname && <p className="typing-msg">{userTypeFullname} is typing...</p>}
+                    </div>
+                    <button type="button" className='close-btn' onClick={onToggleChatMode}>&times;</button>
+                </header>
 
-            <ul className="main-chat clean-list">
-                {msgs.map((msg, idx) => <li key={idx}>
-                    {msg.user && <Link className='msg-name' to={`/users/${msg.user._id}`}>
-                        {msg.user._id === loggedInUser?._id ? 'Me' : msg.user.fullname}:
-                    </Link>}
-                    
-                    {!msg.user && <span className='msg-name'>Guest:</span>}
-                    
-                    <span className='msg-txt'> {msg.txt}</span>
-                </li>)}
-            </ul>
+                <ul className="main-chat clean-list">
+                    {msgs.map((msg, idx) => <li key={idx}>
+                        {msg.user && <Link className='msg-name' to={`/users/${msg.user._id}`}>
+                            {msg.user._id === loggedInUser?._id ? 'Me' : msg.user.fullname}:
+                        </Link>}
+                        {!msg.user && <span className='msg-name'>Guest:</span>}
+                        <span className='msg-txt'> {msg.txt}</span>
+                    </li>)}
+                </ul>
 
-            <form onSubmit={onSendMsg} className='msg-form'>
-                <input type="text" className='chat-msg' value={msg} onChange={onChangeInput} />
-                <button className='main-btn'>Send</button>
-            </form>
-        </section>}
-    </section>
+                <form onSubmit={onSendMsg} className='msg-form'>
+                    <input type="text" className='chat-msg' value={msg} onChange={onChangeInput} />
+                    <button className='main-btn'>Send</button>
+                </form>
+            </section>}
+        </section>
+    )
 }

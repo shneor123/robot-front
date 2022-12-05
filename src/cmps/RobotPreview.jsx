@@ -21,7 +21,7 @@ export const RobotPreview = ({ robot, onAddToCart }) => {
                 {/* <p className='created'><strong>created: </strong>{utilService.dateToString(robot.createdAt)}</p> */}
                 {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
             </Link>
-            {/* <button className='sp_add_cart flip-in-hor-bottom' onClick={() => { onAddToCart(robot) }}>Add to Cart</button> */}
+            <button className='sp_add_cart flip-in-hor-bottom' onClick={() => { onAddToCart(robot) }}>Add to Cart</button>
         </>
 
     )

@@ -2,40 +2,42 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { robotService } from '../services/robot.service'
-import { Loader } from '../cmps/general/loader'
-import { userService } from '../services/user.service'
 
 import defaultRobotImg from '../assets/img/default-robot.png'
 import outOfStockImg from '../assets/img/out-of-stock.png'
 import { utilService } from '../services/util.service'
 import { removeRobot } from '../store/actions/robot.action'
 import { QuestionModal } from '../cmps/general/QuestionModal'
+import { ReviewForm } from '../cmps/review/ReviewForm'
 import { loadReviews, removeReview, saveReview } from '../store/actions/review.action'
 import { ReviewList } from '../cmps/review/ReviewList'
 import { ChatRoom } from '../cmps/chatRoom'
 
-import { ReviewForm } from '../cmps/review/ReviewForm'
-
 export const RobotDetails = () => {
+
     const params = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { user } = useSelector(storeState => storeState.userModule)
+    const user = useSelector(storeState => storeState.userModule.user)
     const { robots } = useSelector(storeState => storeState.robotModule)
     const { reviews } = useSelector(storeState => storeState.reviewModule)
-
     const [robot, setRobot] = useState(null)
     const [isReviewFormOpen, setIsReviewFormOpen] = useState(false)
     const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false)
 
     useEffect(() => {
+        /* Question - Here I force update when robots change since I move to this page from 'edit'. */
+        /* is there a better way? because im creating 2 requests by this way */
         loadRobot(params.id)
     }, [params, robots])
 
-
     const loadRobot = async (robotId) => {
         const robot = await robotService.getById(robotId)
-        if (!robot) navigate('/robots')
+        if (!robot) {
+            navigate('/robots')
+            /* FIX - WE DONT GET TO HERE */
+            dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed loading robot. Check your link please' } }))
+        }
         dispatch(loadReviews({ byRobotId: robot._id }))
         setRobot(robot)
     }
@@ -55,7 +57,7 @@ export const RobotDetails = () => {
         dispatch(removeReview(reviewId))
     }
 
-    if (!robot) return <Loader />
+    if (!robot) return 'Loading...'
     return (
         <section className="details-page-container">
             <Link className='back-btn' to={'/robots'}> Back </Link>
@@ -68,11 +70,8 @@ export const RobotDetails = () => {
                         <p>No one wrote a review for this robot. {user ? 'Be ' : <Link to="/signup" className='signup-link'>Create an account</Link>}
                             {user ? '' : ' and be '}
                             the first one!
-                        </p>
-                    }
+                        </p>}
                 </div>
-
-
                 <div className="details-container">
                     <p className="name_d"><strong>Name: </strong>{robot.name}</p>
                     <p className='labels'><strong>Labels:</strong> {robot.labels.join(', ')}</p>
@@ -84,20 +83,18 @@ export const RobotDetails = () => {
                         <button className='review-form-btn' onClick={() => setIsReviewFormOpen(!isReviewFormOpen)}>{isReviewFormOpen ? 'Close Form' : 'Add Review'}</button>
                         {(user.isAdmin || user._id === robot.owner._id) && <>
                             <Link to={`/robots/edit/${robot._id}`}>Edit</Link>
-                            <button onClick={() => onDeleteRobot(robot._id)}>Delete</button>
-
+                            <button onClick={() => setIsQuestionModalOpen(true)}>Delete</button>
                         </>}
                     </div>}
                 </div>
+
+                {isQuestionModalOpen && <QuestionModal question={'Are you sure you want to delete this robot?'}
+                    answers={['Cancel', 'Yes']}
+                    cbFuncs={[null, () => onDeleteRobot(robot._id)]}
+                    setModalFunc={setIsQuestionModalOpen}
+                />}
             </div>
-            {isQuestionModalOpen && <QuestionModal question={'Are you sure you want to delete this robot?'}
-                answers={['Cancel', 'Yes']}
-                cbFuncs={[null, () => onDeleteRobot(robot._id)]}
-                setModalFunc={setIsQuestionModalOpen}
-            />}
             <ChatRoom loggedInUser={user} chat={robot.chat} chatRoomId={robot._id} chatTitle={robot.name + ' Chat'} />
         </section>
     )
 }
-
-
