@@ -65,7 +65,7 @@ export const RobotFilter = ({ filterBy, onSetFilterBy }) => {
                 <div className='margin-between labels-container '>
                     <p className="sub-title">Labels</p>
                     <label htmlFor="filter-labels">Labels: </label>
-                    <span onChange={() => setIsSelectMenuOpen(!isSelectMenuOpen)}>
+                    <span onClick={() => setIsSelectMenuOpen(!isSelectMenuOpen)}>
                         <input type="text" value={tempFilterBy?.labels?.join(', ') || ''} disabled />
                     </span>
                     {labels && isSelectMenuOpen &&
