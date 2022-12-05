@@ -15,7 +15,9 @@ import { CartApp } from './CartApp';
 
 export const RobotApp = () => {
     const dispatch = useDispatch()
+    const [isOpenCard, setIsOpenCard] = useState(false)
     const [toggleShow, setToggleShow] = useState(false)
+    const [cartItems, setCartItems] = useState([])
     const { user } = useSelector(storeState => storeState.userModule)
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
 
@@ -26,13 +28,6 @@ export const RobotApp = () => {
     const onSetFilterBy = (currFilterBy) => {
         dispatch(loadRobots(currFilterBy))
     }
-
-    // const onAddToCart = (cart) => {
-    //     dispatch(addToCart(cart))
-    // }
-
-    const [isOpenCard, setIsOpenCard] = useState(true)
-    const [cartItems, setCartItems] = useState([])
 
     const onAddToCart = (product) => {
         const exist = cartItems.find((x) => x._id === product._id)

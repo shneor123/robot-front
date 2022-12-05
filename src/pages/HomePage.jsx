@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 export const HomePage = () => {
 
-    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const { loggedInUser } = useSelector(storeState => storeState.userModule)
     const [robotImg, setRobotImg] = useState(defaultRobotImg)
     const [blinkImgClass, setBlinkImgClass] = useState(false)
     const robotImgIntervalId = useRef()
@@ -32,7 +32,7 @@ export const HomePage = () => {
             </div>
             <img className={`robot-img blink-img ${blinkImgClass ? 'visible' : 'invisible'}`}
                 onLoad={() => setBlinkImgClass(true)} src={robotImg} alt="robot"
-                onError={({ target }) => {setBlinkImgClass(true); target.src = defaultRobotImg}}
+                onError={({ target }) => { setBlinkImgClass(true); target.src = defaultRobotImg }}
             />
         </section>
         {!loggedInUser && <section className='login'>

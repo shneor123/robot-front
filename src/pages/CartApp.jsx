@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 import { useDispatch } from 'react-redux';
 
 import { Checkout } from '../store/actions/cart.actions';
+import defaultRobotImg from '../assets/img/blue-robot.png'
 
 export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, onClearCart }) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
@@ -15,7 +16,6 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
     const checkout = () => {
         dispatch(Checkout())
     }
-
     return (
         <aside className="block col-1">
             <header style={{ marginTop: '30px' }} className="row"><h1>Small Shopping Cart</h1></header>
@@ -24,7 +24,7 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                 {cartItems.length === 0 && <div>Cart is empty</div>}
                 {cartItems && cartItems.map((item, idx) => (
                     <div key={idx} className="row">
-                        <img src={item.img} alt={item.name} />
+                        <img src={item.img || defaultRobotImg} alt={item.name} />
                         <div className="col-name col-2">{item.name}</div>
                         <div className="col-2">
                             <button onClick={() => onRemoveCart(item)} className="remove"> - </button>{" "}

@@ -38,11 +38,8 @@
 
     .btn-opt {
         cursor: pointer;
-        background-color: #091e4214;
-        ;
-        // background-color: initial;
+        background-color: #091e4214;;
         border: 1px soid black;
-        // border: none;
         border-radius: 5px;
         color: #172b4d;
         font-weight: 600;
@@ -57,7 +54,6 @@
             color: #172b4d;
         }
     }
-
 
     .btn-svg {
         font-size: 0.8rem;
@@ -114,7 +110,7 @@
 
         .page-bar-container {
             position: absolute;
-            left: 30%;
+            left: 20%;
             top: 16%;
             border: 1px solid black;
             padding: 10px;
