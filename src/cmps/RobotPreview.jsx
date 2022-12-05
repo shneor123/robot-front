@@ -16,6 +16,7 @@ export const RobotPreview = ({ robot }) => {
                 <img src={robot.img} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} />
             </div>
             {pathname !== '/dashboard' && <p className='created'><strong>created: </strong>{utilService.dateToString(robot.createdAt)}</p>}
+            {/* <p className='created'><strong>created: </strong>{utilService.dateToString(robot.createdAt)}</p> */}
             {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
         </Link>
     )

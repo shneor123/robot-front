@@ -24,7 +24,7 @@ export const AppHeader = () => {
         <section className="app-header-secend">
             <section className="app-header">
                 <main className="main-layout">
-                    <Link to="/" className="logo">
+                    <Link to={"/"} className="logo">
                         <img src={logoImg} alt="Robo Store logo" />
                         <h2>Robo Store</h2>
                     </Link>

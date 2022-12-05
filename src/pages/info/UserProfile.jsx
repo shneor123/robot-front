@@ -11,6 +11,7 @@ import { ReviewList } from '../../cmps/review/ReviewList'
 import { userService } from '../../services/user.service'
 import { loadRobots } from '../../store/actions/robot.action'
 import editImg from '../../assets/img/edit-icon.png'
+import { removeReview } from '../../store/actions/review.action'
 
 
 export const UserProfile = () => {
@@ -40,6 +41,10 @@ export const UserProfile = () => {
         dispatch(loadRobots(currFilterBy))
     }
 
+    const onRemoveReview = (reviewId) => {
+        dispatch(removeReview(reviewId))
+    }
+
     if (!user) return <Loader />
     return (
         <section className="user-profile main-layout">
@@ -60,7 +65,7 @@ export const UserProfile = () => {
             </section>
             <section className='reviews'>
                 <h2 className='sub-header'>Reviews</h2>
-                {reviews?.length > 0 && <ReviewList reviews={reviews} isShowWriter={false} isShowRobot={true} />}
+                {reviews?.length > 0 && <ReviewList reviews={reviews} isShowWriter={false} isShowRobot={true} onRemoveReview={onRemoveReview} />}
                 {!reviews?.length > 0 && <p>The user didn't write reviews yet.</p>}
             </section>
         </section>

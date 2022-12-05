@@ -37,10 +37,10 @@ export const ReviewPreview = ({ review, isShowWriter, isShowRobot, onRemoveRevie
                 </>}
                 {isShowRobot && <>
                     <p>Robot: </p>
-                    {/* <Link to={`/robots/${review.byRobot._id}`} className='writer'>{review.byRobot.name}</Link> | */}
-                    {/* <p>Price: {review.byRobot.price}</p> | */}
+                    <Link to={`/robots/${review.byRobot._id}`} className='writer'>{review.byRobot.name}</Link> |
+                    <p>Price: {review.byRobot.price}</p> |
                     <p>Seller: </p>
-                    {/* <Link to={`/users/${review.byRobot.owner._id}`} className='writer'>{review.byRobot.owner.fullname}</Link> | */}
+                    <Link to={`/users/${review.byRobot.owner._id}`} className='writer'>{review.byRobot.owner.fullname}</Link> |
                     <p className='date'>Date: {getDate(review.createdAt)}</p>
                 </>}
             </footer>
