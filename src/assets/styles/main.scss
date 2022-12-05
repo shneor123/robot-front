@@ -1,8 +1,9 @@
 /* SETUP */
 @import './setup/typography';
-@import './setup/vars';
+@import './setup/variables';
 @import './setup/functions';
 @import './setup/mixins';
+@import './setup/animista';
 
 /* BASIC */
 @import './basic/base';
