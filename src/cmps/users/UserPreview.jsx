@@ -18,20 +18,20 @@ export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionMod
     }
 
     return (
-        <li className="user-preview">
-            <section className='details'>
-                <UserImg user={user} />
-                {user.isAdmin && <img className="admin-img" src={adminImg} alt="admin" />}
-                <p>{user.fullname}</p>
-            </section>
-            <section className='buttons'>
-                <Link className='sub-btn center-text' to={`/users/${user._id}`}>Details</Link>
-                <Link className='sub-btn center-text' to={`/users/edit/${user._id}`}>Edit</Link>
-                <button className='sub-btn center-text' onClick={() => onAdminClick(user._id, user.isAdmin, user.fullname)}>
-                    {user.isAdmin ? 'Remove admin' : 'Set admin'}
-                </button>
-                <button className='sub-btn center-text' onClick={() => onDeleteClick(user._id, user.fullname)}>Delete</button>
-            </section>
-        </li>
+            <li className="user-preview">
+                <section className='details'>
+                    <UserImg user={user} />
+                    {user.isAdmin && <img className="admin-img" src={adminImg} alt="admin" />}
+                    <p>{user.fullname}</p>
+                </section>
+                <section className='buttons'>
+                    <Link className='sub-btn center-text' to={`/users/${user._id}`}>Details</Link>
+                    <Link className='sub-btn center-text' to={`/users/edit/${user._id}`}>Edit</Link>
+                    <button className='sub-btn center-text' onClick={() => onAdminClick(user._id, user.isAdmin, user.fullname)}>
+                        {user.isAdmin ? 'Remove admin' : 'Set admin'}
+                    </button>
+                    <button className='sub-btn center-text' onClick={() => onDeleteClick(user._id, user.fullname)}>Delete</button>
+                </section>
+            </li>
     )
 }

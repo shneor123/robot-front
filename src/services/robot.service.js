@@ -1,14 +1,14 @@
-import { utilService } from './util.service'
 import { httpService } from './http.service'
-
+// import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
 
 /* COMMENTS ARE FOR LOCAL STORAGE DATABASE (BEFORE I'VE CREATED BACKEND) */
 
 export const robotService = {
 	query,
 	getById,
-	remove,
 	save,
+	remove,
 	getStatistics,
 	getEmptyRobot,
 	getRandomRobotImg,
@@ -18,37 +18,77 @@ export const robotService = {
 // const STORAGE_KEY = 'robotsDb'
 const BASE_PATH = 'robot'
 
-const gLabels = ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor"]
-
-
 async function query(filterBy) {
 	let robots = await httpService.get(BASE_PATH, filterBy)
 	return robots
+
+	/* LOCAL STORAGE */
+	// let robots = await storageService.query(STORAGE_KEY)
+
+	// if (filterBy) {
+	// 	const { name, labels, inStock, sortBy } = filterBy
+
+	// 	if (name) {
+	// 		const regex = new RegExp(name, 'gi')
+	// 		robots = robots.filter(robot => regex.test(robot.name))
+	// 	}
+
+	// 	if (labels?.length) robots = robots.filter(robot => {
+	// 		//this is an OR filtering (at least one label)
+	// 		for (let i = 0; i < robot.labels.length; i++) {
+	// 			if (labels.includes(robot.labels[i])) return true
+	// 		}
+
+	// 		return false
+
+	// 		//this is an AND filtering (all labels)
+	// 		// for (let i = 0; i < labels.length; i++) {
+	// 		// 	if (!robot.labels.includes(labels[i])) return false
+	// 		// }
+
+	// 		// return true
+	// 	})
+
+	// 	if (inStock !== undefined && inStock !== 'all') robots = robots.filter(robot => robot.inStock === inStock)
+
+	// 	if (sortBy) robots = robots.sort((a, b) => {
+	// 		if (sortBy === 'name') return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+	// 		return a[sortBy] - b[sortBy]
+	// 	})
+	// }
+
+	// return robots
 }
 
 async function getById(robotId) {
 	return await httpService.get(`${BASE_PATH}/${robotId}`)
+	/* LOCAL STORAGE */
 	// return await storageService.get(STORAGE_KEY, robotId)
+}
 
+async function save(robot) {
+	if (robot._id) return await httpService.put(BASE_PATH, robot)
+
+	return await httpService.post(BASE_PATH, robot)
+
+	/* LOCAL STORAGE */
+	// if (robot._id) {
+	// 	return await storageService.put(STORAGE_KEY, robot)
+	// }
+
+	// let updatedRobot = { ...robot, createdAt: Date.now() }
+	// return await storageService.post(STORAGE_KEY, updatedRobot)
 }
 
 async function remove(robotId) {
 	return await httpService.delete(`${BASE_PATH}/${robotId}`)
+
+	/* LOCAL STORAGE */
 	// return await storageService.remove(STORAGE_KEY, robotId)
 }
 
-async function save(robot) {
-	if (robot._id) {
-		const saveRobot = await httpService.put(BASE_PATH, robot)
-		return saveRobot
-	} else {
-		try {
-			const saveRobot = await httpService.post(BASE_PATH, robot)
-			return saveRobot
-		} catch (err) {
-			console.log(err)
-		}
-	}
+async function getStatistics() {
+	return await httpService.get(`${BASE_PATH}/statistics`)
 }
 
 function getEmptyRobot() {
@@ -61,11 +101,6 @@ function getEmptyRobot() {
 	}
 }
 
-async function getStatistics() {
-	return await httpService.get(`${BASE_PATH}/statistics`)
-}
-
-
 function getRandomRobotImg() {
 	const id = utilService.makeId(16)
 	return `https://robohash.org/${id}?set=set3`
@@ -73,4 +108,7 @@ function getRandomRobotImg() {
 
 async function getLabels() {
 	return await httpService.get(`${BASE_PATH}/labels`)
+
+	/* LOCAL STORAGE */
+	// return gLabels.sort()
 }

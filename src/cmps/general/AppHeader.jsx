@@ -7,15 +7,14 @@ import { logout } from '../../store/actions/user.action';
 import logoImg from '../../assets/img/logo.png'
 
 export const AppHeader = () => {
-    const { pathname } = useLocation()
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
     const { user } = useSelector(stateModule => stateModule.userModule)
     const { robots } = useSelector(stateModule => stateModule.robotModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const { cart } = useSelector((storeState) => storeState.cartModule)
+    const { pathname } = useLocation()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-    const onLogout = () => {
+    const onUserLogout = () => {
         dispatch(logout())
         setIsMenuOpen(false)
         navigate('/login')
@@ -48,7 +47,8 @@ export const AppHeader = () => {
                             {isMenuOpen && <main>
                                 {user && <header>
                                     <UserImg user={user} />
-                                    <h2>Hi {user.fullname}</h2>
+                                    {/* <h2>Hi {user.fullname}</h2> */}
+                                    <h2 className='page-header'>Hi {user.fullname}</h2>
                                 </header>}
 
                                 <nav className='hamburger-nav'>
@@ -60,7 +60,7 @@ export const AppHeader = () => {
                                     <NavLink to="/dashboard" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Dashboard</NavLink>
                                     <NavLink to="/about" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>About</NavLink>
                                 </nav>
-                                {user && <button className="logout-btn" onClick={() => onLogout()}>Logout</button>}
+                                {user && <button className="logout-btn" onClick={() => onUserLogout()}>Logout</button>}
                             </main>}
                         </div>
                     </section>

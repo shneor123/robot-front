@@ -95,3 +95,165 @@
 .debug>* {
     border: 1px solid red;
 }
+
+
+
+
+// Font Sizes
+.fs12 {
+    font-size: rem(12px);
+}
+
+.fs14 {
+    font-size: rem(14px);
+}
+
+.fs18 {
+    font-size: rem(18px);
+}
+
+.fs20 {
+    font-size: rem(20px);
+}
+
+.fs24 {
+    font-size: rem(24px);
+}
+
+.fs28 {
+    font-size: rem(28px);
+}
+
+.fs30 {
+    font-size: rem(30px);
+}
+
+// flex helpers
+.flex {
+    display: flex;
+
+    &.column {
+        flex-direction: column;
+    }
+
+    &.justify-center {
+        justify-content: center;
+    }
+
+    &.justify-between {
+        justify-content: space-between;
+    }
+
+    &.justify-evenly {
+        justify-content: space-evenly;
+    }
+
+    &.justify-around {
+        justify-content: space-around;
+    }
+
+    &.align-center {
+        align-items: center;
+    }
+}
+
+//  OLD
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.space-evenly {
+    justify-content: space-evenly;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-end {
+    align-self: flex-end;
+}
+
+.align-start {
+    align-self: flex-start;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.clear-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    outline: inherit;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.cursor-p {
+    cursor: pointer;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+.under-line {
+    text-decoration: underline;
+}
+
+.ml- {
+    margin-left: 10px;
+}
+
+.mt- {
+    margin-top: 10px;
+}
+
+.block {
+    display: block;
+}

@@ -12,12 +12,8 @@ export const UserApp = () => {
     const [questionModalOptions, setQuestionModalOptions] = useState(null)
 
     useEffect(() => {
-        onLoadUsers()
-    }, [])
-
-    const onLoadUsers = () => {
         dispatch(loadUsers())
-    }
+    }, [])
 
     const onToggleAdmin = (userId, isAdmin) => {
         const user = { _id: userId, isAdmin: !isAdmin }

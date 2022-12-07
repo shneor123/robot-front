@@ -10,45 +10,27 @@ export const useFormRegister = (initialState, callBack) => {
     }, [fields])
 
     const handleChange = ({ target }) => {
-        const field = target.name
+
         let value = target.value
+        const field = target.name
+        if (field === 'labels') value = Array.from(target.selectedOptions).map(option => option.value)
+        if (field === 'inStock') value = value === 'all' ? 'all' : value === 'true' 
 
         switch (target.type) {
             case 'number':
-            case 'range':
                 value = +target.value || ''
+                break;
+            case 'button':
+                value = target.checked
                 break;
             case 'checkbox':
                 value = target.checked
                 break;
-            case 'date':
-                value = new Date(value)
-                break;
-            case 'time':
-                const newDate = new Date()
-                const hours = value.split(':')[0]
-                const minutes = value.split(':')[1]
-                newDate.setHours(hours)
-                newDate.setMinutes(minutes)
-                value = newDate
-                break
-
             default:
                 break
         }
         setFields(prevFields => ({ ...prevFields, [field]: value }))
     }
-
-    const getFormattedDate = (value) => {
-        const valueDate = new Date(value)
-        return `${valueDate.getFullYear()}-${(valueDate.getMonth() + 1 + '').padStart(2, '0')}-${(valueDate.getDate() + '').padStart(2, '0')}`
-    }
-
-    const getFormattedTime = (value) => {
-        const valueTime = new Date(value)
-        return `${(valueTime.getHours() + '').padStart(2, '0')}:${(valueTime.getMinutes() + '').padStart(2, '0')}`
-    }
-
 
     const register = (field, type = '', value) => { // value only used when type === 'radio'
         const inputProp = {
@@ -59,8 +41,9 @@ export const useFormRegister = (initialState, callBack) => {
             type
         }
         if (type === 'checkbox') inputProp.checked = fields[field]
-        if (type === 'date') inputProp.value = getFormattedDate(fields[field])
-        if (type === 'time') inputProp.value = getFormattedTime(fields[field])
+        if (type === 'button') inputProp.value = value
+        if (type === 'button') inputProp.value = value
+
         if (type === 'radio') {
             inputProp.value = value
             inputProp.id = value

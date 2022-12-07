@@ -5,18 +5,16 @@ export const ReviewForm = ({ isOpen, onAddReview }) => {
 
     const [review, setReview] = useState({
         title: '',
-        rate: 4,
+        rate: 1,
         content: ''
     })
 
-    const handleChange = (ev) => {
-        const { name, value } = ev.target
-        if (name === 'rate') value = +value
+    const handleChange = ({ target: { name, value } }) => {
         setReview({ ...review, [name]: value })
     }
 
     const onSetRate = (rate) => {
-        setReview((prevState) => ({ ...prevState, rate }))
+        setReview({ ...review, rate })
     }
 
     const onSubmit = (ev) => {
@@ -26,7 +24,7 @@ export const ReviewForm = ({ isOpen, onAddReview }) => {
     }
 
     return (
-      <section className={`review-form ${isOpen ? 'open' : 'close'}`}> 
+        <section className={`review-form ${isOpen ? 'open' : 'close'}`}>
             <h2 className='sub-header'>Add a review</h2>
             <form onSubmit={onSubmit}>
                 <ul className='clean-list'>
@@ -37,20 +35,17 @@ export const ReviewForm = ({ isOpen, onAddReview }) => {
                             onChange={handleChange}
                             placeholder="Review title"
                             autoFocus
-                            required
-                        />
+                            required />
                     </li>
-
                     <li>
                         <StarRatePicker
                             rate={review.rate}
                             maxRate={5}
-                            onSetRate={onSetRate}
-                        />
+                            onSetRate={onSetRate} />
                     </li>
-
                     <li>
-                        <textarea name="content"
+                        <textarea
+                            name="content"
                             value={review.content}
                             onChange={handleChange}
                             placeholder="Review content (Optional)" >

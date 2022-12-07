@@ -1,5 +1,3 @@
-import chatColor from '../assets/img/chat-color.png'
-import chatBW from '../assets/img/chat-black-and-white.png'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -9,14 +7,19 @@ import {
     SOCKET_EVENT_USER_COUNT
 } from '../services/socket.service'
 
+import chatColor from '../assets/img/chat-color.png'
+import chatBW from '../assets/img/chat-black-and-white.png'
+import { utilService } from '../services/util.service'
+
 export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
+    const typingTimeoutId = useRef()
 
     const [isOpenMode, setIsOpenMode] = useState(false)
     const [isUnreadMsg, setIsUnreadMsg] = useState(true)
     const [userTypeFullname, setUserTypeFullname] = useState('')
+
     const [msg, setMsg] = useState('')
     const [msgs, setMsgs] = useState(chat ? [...chat] : [])
-    const typingTimeoutId = useRef()
     const [connectedUsers, setConnectedUsers] = useState(1)
 
     useEffect(() => {
@@ -32,15 +35,16 @@ export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
         }
     }, [])
 
+    const addMsg = (newMsg) => {
+        newMsg.createdAt = Date.now()
+        setMsgs(prevMsgs => [...prevMsgs, newMsg])
+        setIsUnreadMsg(true) //if the chat is open, it will return false when we close it
+    }
+
     const onToggleChatMode = (ev) => {
         ev.stopPropagation()
         setIsOpenMode(!isOpenMode)
         setIsUnreadMsg(false)
-    }
-
-    const addMsg = (newMsg) => {
-        setMsgs(prevMsgs => [...prevMsgs, newMsg])
-        setIsUnreadMsg(true) //if the chat is open, it will return false when we close it
     }
 
     const userIsTyping = (fullname) => {
@@ -75,30 +79,35 @@ export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
 
     return (
         <section className={`chat-room ${isOpenMode ? 'open' : 'close'}`}>
-            <img className='chat-close' src={isUnreadMsg ? chatColor : chatBW} alt="chat" onClick={onToggleChatMode} />
+            <img className='chat-close slide-in-right ' src={isUnreadMsg ? chatColor : chatBW} alt="chat" onClick={onToggleChatMode} />
 
             {isOpenMode && <section className='chat-open'>
                 <header>
                     <div className="title">
-                        <h2>{chatTitle}</h2>
+                        <h3>Chat about {chatTitle}</h3>
                         {!userTypeFullname && <p className='user-counter'>{connectedUsers === 1 ? 'You are the only one connected' : `${connectedUsers} users are connected`}</p>}
                         {userTypeFullname && <p className="typing-msg">{userTypeFullname} is typing...</p>}
                     </div>
                     <button type="button" className='close-btn' onClick={onToggleChatMode}>&times;</button>
                 </header>
-
                 <ul className="main-chat clean-list">
-                    {msgs.map((msg, idx) => <li key={idx}>
+                    {msgs.map((msg, idx) => <li key={idx} className="chat_msg">
                         {msg.user && <Link className='msg-name' to={`/users/${msg.user._id}`}>
                             {msg.user._id === loggedInUser?._id ? 'Me' : msg.user.fullname}:
                         </Link>}
                         {!msg.user && <span className='msg-name'>Guest:</span>}
                         <span className='msg-txt'> {msg.txt}</span>
+                        <span className="chat-msg-timestamp">{utilService.timeSince(msg.createdAt)}</span>
+
                     </li>)}
                 </ul>
-
+                <button className='main-btn clear_msg' type="button" onClick={() => setMsgs([])}>Clear Chat</button>
                 <form onSubmit={onSendMsg} className='msg-form'>
-                    <input type="text" className='chat-msg' value={msg} onChange={onChangeInput} />
+                    <input type="text"
+                        className='chat-msg'
+                        value={msg}
+                        onChange={onChangeInput}
+                        placeholder="Send Your Msg" />
                     <button className='main-btn'>Send</button>
                 </form>
             </section>}

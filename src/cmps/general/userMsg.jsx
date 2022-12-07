@@ -26,8 +26,10 @@ export const UserMsg = () => {
 
     if (!userMsg) return <section className="user-msg"></section>
 
-    return <section className={`user-msg open ${userMsg.type}`}>
-        <p>{userMsg.msg}</p>
-        <button className='close-btn' onClick={(ev) => { ev.stopPropagation(); onCloseMsg() }}>&times;</button>
-    </section >
+    return (
+        <section className={`user-msg open ${userMsg.type}`}>
+            <p>{userMsg.msg}</p>
+            <button className='close-btn' onClick={(ev) => { ev.stopPropagation(); onCloseMsg() }}>&times;</button>
+        </section >
+    )
 }

@@ -1,11 +1,3 @@
-// COLOR PALETTE
-$clr1: #8fdac1;
-$clr2: #33c292;
-$clr3: #ece9e9;
-$clr4: #282c34;
-$clr6: #026aa7; //header
-$clr5: lighten($clr4, 30%);
-
 .about-page-container {
     display: flex;
     justify-content: space-between;
@@ -32,15 +24,15 @@ $clr5: lighten($clr4, 30%);
         gap: 5px;
 
         &>* {
-            background-color: $clr1;
+            background-color: $primary-clr-300;
             border-radius: 10px;
-            border: 1px solid $clr4;
+            border: 1px solid #282c34;;
             padding: 8px;
         }
     }
 
     .map {
-        border: 1px solid $clr4;
+        border: 1px solid #282c34;;
         min-height: 70vh;
 
         &>* {

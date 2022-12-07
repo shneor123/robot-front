@@ -1,21 +1,13 @@
 import { useEffect, useState } from 'react'
 import { robotService } from '../services/robot.service'
-import { useForm } from '../hooks/useForm'
 import { useFormRegister } from '../hooks/useFormRegister'
 
 export const RobotFilter = ({ filterBy, onSetFilterBy }) => {
+    const [register] = useFormRegister({ ...filterBy }, onSetFilterBy)
+    const [tempFilterBy] = useState({ ...filterBy })
 
-    const [tempFilterBy, handleChange, setTempFilterBy] = useForm({
-        ...filterBy
-    })
-
-    const [register] = useFormRegister({
-        ...filterBy
-    }, onSetFilterBy)
-
-
-    const [sortBy, setSortBy] = useState(null)
     const [isSelectMenuOpen, setIsSelectMenuOpen] = useState(false)
+    const [sortBy, setSortBy] = useState(null)
     const [labels, setLabels] = useState(null)
 
     useEffect(() => {
@@ -25,12 +17,10 @@ export const RobotFilter = ({ filterBy, onSetFilterBy }) => {
         })()
     }, [])
 
-
     const onSortByChange = ({ target: { name } }) => {
         if (sortBy === name) return setSortBy(null)
         setSortBy(name)
     }
-
     const onSubmit = (ev) => {
         ev.preventDefault()
         const updatedFilterBy = { ...tempFilterBy, sortBy, pageIdx: 0 }
@@ -41,40 +31,26 @@ export const RobotFilter = ({ filterBy, onSetFilterBy }) => {
         <section className='filter-container'>
             <form onSubmit={onSubmit}>
                 <input className="search-container"{...register('name', 'text')} placeholder='Robot name' />
-
                 <p className="sub-info-title">Search cards, In Stock, labels, and more.</p>
-                {/* <div className='margin-between'>
+                
+                <div className='margin-between'>
                     <p className="sub-title">In Stock</p>
-                    <label htmlFor="">In Stock: </label>
-                    <input type="radio" name="inStock" id="filter-in-stock-yes" value={true} onChange={handleChange} />
-                    <label htmlFor="filter-in-stock-yes">Yes</label>
-                    <input type="radio" name="inStock" id="filter-in-stock-no" value={false} onChange={handleChange} />
-                    <label htmlFor="filter-in-stock-no">No</label>
-                    <input type="radio" name="inStock" id="filter-in-stock-all" value={'all'} onChange={handleChange} />
-                    <label htmlFor="filter-in-stock-all">All</label>
-                </div> */}
-
-                <label htmlFor="select">Stock:</label>
-                <select {...register('select', 'select')} id="select" name="inStock" >
-                    <option value={"all"}>All </option>
-                    <option value={true}>In stock </option>
-                    <option value={false}>Out of stock </option>
-                </select>
-
+                    <label htmlFor="select">Stock:</label>
+                    <select {...register('inStock', 'select')} >
+                        <option value={"all"}>All </option>
+                        <option value={true}>In stock </option>
+                        <option value={false}>Out of stock </option>
+                    </select>
+                </div>
 
                 <div className='margin-between labels-container '>
                     <p className="sub-title">Labels</p>
                     <label htmlFor="filter-labels">Labels: </label>
                     <span onClick={() => setIsSelectMenuOpen(!isSelectMenuOpen)}>
-                        <input type="text" value={tempFilterBy?.labels?.join(', ') || ''} disabled />
+                        <input {...register('name', 'text')} value={tempFilterBy?.labels?.join(', ') || ''} disabled />
                     </span>
                     {labels && isSelectMenuOpen &&
-                        <select className="labels-select"
-                            name="labels" id="filter-labels"
-                            multiple
-                            onChange={handleChange}
-                            size={labels.length}
-                        >
+                        <select className="labels-select" {...register('labels', 'select')} id="filter-labels" size={labels.length} multiple>
                             {labels.map(label => <option key={label}>{label}</option>)}
                         </select>}
                 </div>
@@ -86,11 +62,9 @@ export const RobotFilter = ({ filterBy, onSetFilterBy }) => {
                     <button type='button' className={`sub-btn ${sortBy === 'price' ? 'active' : ''}`} name='price' >Price</button>
                     <button type='button' className={`sub-btn ${sortBy === 'createdAt' ? 'active' : ''}`} name='createdAt' >Created Date</button>
                 </div>
-
-
                 <p className="sub-title">Search</p>
                 <button className='main-btn' type="submit">Search</button>
             </form>
-        </section>
+        </section >
     )
 }

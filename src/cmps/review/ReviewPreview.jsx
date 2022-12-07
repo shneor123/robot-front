@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { utilService } from '../../services/util.service'
+import { QuestionModal } from '../general/QuestionModal'
 
 export const ReviewPreview = ({ review, isShowWriter, isShowRobot, onRemoveReview }) => {
+    const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false)
 
     const getDate = (date) => {
         return utilService.dateToString(date)
@@ -28,7 +31,8 @@ export const ReviewPreview = ({ review, isShowWriter, isShowRobot, onRemoveRevie
                 <strong>Content:{" "}</strong>
                 {review.content}
             </p>
-            <button className='delete-btn' onClick={() => onRemoveReview(review._id)}> &times;</button>
+            <button className='delete-btn' onClick={() => setIsQuestionModalOpen(true)}> &times;</button>
+
             <footer className="preview-footer">
                 {isShowWriter && <>
                     <p>Written by: </p>
@@ -44,6 +48,12 @@ export const ReviewPreview = ({ review, isShowWriter, isShowRobot, onRemoveRevie
                     <p className='date'>Date: {getDate(review.createdAt)}</p>
                 </>}
             </footer>
+
+            {isQuestionModalOpen && <QuestionModal question={'Are you sure you want to delete this review?'}
+                answers={['Cancel', 'Yes']}
+                cbFuncs={[null, () => onRemoveReview(review._id)]}
+                setModalFunc={setIsQuestionModalOpen}
+            />}
         </div>
     )
 }

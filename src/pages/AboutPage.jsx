@@ -21,9 +21,9 @@ export const AboutPage = () => {
                     <p><Link to='/robots'>Robo Store</Link> is a <span className='fake'>fake</span> robot retailer.</p>
                     <p>We ship our products all over the world.</p>
                     <p>The company's stores are located in Israel.</p>
-                    <br />
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore repellat iusto tenetur! Dignissimos vel illum deserunt atque ratione velit numquam porro dolorem earum! Eos consectetur sunt ipsum possimus consequuntur omnis!</p>
-
+                </div>
+                <div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit a voluptatum aut dolores aperiam reiciendis tenetur, rem, natus architecto laboriosam distinctio quo iusto molestiae. Dicta ipsum ratione hic tempore doloribus!</p>
                 </div>
                 {
                     <div className='visit-us-container'>

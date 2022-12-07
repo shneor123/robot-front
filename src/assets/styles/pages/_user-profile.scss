@@ -23,6 +23,8 @@
 
         &.robots {
             margin-bottom: 2em;
+
+          
         }
 
         .review-previews {
@@ -55,7 +57,8 @@
                     top: 1px;
                     right: 1px;
                     background: none;
-                    color: $clr4;
+                    color: #282c34;
+                    ;
                     display: none;
                     border: none;
                     font-size: rem(18px);
@@ -81,4 +84,9 @@
             }
         }
     }
+}
+
+
+.list {
+    background-color: green;
 }

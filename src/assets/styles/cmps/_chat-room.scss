@@ -11,6 +11,7 @@
     padding: 1em;
     overflow: hidden;
     color: white;
+    background-color: #ece9e9;
     background-color: $primary-clr-850;
     border-radius: 8px;
     box-shadow: 0 0 10px $clr-black;
@@ -99,15 +100,54 @@
         }
 
         .msg-name {
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 12px;
         }
 
         a.msg-name:hover {
             text-decoration: underline;
         }
+
+        .chat_msg {
+            height: fit-content;
+            border-radius: 5px;
+            padding: 5px;
+            text-align: left;
+            position: relative;
+            overflow-wrap: break-word;
+            background-color: #dcf8c6;
+            width: 50%;
+
+            .chat-msg-timestamp {
+                justify-self: flex-end;
+                font-size: 10px;
+                background-color: #091e4214;
+                padding: 0px 2px 0px 2px;
+            }
+        }
+    }
+
+    .clear_msg {
+        max-width: 110px;
+        font-size: 10px;
+        margin-inline-start: 78.4%;
+    }
+
+    .bot_input {
+        margin-bottom: -25px;
+        margin-inline-start: 1%;
+
+        label {
+            display: flex;
+            gap: 3px;
+        }
     }
 
     .msg-form {
+        border: 2px solid black;
+        background-color: #fff;
+        border-radius: 14px;
+        padding: 5px;
         display: flex;
         gap: 0.5em;
 
@@ -117,11 +157,13 @@
             border-radius: 4px;
             font-size: 1em;
             border: none;
-        }
+            font-family: inherit;
+            background-color: inherit;
+            font-size: 0.8em;
 
-        button {
-            font-weight: bold;
-            background-color: rgb(159 100 255);
+            &:focus {
+                outline: none;
+            }
         }
     }
 }

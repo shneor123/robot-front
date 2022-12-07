@@ -12,6 +12,7 @@ import { ReviewForm } from '../cmps/review/ReviewForm'
 import { loadReviews, removeReview, saveReview } from '../store/actions/review.action'
 import { ReviewList } from '../cmps/review/ReviewList'
 import { ChatRoom } from '../cmps/chatRoom'
+import { Loader } from '../cmps/general/loader'
 
 export const RobotDetails = () => {
 
@@ -24,6 +25,7 @@ export const RobotDetails = () => {
     const [robot, setRobot] = useState(null)
     const [isReviewFormOpen, setIsReviewFormOpen] = useState(false)
     const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false)
+
 
     useEffect(() => {
         /* Question - Here I force update when robots change since I move to this page from 'edit'. */
@@ -56,12 +58,15 @@ export const RobotDetails = () => {
     const onRemoveReview = (reviewId) => {
         dispatch(removeReview(reviewId))
     }
-
-    if (!robot) return 'Loading...'
+    
+    if (!robot) return <Loader />
+    const stockDesc = robot.inStock ? '' : 'Not '
+    const color = robot.inStock ? 'green' : 'red'
     return (
         <section className="details-page-container">
             <Link className='back-btn' to={'/robots'}> Back </Link>
             <div className="details-section">
+
                 <div className="reviews-container">
                     <h1>Reviews:</h1>
                     <ReviewForm isOpen={isReviewFormOpen} onAddReview={onAddReview} />
@@ -72,10 +77,12 @@ export const RobotDetails = () => {
                             the first one!
                         </p>}
                 </div>
+
                 <div className="details-container">
                     <p className="name_d"><strong>Name: </strong>{robot.name}</p>
                     <p className='labels'><strong>Labels:</strong> {robot.labels.join(', ')}</p>
                     <p className="price_d"><strong>Price: </strong>US ${robot.price}</p>
+                    <h5 style={{ color }}>{stockDesc}in stock</h5>
                     <img className='img' src={robot.img || defaultRobotImg} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} />
                     {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
                     <span><strong>Uploaded site: </strong>{utilService.dateToString(robot.createdAt)}</span>
@@ -94,7 +101,7 @@ export const RobotDetails = () => {
                     setModalFunc={setIsQuestionModalOpen}
                 />}
             </div>
-            <ChatRoom loggedInUser={user} chat={robot.chat} chatRoomId={robot._id} chatTitle={robot.name + ' Chat'} />
+            <ChatRoom loggedInUser={user} chat={robot.chat} chatRoomId={robot._id} chatTitle={robot.name} />
         </section>
     )
 }

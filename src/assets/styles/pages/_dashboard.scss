@@ -30,7 +30,7 @@
             }
 
             .robot-preview {
-                width: 90%;
+                width: 80%;
             }
         }
 
@@ -78,8 +78,7 @@
     }
 }
 
-@media screen and (min-width: 1000px) {
-
+@media screen and (min-width: 1000px){
     .dashboard .charts{
         display: flex;
         flex-direction: row;
