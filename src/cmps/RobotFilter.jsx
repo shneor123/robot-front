@@ -24,7 +24,7 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
         if (sortBy === name) return setSortBy(null)
         setSortBy(name)
     }
-    
+
     const onSubmit = (ev) => {
         ev.preventDefault()
         const updatedFilterBy = { ...tempFilterBy, sortBy, pageIdx: 0 }
@@ -41,16 +41,6 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
                 <input className="search-container"{...register('name', 'text')} placeholder='Robot name' />
                 <p className="sub-info-title">Search cards, In Stock, labels, and more.</p>
 
-                <div className='margin-between'>
-                    <p className="sub-title">In Stock</p>
-                    <label htmlFor="select">Stock:</label>
-                    <select {...register('inStock', 'select')} >
-                        <option value={"all"}>All </option>
-                        <option value={true}>In stock </option>
-                        <option value={false}>Out of stock </option>
-                    </select>
-                </div>
-
                 <div className='margin-between labels-container '>
                     <p className="sub-title">Labels</p>
                     <label htmlFor="filter-labels">Labels: </label>
@@ -61,6 +51,18 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
                         <select className="labels-select" {...register('labels', 'select')} id="filter-labels" size={labels.length} multiple>
                             {labels.map(label => <option key={label}>{label}</option>)}
                         </select>}
+                </div>
+
+
+                <div className='margin-between' {...register()}>
+                    <p className="sub-title">In Stock</p>
+                    <label htmlFor="">In Stock: </label>
+                    <input type="radio" name="inStock" id="filter-in-stock-yes" value={true} />
+                    <label htmlFor="filter-in-stock-yes">Yes</label>
+                    <input type="radio" name="inStock" id="filter-in-stock-no" value={false} />
+                    <label htmlFor="filter-in-stock-no">No</label>
+                    <input type="radio" name="inStock" id="filter-in-stock-all" value={'all'} />
+                    <label htmlFor="filter-in-stock-all">All</label>
                 </div>
 
                 <p className="sub-title sort">Sort</p>
