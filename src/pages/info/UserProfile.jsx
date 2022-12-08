@@ -10,8 +10,8 @@ import { ReviewList } from '../../cmps/review/ReviewList'
 
 import { userService } from '../../services/user.service'
 import { loadRobots } from '../../store/actions/robot.action'
-import editImg from '../../assets/img/edit-icon.png'
 import { removeReview } from '../../store/actions/review.action'
+import editImg from '../../assets/img/edit-icon.png'
 
 
 export const UserProfile = () => {
@@ -24,11 +24,13 @@ export const UserProfile = () => {
     const params = useParams()
 
     useEffect(() => {
-        (async function () {
+        ;(async function () {
             const user = await userService.getById(params.id)
             setUser(user)
             if (!user) navigate('/robots')
-            dispatch(loadRobots({ owner: { _id: user._id }, pageIdx: 0, numOfPages: 0 }))
+            // dispatch(loadRobots({ owner: { _id: user._id }, pageIdx: 0, numOfPages: 0 })) //FIX -- make eerr white back nedd fix
+            dispatch(loadRobots())
+
         })()
     }, [params.id])
 
@@ -54,7 +56,7 @@ export const UserProfile = () => {
                 <h2 className='sub-header'>Robots</h2>
                 {(robots?.length > 0) && <>
                     {filterBy.numOfPages > 1 && < PageBar filterBy={filterBy} onSetFilterBy={onChangePage} />}
-                   <RobotList robots={robots} />
+                    <RobotList robots={robots} />
                 </>}
                 {!robots?.length && <p>The user didn't add robots yet.</p>}
             </section>

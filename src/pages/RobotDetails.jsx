@@ -16,7 +16,6 @@ import { Loader } from '../cmps/general/loader'
 
 export const RobotDetails = () => {
     const params = useParams()
-    console.log("🚀 ~ file: RobotDetails.jsx:19 ~ RobotDetails ~ params", params)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [robot, setRobot] = useState(null)

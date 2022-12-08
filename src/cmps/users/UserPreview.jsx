@@ -1,6 +1,6 @@
 import { UserImg } from './userImg'
 import adminImg from '../../assets/img/admin.png'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { utilService } from '../../services/util.service'
 
 export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionModal }) => {
@@ -26,8 +26,8 @@ export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionMod
                 <p>{user.fullname}</p>
             </section>
             <section className='buttons'>
-                <Link className='sub-btn center-text' to={`/users/${user._id}`}>Details</Link>
-                <Link className='sub-btn center-text' to={`/users/edit/${user._id}`}>Edit</Link>
+                <NavLink className='sub-btn center-text' to={`/users/${user._id}`}>Details</NavLink>
+                <NavLink className='sub-btn center-text' to={`/users/edit/${user._id}`}>Edit</NavLink>
                 <button className='sub-btn center-text' onClick={() => onAdminClick(user._id, user.isAdmin, user.fullname)}>
                     {user.isAdmin ? 'Remove admin' : 'Set admin'}
                 </button>
