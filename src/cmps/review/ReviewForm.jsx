@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react'
+import Reacy, { useState } from 'react'
+import { IoMdClose } from "react-icons/io";
 import { StarRatePicker } from './StarRate'
 
-export const ReviewForm = ({ isOpen, onAddReview }) => {
+export const ReviewForm = ({ isOpen, onAddReview, onToggleModal }) => {
 
     const [review, setReview] = useState({
         title: '',
@@ -23,8 +24,10 @@ export const ReviewForm = ({ isOpen, onAddReview }) => {
         setReview({ title: '', rate: 1, content: '' })
     }
 
+
     return (
         <section className={`review-form ${isOpen ? 'open' : 'close'}`}>
+            <span className='modal-close-btn' onClick={onToggleModal}><IoMdClose size={25} /></span>
             <h2 className='sub-header'>Add a review</h2>
             <form onSubmit={onSubmit}>
                 <ul className='clean-list'>

@@ -13,9 +13,7 @@ export const RobotPreview = ({ robot, onAddToCart }) => {
                     <h2 className='name'>{robot.name.length > 10 ? robot.name.substring(0, 10) + '...' : robot.name}</h2>
                     <p className='price'>${utilService.numberWithCommas(robot.price)}</p>
                 </div>
-                <div className='img'>
-                    <img src={robot.img} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} />
-                </div>
+                <div className='img'><img src={robot.img} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} /></div>
                 {pathname !== '/dashboard' && <p className='created'><strong>created: </strong>{utilService.dateToString(robot.createdAt)}</p>}
                 {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
                 {/* <button className='sp_add_cart flip-in-hor-bottom' onClick={() => { onAddToCart(robot) }}>Add to Cart</button> */}

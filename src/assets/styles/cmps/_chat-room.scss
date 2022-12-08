@@ -118,8 +118,11 @@
             background-color: #dcf8c6;
             width: 50%;
 
+            .msg-txt{
+                font-size: rem(12px);
+            }
             .chat-msg-timestamp {
-                justify-self: flex-end;
+                // justify-self: flex-end;
                 font-size: 10px;
                 background-color: #091e4214;
                 padding: 0px 2px 0px 2px;

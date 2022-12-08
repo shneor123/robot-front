@@ -7,7 +7,7 @@
         gap: 1em;
     }
 
-    .back-menu{
+    .back-menu {
         position: fixed;
         left: 140px;
         top: 110px
@@ -26,7 +26,8 @@
 
     .btn-opt {
         cursor: pointer;
-        background-color: #091e4214;;
+        background-color: #091e4214;
+        ;
         border: 1px soid black;
         border-radius: 5px;
         color: #172b4d;
@@ -87,18 +88,32 @@
             top: 0;
             z-index: 2;
             cursor: pointer;
+
+            &:hover {
+                background-color: transparent;
+                color: #172b4d;
+            }
         }
     }
 }
 
-.dash{
+.hide {
+    display: none;
+}
+
+.dash {
     margin-left: 200px;
 }
+
 @media screen and (min-width: 500px) {
 
     .robot-app {
         .page-bar-container {
             justify-content: space-between;
+        }
+
+        .hide {
+            display: block;
         }
     }
 }

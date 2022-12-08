@@ -20,6 +20,20 @@
         padding: 1em;
     }
 
+    .modal-close-btn {
+        color: #6b778c;
+        position: absolute;
+        right: 0.2em;
+        top: 0.3em;
+        z-index: 2;
+        cursor: pointer;
+
+        &:hover {
+            background-color: transparent;
+            color: #172b4d;
+        }
+    }
+
     .sub-header,
     form>ul>li {
         margin-bottom: 1rem;

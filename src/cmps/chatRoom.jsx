@@ -38,7 +38,7 @@ export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
     const addMsg = (newMsg) => {
         newMsg.createdAt = Date.now()
         setMsgs(prevMsgs => [...prevMsgs, newMsg])
-        setIsUnreadMsg(true) //if the chat is open, it will return false when we close it
+        setIsUnreadMsg(true)
     }
 
     const onToggleChatMode = (ev) => {
@@ -94,7 +94,6 @@ export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
                         {!msg.user && <span className='msg-name'>Guest:</span>}
                         <span className='msg-txt'> {msg.txt}</span>
                         <span className="chat-msg-timestamp">{utilService.timeSince(msg.createdAt)}</span>
-
                     </li>)}
                 </ul>
                 <button className='main-btn clear_msg' type="button" onClick={() => setMsgs([])}>Clear Chat</button>

@@ -40,3 +40,11 @@ export function removeRobot(robotId) {
         }
     }
 }
+
+
+export function getActionAddToy(robot) {
+    return {
+        type: 'ADD_ROBOT',
+        robot
+    }
+}
