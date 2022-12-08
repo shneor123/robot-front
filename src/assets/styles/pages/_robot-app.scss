@@ -7,12 +7,11 @@
         gap: 1em;
     }
 
-    .back-menu {
+    .back-menu{
         position: fixed;
         left: 140px;
-        top: 120px
+        top: 110px
     }
-
 
     .pop-up-menu {
         margin-top: 110px;
@@ -22,17 +21,6 @@
         top: 0px;
         z-index: 3;
         width: rem(340px);
-        transition: all 0.5s;
-    }
-
-    .pop-up-menu1 {
-        margin-top: 110px;
-        position: absolute;
-        background-color: #fff;
-        right: -340px;
-        top: 0px;
-        z-index: 3;
-        width: rem(420px);
         transition: all 0.5s;
     }
 
@@ -92,13 +80,6 @@
         padding: 12px;
         height: 85vh;
 
-        .add-robot-btn {
-            width: 80%;
-            position: absolute;
-            left: 13%;
-            top: 8%;
-        }
-
         .modal-close-btn {
             color: #6b778c;
             position: absolute;
@@ -107,18 +88,8 @@
             z-index: 2;
             cursor: pointer;
         }
-
-        .page-bar-container {
-            position: absolute;
-            left: 20%;
-            top: 16%;
-            border: 1px solid black;
-            padding: 10px;
-            border-radius: 15px;
-        }
     }
 }
-
 
 .dash{
     margin-left: 200px;

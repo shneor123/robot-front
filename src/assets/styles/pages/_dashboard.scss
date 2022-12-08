@@ -78,10 +78,20 @@
     }
 }
 
-@media screen and (min-width: 1000px){
-    .dashboard .charts{
+@media screen and (min-width: 1000px) {
+    .dashboard {
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        background-color: #e9d8fd;
+        inset: 0;
+        top: 110px;
+    }
+
+    .dashboard .charts {
         display: flex;
         flex-direction: row;
         gap: 3em;
     }
+
 }

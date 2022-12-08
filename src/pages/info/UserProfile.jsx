@@ -15,24 +15,19 @@ import { removeReview } from '../../store/actions/review.action'
 
 
 export const UserProfile = () => {
-    const params = useParams()
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const { reviews } = useSelector(storeState => storeState.reviewModule)
     const [user, setUser] = useState(null)
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const params = useParams()
 
     useEffect(() => {
         (async function () {
             const user = await userService.getById(params.id)
             setUser(user)
-            if (!user) {
-                /* FIX - WE DONT GET TO HERE */
-                dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed loading user. Please check your link' } }))
-                navigate('/robots')
-                return
-            }
+            if (!user) navigate('/robots')
             dispatch(loadRobots({ owner: { _id: user._id }, pageIdx: 0, numOfPages: 0 }))
         })()
     }, [params.id])

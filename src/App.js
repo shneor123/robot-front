@@ -1,17 +1,18 @@
-import React from "react";
+import React from "react"
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
-import { AboutPage } from "./pages/AboutPage";
-import { HomePage } from "./pages/HomePage";
-import { RobotApp } from "./pages/RobotApp";
-import { RobotDetails } from "./pages/RobotDetails";
-import { AppHeader } from "./cmps/general/AppHeader";
-import { RobotEdit } from "./cmps/RobotEdit";
-import { LoginSignup } from "./pages/LoginSignup";
-import { UserMsg } from "./cmps/general/userMsg";
-import { UserProfile } from "./pages/info/UserProfile";
-import { UserEdit } from "./pages/info/UserEdit";
-import { UserApp } from "./pages/UserApp";
-import { Dashboard } from "./pages/Dashboard";
+
+import { AboutPage } from "./pages/AboutPage"
+import { HomePage } from "./pages/HomePage"
+import { RobotApp } from "./pages/RobotApp"
+import { RobotDetails } from "./pages/RobotDetails"
+import { AppHeader } from "./cmps/general/AppHeader"
+import { RobotEdit } from "./cmps/RobotEdit"
+import { LoginSignup } from "./pages/LoginSignup"
+import { UserMsg } from "./cmps/general/userMsg"
+import { UserProfile } from "./pages/info/UserProfile"
+import { UserEdit } from "./pages/info/UserEdit"
+import { UserApp } from "./pages/UserApp"
+import { Dashboard } from "./pages/Dashboard"
 
 
 function App() {

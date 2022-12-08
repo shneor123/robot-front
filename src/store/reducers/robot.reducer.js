@@ -1,7 +1,10 @@
 
 const initialState = {
     robots: [],
-    filterBy: { pageIdx: 0, numOfPages: 0 }
+    filterBy: {
+        pageIdx: 0,
+        numOfPages: 0
+    }
 }
 
 export function robotReducer(state = initialState, action) {
@@ -9,12 +12,10 @@ export function robotReducer(state = initialState, action) {
 
     switch (action.type) {
         case 'SET_ROBOTS':
-            // console.log('SET_ROBOTS', action.robots.length)
             return { ...state, robots: action.robots }
 
         case 'ADD_ROBOT':
             robots = [...state.robots, action.robot]
-            // console.log('ADD_ROBOT', robots.length)
             return { ...state, robots }
 
         case 'UPDATE_ROBOT':
@@ -23,7 +24,6 @@ export function robotReducer(state = initialState, action) {
 
         case 'REMOVE_ROBOT':
             robots = state.robots.filter(robot => robot._id !== action.robotId)
-            // console.log('REMOVE_ROBOT', robots.length)
             return { ...state, robots }
 
         case 'SET_FILTERBY':

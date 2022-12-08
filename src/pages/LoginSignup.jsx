@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -28,36 +27,32 @@ let theme = createTheme({
 });
 
 export function LoginSignup() {
-
-    const location = useLocation()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const usernameInputRef = useRef()
     const passwordInputRef = useRef()
-    const navigate = useNavigate()
-
+    const { pathname } = useLocation()
     const [isLogin, setIsLogin] = useState(true)
     const [errorMsg, setErrorMsg] = useState('')
 
     useEffect(() => {
-        setIsLogin(location.pathname === '/login')
-    }, [location])
+        setIsLogin(pathname === '/login')
+    }, [pathname])
 
     const onSubmit = async (ev) => {
-
+        ev.preventDefault()
         const resetEmailAndPassword = () => {
             usernameInputRef.current.value = ''
             usernameInputRef.current.focus()
             passwordInputRef.current.value = ''
         }
 
-        ev.preventDefault()
         const data = new FormData(ev.currentTarget);
         const user = {
             username: data.get('username'),
             password: data.get('password'),
         }
         const isRemember = !!data.get('remember')
-
         if (isLogin) {
             try {
                 const loggedInUser = await userService.login(user, isRemember)
@@ -86,100 +81,101 @@ export function LoginSignup() {
                 return
             }
         }
-
         navigate('/robots')
     }
 
-    return <section className='login-signup'>
-        <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Avatar sx={{ m: 1, bgcolor: 'rgb(84, 10, 138)' }} />
-                    <Typography component="h1" variant="h5">{isLogin ? 'Login' : 'Sign up'}</Typography>
-                    <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
-                        <Grid container spacing={2}>
-                            {!isLogin && <>
-                                <Grid item xs={12} sm={6}>
+    return (
+        <section className='login-signup'>
+            <ThemeProvider theme={theme}>
+                <Container component="main" maxWidth="xs">
+                    <Box
+                        sx={{
+                            marginTop: 8,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Avatar sx={{ m: 1, bgcolor: 'rgb(84, 10, 138)' }} />
+                        <Typography component="h1" variant="h5">{isLogin ? 'Login' : 'Sign up'}</Typography>
+                        <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
+                            <Grid container spacing={2}>
+                                {!isLogin && <>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            autoComplete="given-name"
+                                            name="firstName"
+                                            required
+                                            fullWidth
+                                            id="firstName"
+                                            label="First Name"
+                                            autoFocus
+                                            color='primary'
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            id="lastName"
+                                            label="Last Name"
+                                            name="lastName"
+                                            autoComplete="family-name"
+                                        />
+                                    </Grid>
+                                </>}
+                                <Grid item xs={12}>
                                     <TextField
-                                        autoComplete="given-name"
-                                        name="firstName"
                                         required
                                         fullWidth
-                                        id="firstName"
-                                        label="First Name"
-                                        autoFocus
-                                        color='primary'
+                                        id="username"
+                                        label="Username"
+                                        name="username"
+                                        autoComplete="new-username"
+                                        inputProps={{ minLength: 3 }}
+                                        inputRef={usernameInputRef}
                                     />
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
+                                <Grid item xs={12}>
                                     <TextField
                                         required
                                         fullWidth
-                                        id="lastName"
-                                        label="Last Name"
-                                        name="lastName"
-                                        autoComplete="family-name"
+                                        name="password"
+                                        label="Password"
+                                        type="password"
+                                        id="password"
+                                        autoComplete="new-password"
+                                        inputProps={{ minLength: 3 }}
+                                        inputRef={passwordInputRef}
                                     />
                                 </Grid>
-                            </>}
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="username"
-                                    label="Username"
-                                    name="username"
-                                    autoComplete="new-username"
-                                    inputProps={{ minLength: 3 }}
-                                    inputRef={usernameInputRef}
-                                />
+                                {errorMsg && <p className='error-msg'>{errorMsg}</p>}
+                                <Grid item xs={12}>
+                                    <FormControlLabel
+                                        control={<Checkbox defaultChecked={true} value={true} color="primary" name="remember" />}
+                                        label="Remember me"
+                                    />
+                                </Grid>
                             </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    label="Password"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="new-password"
-                                    inputProps={{ minLength: 3}}
-                                    inputRef={passwordInputRef}
-                                />
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2, bgcolor: 'rgb(84, 10, 138)' }}
+                            >
+                                {isLogin ? 'Login' : 'Sign Up'}
+                            </Button>
+                            <Grid container justifyContent="flex-end">
+                                <Grid item>
+                                    <Link className="login-mode-switch" href={isLogin ? '/#/signup' : '/#/login'} variant="body2" onClick={() => setErrorMsg('')}>
+                                        {isLogin ? 'Don\'t have an account? Sign Up' : 'Already have an account? Log In'}
+                                    </Link>
+                                </Grid>
                             </Grid>
-                            {errorMsg && <p className='error-msg'>{errorMsg}</p>}
-                            <Grid item xs={12}>
-                                <FormControlLabel
-                                    control={<Checkbox defaultChecked={true} value={true} color="primary" name="remember" />}
-                                    label="Remember me"
-                                />
-                            </Grid>
-                        </Grid>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2, bgcolor: 'rgb(84, 10, 138)' }}
-                        >
-                            {isLogin ? 'Login' : 'Sign Up'}
-                        </Button>
-                        <Grid container justifyContent="flex-end">
-                            <Grid item>
-                                <Link className="login-mode-switch" href={isLogin ? '/#/signup' : '/#/login'} variant="body2" onClick={() => setErrorMsg('')}>
-                                    {isLogin ? 'Don\'t have an account? Sign Up' : 'Already have an account? Log In'}
-                                </Link>
-                            </Grid>
-                        </Grid>
+                        </Box>
                     </Box>
-                </Box>
-            </Container>
-        </ThemeProvider>
-    </section>
+                </Container>
+            </ThemeProvider>
+        </section>
+    )
 }

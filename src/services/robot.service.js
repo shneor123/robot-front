@@ -68,7 +68,6 @@ async function getById(robotId) {
 
 async function save(robot) {
 	if (robot._id) return await httpService.put(BASE_PATH, robot)
-
 	return await httpService.post(BASE_PATH, robot)
 
 	/* LOCAL STORAGE */

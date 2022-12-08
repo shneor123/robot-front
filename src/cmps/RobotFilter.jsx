@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import { PageBar } from './PageBar'
 import { robotService } from '../services/robot.service'
 import { useFormRegister } from '../hooks/useFormRegister'
 
-export const RobotFilter = ({ filterBy, onSetFilterBy }) => {
+export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
     const [register] = useFormRegister({ ...filterBy }, onSetFilterBy)
     const [tempFilterBy] = useState({ ...filterBy })
 
@@ -21,6 +24,7 @@ export const RobotFilter = ({ filterBy, onSetFilterBy }) => {
         if (sortBy === name) return setSortBy(null)
         setSortBy(name)
     }
+    
     const onSubmit = (ev) => {
         ev.preventDefault()
         const updatedFilterBy = { ...tempFilterBy, sortBy, pageIdx: 0 }
@@ -29,10 +33,14 @@ export const RobotFilter = ({ filterBy, onSetFilterBy }) => {
 
     return (
         <section className='filter-container'>
+            {user && <Link className='add-robot-btn main-btn center-text' to='/robots/edit'>Add new Robot</Link>}
+            <div className='page-bar-container'>
+                <PageBar filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+            </div>
             <form onSubmit={onSubmit}>
                 <input className="search-container"{...register('name', 'text')} placeholder='Robot name' />
                 <p className="sub-info-title">Search cards, In Stock, labels, and more.</p>
-                
+
                 <div className='margin-between'>
                     <p className="sub-title">In Stock</p>
                     <label htmlFor="select">Stock:</label>

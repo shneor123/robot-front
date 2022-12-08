@@ -32,10 +32,12 @@
     input,
     textarea {
         width: 100%;
+        font-family: inherit;
     }
 
     textarea {
-        resize: vertical;
+        // resize: vertical;
         height: 13em;
+        resize: none;
     }
 }

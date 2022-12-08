@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { StarRatePicker } from './StarRate'
 
 export const ReviewForm = ({ isOpen, onAddReview }) => {

@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Route } from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai"
 import { IoMdClose } from "react-icons/io";
 
-
 import { Loader } from '../cmps/general/loader'
-import { PageBar } from '../cmps/PageBar'
 import { RobotFilter } from '../cmps/RobotFilter'
 import { RobotList } from '../cmps/RobotList'
 import { loadRobots } from '../store/actions/robot.action'
-import { Cart } from '../cmps/cart';
-import { Dashboard } from "./Dashboard";
 
 export const RobotApp = () => {
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
@@ -27,23 +22,27 @@ export const RobotApp = () => {
         dispatch(loadRobots(currFilterBy))
     }
 
+    // const onDragEnd = (result) => {
+    //     if (!result.destination) return
+    //     const items = characters
+    //     const [reorderedItem] = items.splice(result.source.index, 1)
+    //     items.splice(result.destination.index, 0, reorderedItem)
+    //     updateCharacters(items)
+    // }
+
     if (!robots) return <Loader />
     return (
         <section className="robot-app main-layout ">
             <div className={`pop-up-menu ${toggleShow ? "menu-open" : ""}`}>
-                <p className="back-menu">
+                <div className="back-menu">
                     <button onClick={() => setToggleShow(!toggleShow)}
                         className="btn-opt"><AiOutlineSearch /> Filter cards</button>
-                </p>
+                </div>
                 {toggleShow && <div className='menu-content-wrapper'>
                     <span style={{ top: '7px' }} onClick={() => setToggleShow(!toggleShow)} className="modal-close-btn">
                         <IoMdClose size={25} />
                     </span>
-                    <div className='page-bar-container'>
-                        <PageBar filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
-                    </div>
-                    <RobotFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
-                    {user && <Link className='add-robot-btn main-btn center-text' to='/robots/edit'>Add new Robot</Link>}
+                    <RobotFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} user={user} />
                 </div>}
             </div>
 

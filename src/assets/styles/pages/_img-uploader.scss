@@ -1,0 +1,107 @@
+.upload-pc-container {
+    margin-bottom: 7px;
+
+    .upload-file-pc {
+        border: none;
+    }
+
+    label {
+        padding: 6px 12px 6px 0;
+        margin: 0 7px 0 0;
+        height: 32px;
+        line-height: 30px;
+        width: 20rem;
+        cursor: pointer;
+
+        &:hover{
+            color: rgb(146, 146, 175);
+            text-decoration: underline;
+        }
+    }
+    img {
+        position: absolute;
+        top: 10px;
+        right: 18px;
+        height: 90px;
+        width: 130px;
+        margin-inline-end: 5px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    input {
+        opacity: 0;
+    }
+}
+
+.upper-login-attach {
+    margin: 0px 0px 10px 0px;
+
+    .btn-opt-login {
+        cursor: pointer;
+        background-color: transparent;
+        background-color: initial;
+        border: none;
+        border-radius: 3px;
+        color: #172b4d;
+        font-weight: 600;
+        line-height: 20px;
+        padding: 6px 6px 6px 28px;
+        position: relative;
+        text-align: left;
+        text-decoration: none;
+        width: 100%;
+
+        &:hover {
+            background-color: #091e4214;
+            color: #172b4d;
+        box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+
+        }
+    }
+
+    .badge {
+        color: #5e6c84;
+        margin: 0 4px 4px 0;
+        max-width: 100%;
+        min-height: 10px;
+        overflow: hidden;
+        padding: 2px;
+        margin-left: -20px;
+        text-decoration: none;
+        left: -20px;
+        bottom: 3px;
+    }
+}
+
+.attach {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -20%);
+    background-color: #ffffff;
+    width: 320px;
+    height: 170px;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 4px 1px;
+    padding: 6px;
+    z-index: 100;
+
+    *>input {
+        width: 90%;
+        margin-top: 30px;
+        margin-inline-start: 30px;
+        cursor: pointer;
+    }
+
+    .inputAttach {
+        width: 90%;
+        cursor: pointer;
+        margin: 4px 0 12px;
+        border: none;
+        box-shadow: inset 0 0 0 2px #dfe1e6;
+        background-color: #fafbfc;
+        border-radius: 3px;
+        font-size: 14px
+    }
+}

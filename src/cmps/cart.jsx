@@ -34,6 +34,7 @@ export const Cart = () => {
     }
     return (
         <div className={`pop-up-menu1 ${isOpenCard ? "menu-open" : ""}`}>
+            
             <p className="back-menu">
                 <button onClick={() => setIsOpenCard(!isOpenCard)}
                     className='btn-svg'> <IoMdCart size={25} />

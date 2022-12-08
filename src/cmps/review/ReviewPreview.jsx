@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { utilService } from '../../services/util.service'
 import { QuestionModal } from '../general/QuestionModal'
@@ -16,7 +15,6 @@ export const ReviewPreview = ({ review, isShowWriter, isShowRobot, onRemoveRevie
             '-no rate specified-' : String.fromCharCode(9733).repeat(num)
         return str
     }
-
     return (
         <div className="robot-review" >
             <div>

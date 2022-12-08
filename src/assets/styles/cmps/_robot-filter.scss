@@ -1,6 +1,22 @@
 .filter-container {
     margin-inline-start: rem(20px);
 
+    .add-robot-btn {
+        width: 80%;
+        position: absolute;
+        left: 13%;
+        top: 8%;
+    }
+
+    .page-bar-container {
+        position: absolute;
+        left: 22%;
+        top: 16%;
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 15px;
+    }
+
     .sub-title {
         color: #5e6c84;
         font-size: 12px;

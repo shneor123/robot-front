@@ -20,9 +20,12 @@ export const AppHeader = () => {
         navigate('/login')
     }
 
+    const handleKeyEvent = (e) => {
+        if (e.key === "Escape") navigate(-1)
+    }
+
     return (
         <section className="app-header-secend">
-
             <section className="app-header">
                 <main className="main-layout">
                     <Link to={"/"} className="logo">
@@ -44,24 +47,21 @@ export const AppHeader = () => {
                                 <UserImg user={user} linkOnAvatar={'/login'} clickEv={() => { if (user) setIsMenuOpen(!isMenuOpen) }} />
                             </div>
 
-                            {isMenuOpen && <main>
-                                {user && <header>
-                                    <UserImg user={user} />
-                                    {/* <h2>Hi {user.fullname}</h2> */}
-                                    <h2 className='page-header'>Hi {user.fullname}</h2>
-                                </header>}
+                            {isMenuOpen &&
+                                <main>
+                                    {user && <header><UserImg user={user} /> <h2>Hi {user.fullname}</h2></header>}
 
-                                <nav className='hamburger-nav'>
-                                    {user && <NavLink to={`/users/${user._id}`} onClick={() => setIsMenuOpen(false)}>My Profile</NavLink>}
-                                    {!user && <NavLink to="/login" onClick={() => setIsMenuOpen(false)}>Login</NavLink>}
-                                    <NavLink to="/" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
-                                    <NavLink to="/robots" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Robots</NavLink>
-                                    {user?.isAdmin && <NavLink to="/users" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Users</NavLink>}
-                                    <NavLink to="/dashboard" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Dashboard</NavLink>
-                                    <NavLink to="/about" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>About</NavLink>
-                                </nav>
-                                {user && <button className="logout-btn" onClick={() => onUserLogout()}>Logout</button>}
-                            </main>}
+                                    <nav className='hamburger-nav'>
+                                        {user && <NavLink to={`/users/${user._id}`} onClick={() => setIsMenuOpen(false)}>My Profile</NavLink>}
+                                        {!user && <NavLink to="/login" onClick={() => setIsMenuOpen(false)}>Login</NavLink>}
+                                        <NavLink to="/" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
+                                        <NavLink to="/robots" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Robots</NavLink>
+                                        {user?.isAdmin && <NavLink to="/users" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Users</NavLink>}
+                                        <NavLink to="/dashboard" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Dashboard</NavLink>
+                                        <NavLink to="/about" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>About</NavLink>
+                                    </nav>
+                                    {user && <button className="logout-btn" onClick={() => onUserLogout()}>Logout</button>}
+                                </main>}
                         </div>
                     </section>
                 </main>
@@ -74,3 +74,21 @@ export const AppHeader = () => {
         </section>
     )
 }
+
+
+
+// const handleKeyEvent = (e) => {
+//     if (e.key === "Escape") navigate(-1);
+//   };
+
+//   const onSaveTask = (ev = null) => {
+//     if (ev) ev.preventDefault();
+//     task.title = fields.title
+//     dispatch(saveTask(task, boardId, groupId));
+//   };
+
+//   if (task) {
+//     return (
+//       <section
+        // tabIndex={"0"}
+        // onKeyDown={handleKeyEvent}

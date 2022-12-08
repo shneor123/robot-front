@@ -15,31 +15,26 @@ import { ChatRoom } from '../cmps/chatRoom'
 import { Loader } from '../cmps/general/loader'
 
 export const RobotDetails = () => {
-
     const params = useParams()
+    console.log("🚀 ~ file: RobotDetails.jsx:19 ~ RobotDetails ~ params", params)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const user = useSelector(storeState => storeState.userModule.user)
-    const { robots } = useSelector(storeState => storeState.robotModule)
-    const { reviews } = useSelector(storeState => storeState.reviewModule)
     const [robot, setRobot] = useState(null)
     const [isReviewFormOpen, setIsReviewFormOpen] = useState(false)
     const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false)
 
+    const user = useSelector(storeState => storeState.userModule.user)
+    const { robots } = useSelector(storeState => storeState.robotModule)
+    const { reviews } = useSelector(storeState => storeState.reviewModule)
+
 
     useEffect(() => {
-        /* Question - Here I force update when robots change since I move to this page from 'edit'. */
-        /* is there a better way? because im creating 2 requests by this way */
         loadRobot(params.id)
     }, [params, robots])
 
     const loadRobot = async (robotId) => {
         const robot = await robotService.getById(robotId)
-        if (!robot) {
-            navigate('/robots')
-            /* FIX - WE DONT GET TO HERE */
-            dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed loading robot. Check your link please' } }))
-        }
+        if (!robot) navigate('/robots')
         dispatch(loadReviews({ byRobotId: robot._id }))
         setRobot(robot)
     }
@@ -58,10 +53,11 @@ export const RobotDetails = () => {
     const onRemoveReview = (reviewId) => {
         dispatch(removeReview(reviewId))
     }
-    
+
     if (!robot) return <Loader />
     const stockDesc = robot.inStock ? '' : 'Not '
     const color = robot.inStock ? 'green' : 'red'
+
     return (
         <section className="details-page-container">
             <Link className='back-btn' to={'/robots'}> Back </Link>
@@ -72,11 +68,8 @@ export const RobotDetails = () => {
                     <ReviewForm isOpen={isReviewFormOpen} onAddReview={onAddReview} />
                     {reviews?.length > 0 && <ReviewList reviews={reviews} isShowWriter={true} isShowRobot={false} onRemoveReview={onRemoveReview} />}
                     {!reviews?.length > 0 && !isReviewFormOpen &&
-                        <p>No one wrote a review for this robot. {user ? 'Be ' : <Link to="/signup" className='signup-link'>Create an account</Link>}
-                            {user ? '' : ' and be '}
-                            the first one!
-                        </p>}
-                </div>
+                        <p>No one wrote a review for this robot. {user ? 'Be ' : <Link to="/signup" className='signup-link'>Create an account</Link>}{user ? '' : ' and be '}the first one!</p>
+                    }</div>
 
                 <div className="details-container">
                     <p className="name_d"><strong>Name: </strong>{robot.name}</p>

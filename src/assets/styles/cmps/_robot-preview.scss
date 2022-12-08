@@ -16,12 +16,14 @@
         box-shadow: 5px 5px 5px 5px rgb(0 0 0 / 10%);
     }
 
-    .toy_row {
+    .robo_row {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-bottom: -10px;
+        gap: 3em;
 
         h2 {
             font-size: rem(26px);
@@ -29,11 +31,6 @@
 
         p {
             font-size: rem(17px);
-        }
-
-        h2,
-        p {
-            margin: 10px 25px -20px 25px;
         }
     }
 

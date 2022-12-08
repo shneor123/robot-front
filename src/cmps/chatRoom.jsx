@@ -49,9 +49,7 @@ export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
 
     const userIsTyping = (fullname) => {
         if (typingTimeoutId.current) clearTimeout(typingTimeoutId.current)
-
         setUserTypeFullname(fullname)
-
         typingTimeoutId.current = setTimeout(() => {
             setUserTypeFullname('')
         }, 500)
@@ -69,13 +67,11 @@ export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
     const onSendMsg = (ev) => {
         ev.preventDefault()
         if (!msg) return
-
         const newMsg = { txt: msg }
         if (loggedInUser) newMsg.user = { _id: loggedInUser._id, fullname: loggedInUser.fullname }
         socketService.emit(SOCKET_EMIT_SEND_MSG, newMsg)
         setMsg('')
     }
-
 
     return (
         <section className={`chat-room ${isOpenMode ? 'open' : 'close'}`}>

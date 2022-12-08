@@ -10,7 +10,6 @@ import { saveRobot } from '../store/actions/robot.action'
 
 import defaultRobotImg from '../assets/img/default-robot.png'
 
-
 export const RobotEdit = () => {
     const params = useParams()
     const navigate = useNavigate()
