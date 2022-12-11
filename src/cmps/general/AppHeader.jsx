@@ -49,8 +49,7 @@ export const AppHeader = () => {
 
                             {isMenuOpen &&
                                 <main>
-                                    {user && <header><UserImg user={user} /> <h2>Hi {user.fullname}</h2></header>}
-
+                                    {user && <header className='container'><UserImg user={user} /> <h1>Hi {user.fullname}</h1></header>}
                                     <nav className='hamburger-nav'>
                                         {user && <NavLink to={`/users/${user._id}`} onClick={() => setIsMenuOpen(false)}>My Profile</NavLink>}
                                         {!user && <NavLink to="/login" onClick={() => setIsMenuOpen(false)}>Login</NavLink>}

@@ -104,6 +104,15 @@
             gap: 1em;
         }
 
+        .container {
+            h1 {
+                white-space: nowrap;
+                overflow: hidden;
+                width: 170px;
+                animation: type 2s steps(40, end)forwards;
+            }
+        }
+
         .hamburger-nav {
             display: flex;
             flex-direction: column;

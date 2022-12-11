@@ -198,3 +198,20 @@
       transform: rotate(360deg);
   }
 }
+
+
+
+@keyframes type {
+  0% {
+      width: 0;
+  }
+
+  1%,
+  99% {
+      border-right: 1px solid orange;
+  }
+
+  100% {
+      border-right: none;
+  }
+}
