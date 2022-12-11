@@ -53,18 +53,6 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
                         </select>}
                 </div>
 
-
-                <div className='margin-between' {...register()}>
-                    <p className="sub-title">In Stock</p>
-                    <label htmlFor="">In Stock: </label>
-                    <input type="radio" name="inStock" id="filter-in-stock-yes" value={true} />
-                    <label htmlFor="filter-in-stock-yes">Yes</label>
-                    <input type="radio" name="inStock" id="filter-in-stock-no" value={false} />
-                    <label htmlFor="filter-in-stock-no">No</label>
-                    <input type="radio" name="inStock" id="filter-in-stock-all" value={'all'} />
-                    <label htmlFor="filter-in-stock-all">All</label>
-                </div>
-
                 <p className="sub-title sort">Sort</p>
                 <div className='sort-container margin-between' onClick={onSortByChange}>
                     <label htmlFor="">Sort: </label>
@@ -72,6 +60,7 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
                     <button type='button' className={`sub-btn ${sortBy === 'price' ? 'active' : ''}`} name='price' >Price</button>
                     <button type='button' className={`sub-btn ${sortBy === 'createdAt' ? 'active' : ''}`} name='createdAt' >Created Date</button>
                 </div>
+                
                 <p className="sub-title">Search</p>
                 <button className='main-btn' type="submit">Search</button>
             </form>

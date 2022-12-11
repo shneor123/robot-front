@@ -78,7 +78,7 @@ export const RobotDetails = () => {
 
                 <div className="details-container">
                     <p className="name"><strong>Name: </strong>{robot.name}</p>
-                    {/* <p className='labels'><strong>Labels: </strong>{robot.labels.join(' ,')}</p> */}
+                    <p className='labels'><strong>Labels: </strong>{robot.labels.join(' ,')}</p>
                     <p className="price"><strong>Price: </strong>US ${robot.price}</p>
                     <h5 style={{ color }}>{stockDesc}in stock</h5>
                     <img className='img' src={robot.img || defaultRobotImg} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} />
