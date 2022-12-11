@@ -1,4 +1,14 @@
 import { robotService } from '../../services/robot.service'
+import { socketService } from '../../services/socket.service'
+
+
+export function getActionAddToy(robot) {
+    return {
+        type: 'ADD_ROBOT',
+        robot
+    }
+}
+
 
 export function loadRobots(currFilterBy) {
     return async dispatch => {
@@ -38,13 +48,5 @@ export function removeRobot(robotId) {
             console.error('Error:', err)
             dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed removing robot' } }))
         }
-    }
-}
-
-
-export function getActionAddToy(robot) {
-    return {
-        type: 'ADD_ROBOT',
-        robot
     }
 }

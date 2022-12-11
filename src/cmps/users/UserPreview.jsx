@@ -1,7 +1,8 @@
+import React from 'react'
 import { UserImg } from './userImg'
-import adminImg from '../../assets/img/admin.png'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { utilService } from '../../services/util.service'
+import adminImg from '../../assets/img/admin.png'
 
 export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionModal }) => {
 

@@ -1,15 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-    socketService, SOCKET_EMIT_SET_ROOM,
+
+import { utilService } from '../services/util.service'
+import { socketService, SOCKET_EMIT_SET_ROOM,
     SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_SEND_MSG,
     SOCKET_EVENT_USER_IS_TYPING, SOCKET_EMIT_USER_IS_TYPING,
     SOCKET_EVENT_USER_COUNT
 } from '../services/socket.service'
 
-import chatColor from '../assets/img/chat-color.png'
+
 import chatBW from '../assets/img/chat-black-and-white.png'
-import { utilService } from '../services/util.service'
+import chatColor from '../assets/img/chat-color.png'
 
 export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
     const typingTimeoutId = useRef()

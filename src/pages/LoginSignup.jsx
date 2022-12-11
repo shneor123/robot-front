@@ -1,6 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
+import { userService } from '../services/user.service';
+import { login, signup } from '../store/actions/user.action';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -12,8 +16,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { login, signup } from '../store/actions/user.action';
-import { userService } from '../services/user.service';
 
 let theme = createTheme({
     palette: {

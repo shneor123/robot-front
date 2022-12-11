@@ -8,6 +8,7 @@ export const SOCKET_EMIT_USER_IS_TYPING = 'chat-fire-typing'
 export const SOCKET_EVENT_USER_COUNT = 'chat-subscribe-user-count'
 export const SOCKET_EMIT_USER_COUNT = 'chat-fire-user-count'
 
+
 const BASE_URL = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
 
 export const socketService = _createSocketService()

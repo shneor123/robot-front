@@ -1,3 +1,4 @@
+import React from 'react'
 import { RobotPreview } from './RobotPreview'
 
 export const RobotList = ({ robots }) => {

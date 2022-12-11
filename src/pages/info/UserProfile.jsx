@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
@@ -11,6 +11,7 @@ import { ReviewList } from '../../cmps/review/ReviewList'
 import { userService } from '../../services/user.service'
 import { loadRobots } from '../../store/actions/robot.action'
 import { removeReview } from '../../store/actions/review.action'
+
 import editImg from '../../assets/img/edit-icon.png'
 
 
@@ -24,7 +25,7 @@ export const UserProfile = () => {
     const params = useParams()
 
     useEffect(() => {
-        ;(async function () {
+        ; (async function () {
             const user = await userService.getById(params.id)
             setUser(user)
             if (!user) navigate('/robots')

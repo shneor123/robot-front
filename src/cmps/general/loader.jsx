@@ -1,3 +1,4 @@
+import React from 'react'
 import { ReactComponent as LoaderIcon } from '../../assets/svg/loader.svg'
 
 export function Loader() {

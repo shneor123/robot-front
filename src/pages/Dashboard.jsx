@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
@@ -35,7 +35,7 @@ export const Dashboard = () => {
         return Object.values(statisticData.labelMap).map(label => label[dataName].toFixed(2))
     }
 
-    if (!statisticData) return <Loader/>
+    if (!statisticData) return <Loader />
 
     return (
         <section className="dashboard main-layout">

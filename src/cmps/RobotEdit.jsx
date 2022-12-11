@@ -7,7 +7,6 @@ import { useForm } from '../hooks/useForm'
 import { robotService } from '../services/robot.service'
 import { Loader } from '../cmps/general/loader'
 import { saveRobot } from '../store/actions/robot.action'
-
 import defaultRobotImg from '../assets/img/default-robot.png'
 
 export const RobotEdit = () => {

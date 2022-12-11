@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { robotService } from '../services/robot.service'
 
-import defaultRobotImg from '../assets/img/default-robot.png'
-import outOfStockImg from '../assets/img/out-of-stock.png'
-import { utilService } from '../services/util.service'
-import { removeRobot } from '../store/actions/robot.action'
 import { QuestionModal } from '../cmps/general/QuestionModal'
-import { ReviewForm } from '../cmps/review/ReviewForm'
-import { loadReviews, removeReview, saveReview } from '../store/actions/review.action'
 import { ReviewList } from '../cmps/review/ReviewList'
 import { ChatRoom } from '../cmps/chatRoom'
 import { Loader } from '../cmps/general/loader'
+
+import { ReviewForm } from '../cmps/review/ReviewForm'
+import { utilService } from '../services/util.service'
+import { robotService } from '../services/robot.service'
+import { removeRobot } from '../store/actions/robot.action'
+import { loadReviews, removeReview, saveReview } from '../store/actions/review.action'
+
+import defaultRobotImg from '../assets/img/default-robot.png'
+import outOfStockImg from '../assets/img/out-of-stock.png'
 
 export const RobotDetails = () => {
     const params = useParams()
@@ -76,7 +78,7 @@ export const RobotDetails = () => {
 
                 <div className="details-container">
                     <p className="name"><strong>Name: </strong>{robot.name}</p>
-                    <p className='labels'><strong>Labels: </strong>{robot.labels.join(' ,')}</p>
+                    {/* <p className='labels'><strong>Labels: </strong>{robot.labels.join(' ,')}</p> */}
                     <p className="price"><strong>Price: </strong>US ${robot.price}</p>
                     <h5 style={{ color }}>{stockDesc}in stock</h5>
                     <img className='img' src={robot.img || defaultRobotImg} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} />

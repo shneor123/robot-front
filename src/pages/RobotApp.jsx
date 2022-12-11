@@ -7,6 +7,8 @@ import { Loader } from '../cmps/general/loader'
 import { RobotFilter } from '../cmps/RobotFilter'
 import { RobotList } from '../cmps/RobotList'
 import { loadRobots } from '../store/actions/robot.action'
+import { loadUsers } from '../store/actions/user.action'
+import { socketService } from '../services/socket.service';
 
 export const RobotApp = () => {
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
@@ -14,21 +16,37 @@ export const RobotApp = () => {
     const [toggleShow, setToggleShow] = useState(false)
     const dispatch = useDispatch()
 
+
     useEffect(() => {
-        dispatch(loadRobots())
+        setSocket()
+        onLoadRobot()
+        onLoadUsers()
+        socketService.off('update-robot',)
+        socketService.on('update-robot', async (robotFromSocket) => {
+            onLoadRobot(robotFromSocket._id)
+        })
     }, [])
+
+    const setSocket = () => {
+        try {
+            socketService.emit('join-robot');
+        } catch (err) {
+            console.log('Cannot load board', err)
+        }
+
+    }
+
+    const onLoadUsers = () => {
+        dispatch(loadUsers())
+    }
+
+    const onLoadRobot = () => {
+        dispatch(loadRobots())
+    }
 
     const onSetFilterBy = (currFilterBy) => {
         dispatch(loadRobots(currFilterBy))
     }
-
-    // const onDragEnd = (result) => {
-    //     if (!result.destination) return
-    //     const items = characters
-    //     const [reorderedItem] = items.splice(result.source.index, 1)
-    //     items.splice(result.destination.index, 0, reorderedItem)
-    //     updateCharacters(items)
-    // }
 
     if (!robots) return <Loader />
     return (
@@ -37,9 +55,9 @@ export const RobotApp = () => {
                 <div className="back-menu">
                     <button onClick={() => setToggleShow(!toggleShow)}
                         className={`btn-opt ${toggleShow ? "hide" : ""}`}
-                        >
-                            
-                            <AiOutlineSearch /> Filter cards</button>
+                    >
+
+                        <AiOutlineSearch /> Filter cards</button>
                 </div>
                 {toggleShow && <div className='menu-content-wrapper'>
                     <span style={{ top: '7px' }} onClick={() => setToggleShow(!toggleShow)} className="modal-close-btn">

@@ -1,3 +1,4 @@
+import React from 'react'
 export const QuestionModal = ({ question, answers, cbFuncs, setModalFunc }) => {
 
     const onButtonClick = (ev, idx) => {

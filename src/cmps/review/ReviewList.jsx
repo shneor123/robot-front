@@ -1,3 +1,4 @@
+import React from 'react'
 import { ReviewPreview } from './ReviewPreview'
 
 export const ReviewList = ({ reviews, isShowWriter, isShowRobot, onRemoveReview }) => {

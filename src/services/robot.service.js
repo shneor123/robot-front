@@ -1,5 +1,5 @@
 import { httpService } from './http.service'
-// import { storageService } from './async-storage.service'
+import { socketService } from './socket.service'
 import { utilService } from './util.service'
 
 /* COMMENTS ARE FOR LOCAL STORAGE DATABASE (BEFORE I'VE CREATED BACKEND) */
@@ -67,9 +67,18 @@ async function getById(robotId) {
 }
 
 async function save(robot) {
-	if (robot._id) return await httpService.put(BASE_PATH, robot)
-	return await httpService.post(BASE_PATH, robot)
-
+	if (robot._id) {
+		const savedRobot = await httpService.put(BASE_PATH, robot)
+		socketService.emit('robot-change', savedRobot);
+		return savedRobot
+	} else {
+		try {
+			const savedRobot = await httpService.post(BASE_PATH, robot)
+			return savedRobot
+		} catch (err) {
+			console.log(err)
+		}
+	}
 	/* LOCAL STORAGE */
 	// if (robot._id) {
 	// 	return await storageService.put(STORAGE_KEY, robot)
@@ -80,7 +89,9 @@ async function save(robot) {
 }
 
 async function remove(robotId) {
-	return await httpService.delete(`${BASE_PATH}/${robotId}`)
+	const deleteRobot = await httpService.delete(`${BASE_PATH}/${robotId}`)
+	socketService.emit('robot-change', deleteRobot);
+	return deleteRobot
 
 	/* LOCAL STORAGE */
 	// return await storageService.remove(STORAGE_KEY, robotId)

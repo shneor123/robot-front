@@ -1,3 +1,4 @@
+import React from 'react'
 export const PageBar = ({ filterBy, onSetFilterBy }) => {
 
     const onSetPage = (num) => {

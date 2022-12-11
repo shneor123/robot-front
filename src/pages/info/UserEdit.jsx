@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useFormRegister } from '../../hooks/useFormRegister'
 import { userService } from '../../services/user.service'
 import { login, updateUser } from '../../store/actions/user.action'
 
