@@ -20,7 +20,6 @@ export const RobotApp = () => {
     useEffect(() => {
         setSocket()
         onLoadRobot()
-        onLoadUsers()
         socketService.off('update-robot',)
         socketService.on('update-robot', async (robotFromSocket) => {
             onLoadRobot(robotFromSocket._id)
