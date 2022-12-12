@@ -9,7 +9,7 @@ const guestUser = {
 
 const initialState = {
     users: null,
-    user: userService.getLoggedInUser(),
+    user: userService.getLoggedinUser(),
     msg: null //{type: '', msg: ''}
 }
 

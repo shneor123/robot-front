@@ -1,82 +1,54 @@
 import { httpService } from './http.service'
 
-const AUTH_BASE_PATH = `auth`
-const USER_BASE_PATH = `user`
-const STORAGE_KEY_LOGIN = 'robots_loggedInUser'
-
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
-    login,
-    signup,
-    logout,
-    getUsers,
-    getById,
-    update,
-    remove,
-    getLoggedInUser,
+  login,
+  logout,
+  signup,
+  getLoggedinUser,
+  saveLocalUser,
+  getUsers,
+  getById,
+  update,
 }
 
-async function login(credentials, isRemember) {
-    try {
-        const user = await httpService.post(`${AUTH_BASE_PATH}/login`, credentials)
-        if (user) _rememberUser(user, isRemember)
-        return user
-    } catch (err) {
-        throw err
-    }
-}
-
-async function signup(userInfo, isRemember) {
-    const user = await httpService.post(`${AUTH_BASE_PATH}/signup`, userInfo)
-    _rememberUser(user, isRemember)
-    return user
-}
-
-async function logout() {
-    localStorage.removeItem(STORAGE_KEY_LOGIN)
-    sessionStorage.removeItem(STORAGE_KEY_LOGIN)
-    return await httpService.post(`${AUTH_BASE_PATH}/logout`)
-}
-
-async function getUsers() {
-    const usersFromDb = await httpService.get(USER_BASE_PATH)
-    return usersFromDb
+function getUsers() {
+  return httpService.get(`user`)
 }
 
 async function getById(userId) {
-    const user = await httpService.get(`${USER_BASE_PATH}/${userId}`)
-    return user
+  const user = await httpService.get(`user/${userId}`)
+  return user
 }
 
-async function update(user, isSetAdmin) {
-    try {
-        let savedUser
-        if (isSetAdmin) savedUser = await httpService.put(USER_BASE_PATH + 'admin', user)
-        else savedUser = await httpService.put(USER_BASE_PATH, user)
-        return savedUser
-    } catch (err) {
-        const { status, data } = err.response
-        if (status === 401 || status === 403) throw ({ status, data })
-        throw err
-    }
+async function update(user) {
+  user = await httpService.put(`user/${user._id}`, user)
+  if (getLoggedinUser()._id === user._id) saveLocalUser(user)
+  return user
 }
 
-async function remove(userId) {
-    return await httpService.delete(`${USER_BASE_PATH}/${userId}`)
+async function login(userCred) {
+  try {
+    const user = await httpService.post('auth/login', userCred)
+    return saveLocalUser(user)
+  } catch (err) {
+    throw err
+  }
+}
+async function signup(userCred) {
+  const user = await httpService.post('auth/signup', userCred)
+  return saveLocalUser(user)
+}
+async function logout() {
+  sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 }
 
-function getLoggedInUser() {
-    let user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGIN))
-    if (!user) {
-        user = JSON.parse(localStorage.getItem(STORAGE_KEY_LOGIN)) //in case the user checked 'remember me'
-        if (user) _rememberUser(user, false)
-    }
-    return user
+function saveLocalUser(user) {
+  sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+  return user
 }
 
-function _rememberUser(user, isRemember) {
-    if (user) {
-        sessionStorage.setItem(STORAGE_KEY_LOGIN, JSON.stringify(user))
-        if (isRemember) localStorage.setItem(STORAGE_KEY_LOGIN, JSON.stringify(user))
-    }
+function getLoggedinUser() {
+  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
