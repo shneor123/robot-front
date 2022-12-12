@@ -9,12 +9,14 @@ import { RobotList } from '../cmps/RobotList'
 import { loadRobots } from '../store/actions/robot.action'
 import { loadUsers } from '../store/actions/user.action'
 import { socketService } from '../services/socket.service';
+import { useParams } from 'react-router-dom';
 
 export const RobotApp = () => {
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
     const { user } = useSelector(storeState => storeState.userModule)
     const [toggleShow, setToggleShow] = useState(false)
     const dispatch = useDispatch()
+    const { id } = useParams()
 
 
     useEffect(() => {
@@ -28,7 +30,8 @@ export const RobotApp = () => {
 
     const setSocket = () => {
         try {
-            socketService.emit('join-robot');
+            socketService.emit('join-robot', id);
+            console.log("🚀 ~ file: RobotApp.jsx:20 ~ RobotApp ~ id", id)
         } catch (err) {
             console.log('Cannot load board', err)
         }

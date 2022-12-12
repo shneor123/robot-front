@@ -13,6 +13,7 @@ import { UserProfile } from "./pages/info/UserProfile"
 import { UserEdit } from "./pages/info/UserEdit"
 import { UserApp } from "./pages/UserApp"
 import { Dashboard } from "./pages/Dashboard"
+import { LoginSignupPage } from "./pages/LoginSignupPage"
 
 
 function App() {
@@ -21,8 +22,10 @@ function App() {
       <Router>
         <AppHeader />
         <Routes>
-          <Route element={<LoginSignup />} path={'/login'} />
-          <Route element={<LoginSignup />} path={'/signup'} />
+          {/* <Route element={<LoginSignup />} path={'/login'} /> */}
+          {/* <Route element={<LoginSignup />} path={'/signup'} /> */}
+          <Route path="/login" element={<LoginSignupPage type="login" />} />
+        <Route path="/signup" element={<LoginSignupPage type="signup" />} />
           <Route element={<RobotApp />} path={'/robots'} />
           <Route element={<RobotDetails />} path={'/robots/:id'} />
           <Route element={<RobotEdit />} path={'/robots/edit/:id'} />

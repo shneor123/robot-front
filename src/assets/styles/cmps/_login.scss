@@ -1,0 +1,213 @@
+$bg-clr: rgba(250, 251, 252, 255);
+
+$font-clr1: #ffffff;
+$font-clr2: #4d4d4d;
+$font-clr3: #505f79;
+$font-clr4: #5e6c84; // DYNAMIC MODAL INNER COMPONENT
+$font-clr5: #b3bac5;
+
+$clr1: #ced4da; // INPUT BORDER
+$clr2: #495057; // INPUT FONT COLOR
+$clr3: #5e6c84; // LOGIN-SIGNUP TITLE
+$clr4: #fafbfc; // INPUT BG COLOR
+$clr5: #dfe1e6; // INPUT BORDER 2
+$clr6: #5aac44; // LOGIN BTN
+$clr7: #0052cc; // SIGNUP BTN
+$clr8: #091e420a; // TASK DETAIL BUTTON
+$clr9: #091e4214; // TASK DETAIL BUTTON - HOVER
+$clr10: #42526e; // TASK CLOSE BTN
+$clr11: #b04632; // DANGER
+$clr12: #091e4221;
+$clr13: #eb5a46;
+$clr14: tomato;
+
+$brand-clr1: #026aa7; // MAIN BRAND
+$brand-clr2: #0079bf; // ACTIVE FONT
+$brand-clr3: #e4f0f6; // ACTIVE BACKGROUND
+$brand-clr4: #172b4d; // BUTTON / TASKS DETAILS FONT
+$brand-clr5: #0065ff; // BUTTON 2
+$brand-clr6: #0d1e42; // FONT
+$brand-clr7: #80b2ff; // INPUT OUTLINE
+$brand-clr8: #ebecf0; // GROUP BACKGROUND
+$brand-clr9: #f4f5f7; // GROUP HEADER BUTTON BACKGROUND
+$brand-clr10: #ffd229; // STAR
+$brand-clr11: #97a0af; // BOARD-TILE
+$brand-clr12: rgb(23, 43, 77);
+$brand-clr13: #4c9aff; // INPUT BORDER
+$brand-clr14: rgb(66, 82, 110);
+
+
+.login-signup-page {
+  height: 100%;
+  width: 100%;
+
+  .logo-container {
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    .logo {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .background {
+    display: none;
+  }
+}
+
+
+.login-signup {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background: none;
+    padding: 25px 40px;
+    margin: auto;
+  
+  
+    .error-message {
+      margin: auto;
+      background-color: $clr13;
+      color: white;
+      text-align: center;
+      border-radius: 3px;
+      padding: rem(7px) rem(14px);
+      font-size: rem(14px);
+      font-weight: 300;
+      max-width: rem(320px);
+      width: 100%;
+    }
+  
+    h1 {
+      text-align: center;
+      width: 100%;
+      height: rem(28px);
+      line-height: rem(28px);
+      font-weight: bold;
+      color: $clr3;
+      margin-block-start: rem(10px);
+      margin-block-end: rem(25px);
+    }
+  
+    input {
+      display: block;
+      margin: 0 auto rem(16.8px);
+      max-width: rem(320px);
+      width: 100%;
+      height: rem(44px);
+      padding: rem(7px);
+      border-radius: 3px;
+      background-color: $clr4;
+      border: 2px solid $clr5;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+      font-weight: 300;
+  
+      &:focus {
+        border-color: $brand-clr13;
+      }
+    }
+  
+    button {
+      display: block;
+      margin: 0 auto rem(16.8px);
+      max-width: rem(320px);
+      color: #ffff;
+      border: none;
+      border-radius: 0.3em;
+      width: 100%;
+      height: rem(36px);
+      padding: rem(8.4px) rem(18.2px);
+      font-weight: bold;
+      transition: background-color 0.08s;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+  
+      &.login-btn {
+        background-color: $clr6;
+  
+        &:hover {
+          background-color: lighten($clr6, 8%);
+        }
+      }
+  
+      &.signup-btn {
+        background-color: $clr7;
+        height: rem(40px);
+  
+        &:hover {
+          background-color: lighten($clr7, 8%);
+        }
+      }
+    }
+  
+    .login-method {
+      width: 100%;
+  
+      div {
+        width: 100%;
+        text-align: center;
+        height: rem(29px);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        line-height: rem(29px);
+        font-size: rem(12px);
+        font-weight: 300;
+        color: $font-clr2;
+      }
+  
+      button {
+        height: rem(40px);
+        margin-block-end: rem(12px);
+        background-color: #ffff;
+        box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 0;
+        color: $font-clr3;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+          'Helvetica Neue', sans-serif;
+        border-radius: 3px;
+        transition: background-color 0.2s;
+  
+        &:hover {
+          background-color: darken(#ffff, 2%);
+        }
+      }
+    }
+  
+    hr {
+      margin-block-start: rem(25px);
+      margin-block-end: rem(14px);
+      height: 2px;
+      border: none;
+      border-top: 1px solid hsl(0, 0%, 80%);
+      padding: 0;
+    }
+  
+    footer {
+      width: 100%;
+      height: rem(30px);
+      line-height: rem(30px);
+      margin-top: rem(14px);
+      margin-bottom: rem(14px);
+      text-align: center;
+  
+      a {
+        font-size: rem(14px);
+        text-decoration: none;
+        margin-inline-end: 1rem;
+        color: $clr7;
+        font-weight: 300;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
