@@ -53,9 +53,7 @@ export const RobotApp = () => {
             <div className={`pop-up-menu ${toggleShow ? "menu-open" : ""}`}>
                 <div className="back-menu">
                     <button onClick={() => setToggleShow(!toggleShow)}
-                        className={`btn-opt ${toggleShow ? "hide" : ""}`}
-                    >
-
+                        className={`btn-opt ${toggleShow ? "hide" : ""}`} >
                         <AiOutlineSearch /> Filter cards</button>
                 </div>
                 {toggleShow && <div className='menu-content-wrapper'>
@@ -65,9 +63,7 @@ export const RobotApp = () => {
                     <RobotFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} user={user} />
                 </div>}
             </div>
-
             {robots?.length > 0 && <RobotList robots={robots} />}
-            {/* {robots?.length > 0 && < Cart />} */}
         </section >
     )
 }

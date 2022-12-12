@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 import { UserImg } from '../users/userImg';
 import { logout } from '../../store/actions/user.action';
 import logoImg from '../../assets/img/logo.png'
+import { useState } from 'react';
 
 export const AppHeader = () => {
     const { user } = useSelector(stateModule => stateModule.userModule)
@@ -18,10 +18,6 @@ export const AppHeader = () => {
         dispatch(logout())
         setIsMenuOpen(false)
         navigate('/login')
-    }
-
-    const handleKeyEvent = (e) => {
-        if (e.key === "Escape") navigate(-1)
     }
 
     return (
@@ -40,7 +36,6 @@ export const AppHeader = () => {
                             <NavLink to="/dashboard"> Dashboard </NavLink>
                             <NavLink to="/about"> About </NavLink>
                         </nav>
-
                         <div className='hamburger-menu'>
                             <div className='menu-btn'>
                                 <div className='hamburger-btn' onClick={() => setIsMenuOpen(!isMenuOpen)}>☰</div>
@@ -64,15 +59,20 @@ export const AppHeader = () => {
                         </div>
                     </section>
                 </main>
-            </section>
+            </section >
             <div className="header-titles-container">
                 <div className="header-inf">
                     {pathname !== '/robots' && pathname !== '/users' ? <h3>Robots: 0</h3> : <h3>Robots: {robots.length}</h3>}
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
+
+
+
+
+
 
 
 
