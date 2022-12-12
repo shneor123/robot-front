@@ -1,15 +1,8 @@
 import { userService } from '../../services/user.service'
 
-const guestUser = {
-    _id: '1',
-    fullname: 'Guest',
-    username: 'guest@gmail.com',
-    imgURL: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
-}
-
 const initialState = {
     users: null,
-    user: userService.getLoggedinUser(),
+    user: userService.getLoggedInUser(),
     msg: null //{type: '', msg: ''}
 }
 
@@ -20,8 +13,7 @@ export function userReducer(state = initialState, action) {
             return { ...state, users: action.users }
 
         case 'SET_USER':
-            return { ...state, user: action.user ? action.user : guestUser }
-
+            return { ...state, user: action.user }
 
         case 'UPDATE_USER':
             users = state.users.map(user => user._id === action.user._id ? action.user : user)
