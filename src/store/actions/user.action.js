@@ -1,112 +1,62 @@
 import { userService } from '../../services/user.service'
 
 
-// export function loadUsers() {
-//     return async dispatch => {
-//         try {
-//             dispatch({ type: 'LOADING_START' })
-//             const users = await userService.getUsers()
-//             dispatch({ type: 'SET_USERS', users })
-//         } catch (err) {
-//             console.error('Error on loading users', err)
-//             dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed loading users' } }))
-//         } finally {
-//             dispatch({ type: 'LOADING_DONE' })
-//         }
-//     }
-// }
 export function loadUsers() {
-    return async (dispatch) => {
+    return async dispatch => {
         try {
+            dispatch({ type: 'LOADING_START' })
             const users = await userService.getUsers()
             dispatch({ type: 'SET_USERS', users })
         } catch (err) {
-            throw err
+            console.error('Error on loading users', err)
+            dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed loading users' } }))
+        } finally {
+            dispatch({ type: 'LOADING_DONE' })
         }
     }
 }
 
-// export function login(credentials, isMakeHttpRequest = true, isRemember = false) {
-//     return async (dispatch) => {
-//         let user
-//         try {
-//             // we make this option since in the login page we refer directly to the service
-//             // in order to show error msg if the user entered wrong credentials
-//             if (isMakeHttpRequest) user = await userService.login(credentials, isRemember)
-//             else user = credentials
-//             dispatch({ type: 'SET_USER', user })
-//             return user
-//         } catch (err) {
-//             console.log('Error on login', err)
-//             dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed login. Please try again later' } }))
-//         }
-//     }
-// }
-export function login(credentials) {
+export function login(credentials, isMakeHttpRequest = true, isRemember = false) {
     return async (dispatch) => {
+        let user
         try {
-            const user = await userService.login(credentials)
-            dispatch({
-                type: 'SET_USER',
-                user,
-            })
-        } catch (err) {
-            throw err
-        }
-    }
-}
-
-// export function signup(credentials, isMakeHttpRequest = true, isRemember = false) {
-//     return async (dispatch) => {
-//         let user
-//         try {
-//             if (isMakeHttpRequest) user = await userService.signup(credentials, isRemember)
-//             else user = credentials
-
-//             dispatch({ type: 'SET_USER', user })
-//             return user
-//         } catch (err) {
-//             console.log('Error on sing in', err)
-//             dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed signup. Please try again later' } }))
-//         }
-//     }
-// }
-export function signup(credentials) {
-    return async (dispatch) => {
-        try {
-            const user = await userService.signup(credentials)
-            dispatch({
-                type: 'SET_USER',
-                user,
-            })
+            // we make this option since in the login page we refer directly to the service
+            // in order to show error msg if the user entered wrong credentials
+            if (isMakeHttpRequest) user = await userService.login(credentials, isRemember)
+            else user = credentials
+            dispatch({ type: 'SET_USER', user })
             return user
         } catch (err) {
-            throw err
+            console.log('Error on login', err)
+            dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed login. Please try again later' } }))
         }
     }
 }
 
-// export function logout() {
-//     return async (dispatch) => {
-//         try {
-//             await userService.logout()
-//             dispatch({ type: 'SET_USER', user: null })
-//         } catch (err) {
-//             console.log('Error on logout', err)
-//             dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed logout. Please try again later' } }))
-//         }
-//     }
-// }
+export function signup(credentials, isMakeHttpRequest = true, isRemember = false) {
+    return async (dispatch) => {
+        let user
+        try {
+            if (isMakeHttpRequest) user = await userService.signup(credentials, isRemember)
+            else user = credentials
+
+            dispatch({ type: 'SET_USER', user })
+            return user
+        } catch (err) {
+            console.log('Error on sing in', err)
+            dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed signup. Please try again later' } }))
+        }
+    }
+}
+
 export function logout() {
     return async (dispatch) => {
         try {
             await userService.logout()
-            dispatch({
-                type: 'SET_USER',
-                user: null,
-            })
+            dispatch({ type: 'SET_USER', user: null })
         } catch (err) {
-            throw err
+            console.log('Error on logout', err)
+            dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed logout. Please try again later' } }))
         }
     }
 }
