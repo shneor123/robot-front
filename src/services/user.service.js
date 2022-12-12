@@ -1,7 +1,7 @@
 import { httpService } from './http.service'
 
-const AUTH_BASE_PATH = `auth`
-const USER_BASE_PATH = `user`
+const AUTH_BASE_PATH = 'auth/'
+const USER_BASE_PATH = 'user/'
 const STORAGE_KEY_LOGIN = 'robots_loggedInUser'
 
 
@@ -18,7 +18,8 @@ export const userService = {
 
 async function login(credentials, isRemember) {
     try {
-        const user = await httpService.post(`${AUTH_BASE_PATH}/login`, credentials)
+        // const user = await httpService.post(`${AUTH_BASE_PATH}/login`, credentials)
+        const user = await httpService.post(AUTH_BASE_PATH + 'login', credentials)
         if (user) _rememberUser(user, isRemember)
         return user
     } catch (err) {
@@ -27,7 +28,8 @@ async function login(credentials, isRemember) {
 }
 
 async function signup(userInfo, isRemember) {
-    const user = await httpService.post(`${AUTH_BASE_PATH}/signup`, userInfo)
+    // const user = await httpService.post(`${AUTH_BASE_PATH}/signup`, userInfo)
+    const user = await httpService.post(AUTH_BASE_PATH + 'signup', userInfo)
     _rememberUser(user, isRemember)
     return user
 }
@@ -35,16 +37,20 @@ async function signup(userInfo, isRemember) {
 async function logout() {
     localStorage.removeItem(STORAGE_KEY_LOGIN)
     sessionStorage.removeItem(STORAGE_KEY_LOGIN)
-    return await httpService.post(`${AUTH_BASE_PATH}/logout`)
+    return await httpService.post(AUTH_BASE_PATH + 'logout')
+    // return await httpService.post(`${AUTH_BASE_PATH}/logout`)
+
 }
 
 async function getUsers() {
-    const usersFromDb = await httpService.get(USER_BASE_PATH)
-    return usersFromDb
+    const users = await httpService.get(USER_BASE_PATH)
+    return users
 }
 
 async function getById(userId) {
-    const user = await httpService.get(`${USER_BASE_PATH}/${userId}`)
+    // const user = await httpService.get(`${USER_BASE_PATH}/${userId}`)
+    const user = await httpService.get(USER_BASE_PATH + userId)
+
     return user
 }
 
@@ -62,7 +68,8 @@ async function update(user, isSetAdmin) {
 }
 
 async function remove(userId) {
-    return await httpService.delete(`${USER_BASE_PATH}/${userId}`)
+    return await httpService.delete(USER_BASE_PATH + userId)
+    // return await httpService.delete(`${USER_BASE_PATH}/${userId}`)
 }
 
 function getLoggedInUser() {
