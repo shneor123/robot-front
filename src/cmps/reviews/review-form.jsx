@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { IoMdClose } from "react-icons/io";
-import { StarRatePicker } from './star-rate-picker'
+import { StarRatePicker } from './star-rate'
 
 export const ReviewForm = ({ isOpen, onAddReview, onToggleModal }) => {
 

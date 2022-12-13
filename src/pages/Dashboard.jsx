@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import { RobotPreview } from '../cmps/RobotPreview'
-import { VerticalBarChart } from '../cmps/verticalBarChart'
+import { Loader } from '../cmps/general/loader'
+import { RobotPreview } from '../cmps/robot-preview'
+import { VerticalBarChart } from '../cmps/vertical-bar-chart'
+
 import { robotService } from '../services/robot.service'
 import { setUserMsg } from '../store/actions/user.action'
 
 import starFullImg from '../assets/img/star-full.png'
-import { Loader } from '../cmps/general/loader'
 
 export const Dashboard = () => {
 
