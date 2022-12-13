@@ -73,58 +73,60 @@ export const UserEdit = () => {
         }, 1000);
     }
 
-    return <section className="user-edit main-layout">
-        <h2 className='page-header'>Edit user</h2>
-        <form onSubmit={onSubmit}>
-            <ul className='clean-list'>
-                <li>
-                    <label htmlFor="curr-password">Current password: </label>
-                    <input type="password"
-                        name="currPassword"
-                        id="curr-password"
-                        autoComplete='new-password'
-                        value={currPassword}
-                        onChange={onInputChange}
-                        required />
-                    {isWrongPassword && <span className='error-msg'>Wrong password</span>}
-                </li>
-                <li className='clean-list'>
-                    <label htmlFor="fullname">Full name: </label>
-                    <input type="text"
-                        name="fullname"
-                        id="fullname"
-                        value={updatedUser.fullname}
-                        onChange={onInputChange}
-                        required />
-                </li>
+    return (
+        <section className="user-edit main-layout">
+            <h2 className='page-header'>Edit user</h2>
+            <form onSubmit={onSubmit}>
+                <ul className='clean-list'>
+                    <li>
+                        <label htmlFor="curr-password">Current password: </label>
+                        <input type="password"
+                            name="currPassword"
+                            id="curr-password"
+                            autoComplete='new-password'
+                            value={currPassword}
+                            onChange={onInputChange}
+                            required />
+                        {isWrongPassword && <span className='error-msg'>Wrong password</span>}
+                    </li>
+                    <li className='clean-list'>
+                        <label htmlFor="fullname">Full name: </label>
+                        <input type="text"
+                            name="fullname"
+                            id="fullname"
+                            value={updatedUser.fullname}
+                            onChange={onInputChange}
+                            required />
+                    </li>
 
-                <input type="checkbox" name="isPassword" id="change-password" checked={isPassword} onChange={onInputChange} />
-                <label htmlFor="change-password">I want to change my password</label>
-                <fieldset disabled={!isPassword}>
-                    <li className='clean-list'>
-                        <label htmlFor="password1">New password: </label>
-                        <input type="password"
-                            name="password1"
-                            id="password1"
-                            value={updatedUser.password1}
-                            onChange={onInputChange}
-                            minLength={3}
-                            required />
-                    </li>
-                    <li className='clean-list'>
-                        <label htmlFor="password2">Verify password: </label>
-                        <input type="password"
-                            name="password2"
-                            id="password2"
-                            value={updatedUser.password2}
-                            onChange={onInputChange}
-                            minLength={3}
-                            required />
-                    </li>
-                    {isWrongNewPassword && <p className='error-msg'>Password doesn't match. Please try again.</p>}
-                </fieldset>
-            </ul>
-            <button className='main-btn'>Save</button>
-        </form>
-    </section>
+                    <input type="checkbox" name="isPassword" id="change-password" checked={isPassword} onChange={onInputChange} />
+                    <label htmlFor="change-password">I want to change my password</label>
+                    <fieldset disabled={!isPassword}>
+                        <li className='clean-list'>
+                            <label htmlFor="password1">New password: </label>
+                            <input type="password"
+                                name="password1"
+                                id="password1"
+                                value={updatedUser.password1}
+                                onChange={onInputChange}
+                                minLength={3}
+                                required />
+                        </li>
+                        <li className='clean-list'>)
+                            <label htmlFor="password2">Verify password: </label>
+                            <input type="password"
+                                name="password2"
+                                id="password2"
+                                value={updatedUser.password2}
+                                onChange={onInputChange}
+                                minLength={3}
+                                required />
+                        </li>
+                        {isWrongNewPassword && <p className='error-msg'>Password doesn't match. Please try again.</p>}
+                    </fieldset>
+                </ul>
+                <button className='main-btn'>Save</button>
+            </form>
+        </section>
+    )
 }
