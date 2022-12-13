@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { PageBar } from './PageBar'
+import { PageBar } from './page-bar'
 import { robotService } from '../services/robot.service'
 import { useFormRegister } from '../hooks/useFormRegister'
 

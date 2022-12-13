@@ -6,6 +6,7 @@ export const storageService = {
     post,
     put,
     remove,
+    createDatabase
 }
 
 function query(entityType, delay = 500) {
@@ -18,6 +19,7 @@ function query(entityType, delay = 500) {
     })
     // return Promise.resolve(entities)
 }
+
 
 function get(entityType, entityId) {
     return query(entityType)
@@ -51,6 +53,10 @@ function remove(entityType, entityId) {
             entities.splice(idx, 1)
             _save(entityType, entities)
         })
+}
+
+function createDatabase(entityType, entities) {
+    _save(entityType, entities)
 }
 
 function _save(entityType, entities) {

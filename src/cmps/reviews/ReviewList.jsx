@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReviewPreview } from './ReviewPreview'
+import { ReviewPreview } from './review-preview'
 
 export const ReviewList = ({ reviews, isShowWriter, isShowRobot, onRemoveReview }) => {
     const reversedList = (list) => {

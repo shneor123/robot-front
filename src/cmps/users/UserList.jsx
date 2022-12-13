@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserPreview } from './UserPreview'
+import { UserPreview } from './user-preview'
 
 export const UserList = ({ users, onToggleAdmin, onDeleteUser, openQuestionModal }) => {
   return (

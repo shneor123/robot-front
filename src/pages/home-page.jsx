@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { robotService } from '../services/robot.service'
 import defaultRobotImg from '../assets/img/blue-robot.png'
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 export const HomePage = () => {
 
-    const { user } = useSelector(storeState => storeState.userModule)
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [robotImg, setRobotImg] = useState(defaultRobotImg)
     const [blinkImgClass, setBlinkImgClass] = useState(false)
     const robotImgIntervalId = useRef()
@@ -36,11 +36,11 @@ export const HomePage = () => {
                     onError={({ target }) => { setBlinkImgClass(true); target.src = defaultRobotImg }}
                 />
             </section>
-            {!user && <section className='login'>
+            {!loggedInUser && <section className='login'>
                 <Link to='/login' className='login'>Login</Link>
                 <Link to='/robots'>Start Anonymously</Link>
             </section>}
-            {user && <section className='get-started'>
+            {loggedInUser && <section className='get-started'>
                 <Link to='/robots'>Take me in</Link>
             </section>}
         </section>

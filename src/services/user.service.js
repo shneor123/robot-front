@@ -4,22 +4,30 @@ const AUTH_BASE_PATH = 'auth/'
 const USER_BASE_PATH = 'user/'
 const STORAGE_KEY_LOGIN = 'robots_loggedInUser'
 
-
 export const userService = {
+    getLoggedInUser,
     login,
     signup,
     logout,
-    getUsers,
+    query,
     getById,
     update,
-    remove,
-    getLoggedInUser,
+    remove
+}
+
+function getLoggedInUser() {
+    let user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGIN))
+    if (!user) {
+        user = JSON.parse(localStorage.getItem(STORAGE_KEY_LOGIN)) //in case the user checked 'remember me'
+        if (user) _rememberUser(user, false)
+    }
+    return user
 }
 
 async function login(credentials, isRemember) {
     try {
-        // const user = await httpService.post(`${AUTH_BASE_PATH}/login`, credentials)
         const user = await httpService.post(AUTH_BASE_PATH + 'login', credentials)
+        // socketService.login(user._id)
         if (user) _rememberUser(user, isRemember)
         return user
     } catch (err) {
@@ -28,8 +36,8 @@ async function login(credentials, isRemember) {
 }
 
 async function signup(userInfo, isRemember) {
-    // const user = await httpService.post(`${AUTH_BASE_PATH}/signup`, userInfo)
     const user = await httpService.post(AUTH_BASE_PATH + 'signup', userInfo)
+    // socketService.signup(user._id)
     _rememberUser(user, isRemember)
     return user
 }
@@ -37,28 +45,27 @@ async function signup(userInfo, isRemember) {
 async function logout() {
     localStorage.removeItem(STORAGE_KEY_LOGIN)
     sessionStorage.removeItem(STORAGE_KEY_LOGIN)
+    // socketService.logout()
     return await httpService.post(AUTH_BASE_PATH + 'logout')
-    // return await httpService.post(`${AUTH_BASE_PATH}/logout`)
-
 }
 
-async function getUsers() {
+async function query() {
     const users = await httpService.get(USER_BASE_PATH)
     return users
 }
 
 async function getById(userId) {
-    // const user = await httpService.get(`${USER_BASE_PATH}/${userId}`)
     const user = await httpService.get(USER_BASE_PATH + userId)
-
     return user
 }
 
 async function update(user, isSetAdmin) {
     try {
         let savedUser
+
         if (isSetAdmin) savedUser = await httpService.put(USER_BASE_PATH + 'admin', user)
         else savedUser = await httpService.put(USER_BASE_PATH, user)
+
         return savedUser
     } catch (err) {
         const { status, data } = err.response
@@ -69,16 +76,6 @@ async function update(user, isSetAdmin) {
 
 async function remove(userId) {
     return await httpService.delete(USER_BASE_PATH + userId)
-    // return await httpService.delete(`${USER_BASE_PATH}/${userId}`)
-}
-
-function getLoggedInUser() {
-    let user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGIN))
-    if (!user) {
-        user = JSON.parse(localStorage.getItem(STORAGE_KEY_LOGIN)) //in case the user checked 'remember me'
-        if (user) _rememberUser(user, false)
-    }
-    return user
 }
 
 function _rememberUser(user, isRemember) {

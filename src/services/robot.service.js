@@ -2,7 +2,6 @@ import { httpService } from './http.service'
 import { socketService } from './socket.service'
 import { utilService } from './util.service'
 
-/* COMMENTS ARE FOR LOCAL STORAGE DATABASE (BEFORE I'VE CREATED BACKEND) */
 
 export const robotService = {
 	query,
@@ -69,11 +68,13 @@ async function getById(robotId) {
 async function save(robot) {
 	if (robot._id) {
 		const savedRobot = await httpService.put(BASE_PATH, robot)
-		socketService.emit('robot-change', savedRobot);
+		socketService.emit('board-change', savedRobot)
 		return savedRobot
 	} else {
 		try {
 			const savedRobot = await httpService.post(BASE_PATH, robot)
+			socketService.emit('board-change', savedRobot)
+
 			return savedRobot
 		} catch (err) {
 			console.log(err)
@@ -90,7 +91,7 @@ async function save(robot) {
 
 async function remove(robotId) {
 	const deleteRobot = await httpService.delete(`${BASE_PATH}/${robotId}`)
-	socketService.emit('robot-change', deleteRobot);
+	socketService.emit('board-change', deleteRobot)
 	return deleteRobot
 
 	/* LOCAL STORAGE */

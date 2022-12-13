@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { useRef } from 'react';
-import { GoogleMap } from '../cmps/GoogleMap'
+import { GoogleMap } from '../cmps/google-map'
 export const AboutPage = () => {
 
     const markers = useRef([

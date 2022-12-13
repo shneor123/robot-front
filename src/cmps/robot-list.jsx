@@ -1,5 +1,5 @@
 import React from 'react'
-import { RobotPreview } from './RobotPreview'
+import { RobotPreview } from './robot-preview'
 
 export const RobotList = ({ robots }) => {
 

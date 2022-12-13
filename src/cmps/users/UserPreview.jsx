@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserImg } from './userImg'
+import { UserImg } from '../general/user-img'
 import { NavLink } from 'react-router-dom'
 import { utilService } from '../../services/util.service'
 import adminImg from '../../assets/img/admin.png'

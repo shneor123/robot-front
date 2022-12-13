@@ -1,10 +1,9 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
-
-import { UserImg } from '../users/userImg';
-import { logout } from '../../store/actions/user.action';
 import logoImg from '../../assets/img/logo.png'
-import { useState } from 'react';
+import { logout } from '../../store/actions/user.action';
+import { UserImg } from './user-img';
 
 export const AppHeader = () => {
     const { user } = useSelector(stateModule => stateModule.userModule)
@@ -68,12 +67,6 @@ export const AppHeader = () => {
         </section >
     )
 }
-
-
-
-
-
-
 
 
 // const handleKeyEvent = (e) => {

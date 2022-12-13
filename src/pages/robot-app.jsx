@@ -1,46 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AiOutlineSearch } from "react-icons/ai"
 import { IoMdClose } from "react-icons/io";
 
 import { Loader } from '../cmps/general/loader'
-import { RobotFilter } from '../cmps/RobotFilter'
-import { RobotList } from '../cmps/RobotList'
+import { RobotFilter } from '../cmps/robot-filter'
+import { RobotList } from '../cmps/robot-list'
+
 import { loadRobots } from '../store/actions/robot.action'
-import { loadUsers } from '../store/actions/user.action'
 import { socketService } from '../services/socket.service';
+import { useParams } from 'react-router-dom';
 
 export const RobotApp = () => {
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
     const { user } = useSelector(storeState => storeState.userModule)
     const [toggleShow, setToggleShow] = useState(false)
     const dispatch = useDispatch()
-
+    const params = useParams()
 
     useEffect(() => {
+        onLoadRobots()
         setSocket()
-        onLoadRobot()
-        onLoadUsers()
-        socketService.off('update-robot',)
-        socketService.on('update-robot', async (robotFromSocket) => {
-            onLoadRobot(robotFromSocket._id)
+        socketService.off('update-board')
+        socketService.on('update-board', async (boardFromSocket) => {
+            onLoadRobots(boardFromSocket._id)
         })
     }, [])
 
     const setSocket = () => {
         try {
-            socketService.emit('join-robot');
+            socketService.emit('join-board', params._id);
         } catch (err) {
             console.log('Cannot load board', err)
         }
     }
 
-    const onLoadUsers = () => {
-        dispatch(loadUsers())
-    }
-
-    const onLoadRobot = () => {
-        dispatch(loadRobots())
+    const onLoadRobots = () => {
+        dispatch(loadRobots(params._id))
     }
 
     const onSetFilterBy = (currFilterBy) => {
