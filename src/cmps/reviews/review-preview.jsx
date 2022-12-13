@@ -15,6 +15,7 @@ export const ReviewPreview = ({ review, isShowWriter, isShowRobot, onRemoveRevie
             '-no rate specified-' : String.fromCharCode(9733).repeat(num)
         return str
     }
+    
     return (
         <div className="robot-review" >
             <div>

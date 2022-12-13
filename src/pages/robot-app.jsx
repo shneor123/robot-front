@@ -46,16 +46,12 @@ export const RobotApp = () => {
     if (!robots) return <Loader />
     return (
         <section className="robot-app main-layout ">
-            <div className={`pop-up-menu ${toggleShow ? "menu-open" : ""}`}>
-                <div className="back-menu">
-                    <button onClick={() => setToggleShow(!toggleShow)}
-                        className={`btn-opt ${toggleShow ? "hide" : ""}`} >
-                        <AiOutlineSearch /> Filter cards</button>
-                </div>
+            <div className={`${toggleShow ? "sidebar open" : "sidebar"}`}>
+                <button onClick={() => setToggleShow(!toggleShow)} className={`sidebar-toggle ${toggleShow ? "hide" : ""}`} >
+                    <AiOutlineSearch /> Filter cards
+                </button>
                 {toggleShow && <div className='menu-content-wrapper'>
-                    <span style={{ top: '7px' }} onClick={() => setToggleShow(!toggleShow)} className="modal-close-btn">
-                        <IoMdClose size={25} />
-                    </span>
+                    <span onClick={() => setToggleShow(!toggleShow)} className="modal-close-btn"> <IoMdClose size={25} /> </span>
                     <RobotFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} user={user} />
                 </div>}
             </div>

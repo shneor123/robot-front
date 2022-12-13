@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { utilService } from '../services/util.service'
 
 import outOfStockImg from '../assets/img/out-of-stock.png'
@@ -7,9 +7,16 @@ import defaultRobotImg from '../assets/img/default-robot.png'
 
 export const RobotPreview = ({ robot, onAddToCart }) => {
     const { pathname } = useLocation()
+    const navigate = useNavigate()
+
+
+    const handleKeyEvent = (e) => {
+        if (e.key === "Escape") navigate(-1);
+    };
+
     return (
         <>
-            <Link to={`/robots/${robot._id}`} className="robot-preview" >
+            <Link to={`/robots/${robot._id}`} className="robot-preview"   abIndex={"0"}  onKeyDown={handleKeyEvent} >
                 <div className='robo_row'>
                     {/* <h2 className='name'>{robot.name.length > 10 ? robot.name.substring(0, 10) + '...' : robot.name}</h2> */}
                     <h2 className='name'>{robot.name}</h2>

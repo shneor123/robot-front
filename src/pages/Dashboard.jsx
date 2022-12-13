@@ -21,7 +21,6 @@ export const Dashboard = () => {
         (async function () {
             try {
                 const statistics = await robotService.getStatistics()
-                console.log('statistics', statistics)
                 setStatisticData(statistics)
             } catch (err) {
                 dispatch(setUserMsg({ type: 'danger', msg: 'Failed loading statistics. You are redirected.' }))

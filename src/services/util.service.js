@@ -3,7 +3,7 @@ export const utilService = {
     dateToString,
     numberWithCommas,
     timeSince,
-    dueDateFormat
+    dueDateFormat,
 }
 
 function makeId(length = 6) {

@@ -86,6 +86,10 @@
         gap: 1em;
         text-align: center;
 
+        @include for-wide-layout {
+            
+        }
+
         &>* {
             padding: 0.5em 1em;
             font-size: 1em;
@@ -105,7 +109,7 @@
 
     }
 
-    @media screen and (min-width: 700px) {
+    @media screen and (min-width: 960px) {
         .buttons-container {
             margin-bottom: 1em;
             display: flex;
