@@ -26,13 +26,30 @@
         &>* {
             background-color: $primary-clr-300;
             border-radius: 10px;
-            border: 1px solid #282c34;;
+            border: 1px solid #282c34;
+            ;
             padding: 8px;
+        }
+
+        p {
+            padding: 10px;
+        }
+
+        .p {
+            @include for-narrow-layout {
+                display: none;
+            }
+
+            @include for-mobile-layout {
+                display: none;
+            }
+
         }
     }
 
     .map {
-        border: 1px solid #282c34;;
+        border: 1px solid #282c34;
+        ;
         min-height: 70vh;
 
         &>* {

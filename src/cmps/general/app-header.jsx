@@ -61,7 +61,7 @@ export const AppHeader = () => {
             </section >
             <div className="header-titles-container">
                 <div className="header-inf">
-                    {pathname !== '/robots' && pathname !== '/users' ? <h3>Robots: 0</h3> : <h3>Robots: {robots.length}</h3>}
+                    {pathname !== '/robots' && pathname !== '/users' ? <h3></h3> : <h3>Robots: {robots.length}</h3>}
                 </div>
             </div>
         </section >

@@ -112,7 +112,7 @@ export const UserEdit = () => {
                                 minLength={3}
                                 required />
                         </li>
-                        <li className='clean-list'>)
+                        <li className='clean-list'>
                             <label htmlFor="password2">Verify password: </label>
                             <input type="password"
                                 name="password2"

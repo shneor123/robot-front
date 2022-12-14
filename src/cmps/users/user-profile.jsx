@@ -55,10 +55,14 @@ export const UserProfile = () => {
             </header>
             <section className='robots'>
                 <h2 className='sub-header'>Robots</h2>
-                {(robots?.length > 0) && <>
-                    {filterBy.numOfPages > 1 && < PageBar filterBy={filterBy} onSetFilterBy={onChangePage} />}
-                    <RobotList robots={robots} />
-                </>}
+                {loggedInUser?._id === user._id && <div>
+
+                    {(robots?.length > 0) && <>
+                        {filterBy.numOfPages > 1 && < PageBar filterBy={filterBy} onSetFilterBy={onChangePage} />}
+                        <RobotList robots={robots} />
+                    </>}
+                </div>
+                }
                 {!robots?.length && <p>The user didn't add robots yet.</p>}
             </section>
             <section className='reviews'>
