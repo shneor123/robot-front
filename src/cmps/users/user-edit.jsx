@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { useNavigate, useParams } from 'react-router-dom'
 import { userService } from '../../services/user.service'
 import { login, updateUser } from '../../store/actions/user.action'
@@ -76,6 +77,7 @@ export const UserEdit = () => {
     return (
         <section className="user-edit main-layout">
             <h2 className='page-header'>Edit user</h2>
+            <Link className='back-btn' to={'/users'}>Back</Link>
             <form onSubmit={onSubmit}>
                 <ul className='clean-list'>
                     <li>

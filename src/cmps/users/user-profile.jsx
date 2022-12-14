@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { PageBar } from '../page-bar'
 import { Loader } from '../general/loader'
@@ -13,6 +13,7 @@ import { loadRobots } from '../../store/actions/robot.action'
 import { removeReview } from '../../store/actions/review.action'
 
 import editImg from '../../assets/img/edit-icon.png'
+import { Link } from 'react-router-dom'
 
 
 export const UserProfile = () => {
