@@ -23,39 +23,30 @@ async function query(filterBy) {
 
 	/* LOCAL STORAGE */
 	// let robots = await storageService.query(STORAGE_KEY)
-
 	// if (filterBy) {
 	// 	const { name, labels, inStock, sortBy } = filterBy
-
 	// 	if (name) {
 	// 		const regex = new RegExp(name, 'gi')
 	// 		robots = robots.filter(robot => regex.test(robot.name))
 	// 	}
-
 	// 	if (labels?.length) robots = robots.filter(robot => {
 	// 		//this is an OR filtering (at least one label)
 	// 		for (let i = 0; i < robot.labels.length; i++) {
 	// 			if (labels.includes(robot.labels[i])) return true
 	// 		}
-
 	// 		return false
-
 	// 		//this is an AND filtering (all labels)
 	// 		// for (let i = 0; i < labels.length; i++) {
 	// 		// 	if (!robot.labels.includes(labels[i])) return false
 	// 		// }
-
 	// 		// return true
 	// 	})
-
 	// 	if (inStock !== undefined && inStock !== 'all') robots = robots.filter(robot => robot.inStock === inStock)
-
 	// 	if (sortBy) robots = robots.sort((a, b) => {
 	// 		if (sortBy === 'name') return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
 	// 		return a[sortBy] - b[sortBy]
 	// 	})
 	// }
-
 	// return robots
 }
 

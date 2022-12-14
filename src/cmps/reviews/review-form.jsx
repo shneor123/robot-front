@@ -23,8 +23,6 @@ export const ReviewForm = ({ isOpen, onAddReview, onToggleModal }) => {
         onAddReview(review)
         setReview({ title: '', rate: 1, content: '' })
     }
-
-
     return (
         <section className={`review-form ${isOpen ? 'open' : 'close'}`}>
             <span className='modal-close-btn' onClick={onToggleModal}><IoMdClose size={25} /></span>
@@ -51,8 +49,9 @@ export const ReviewForm = ({ isOpen, onAddReview, onToggleModal }) => {
                             name="content"
                             value={review.content}
                             onChange={handleChange}
-                            placeholder="Review content (Optional)" >
-                        </textarea>
+                            placeholder="Review content (Optional)"
+                            required
+                        ></textarea>
                     </li>
                 </ul>
                 <button className='main-btn'>Add</button>

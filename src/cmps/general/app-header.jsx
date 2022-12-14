@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import logoImg from '../../assets/img/logo.png'
@@ -19,8 +19,14 @@ export const AppHeader = () => {
         navigate('/login')
     }
 
+    const handleKeyEvent = (ev) => {
+        if (ev) ev.preventDefault()
+        if (ev.key === "Escape") setIsMenuOpen(false)
+    }
     return (
-        <section className="app-header-secend">
+        <section className="app-header-secend"
+            tabIndex={"0"}
+            onKeyDown={handleKeyEvent}>
             <section className="app-header">
                 <main className="main-layout">
                     <Link to={"/"} className="logo">
