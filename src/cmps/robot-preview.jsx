@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { utilService } from '../services/util.service'
+
 import outOfStockImg from '../assets/img/out-of-stock.png'
 import defaultRobotImg from '../assets/img/default-robot.png'
 
@@ -10,7 +11,6 @@ export const RobotPreview = ({ robot, onAddToCart }) => {
         <>
             <Link to={`/robots/${robot._id}`} className="robot-preview" >
                 <div className='robo_row'>
-                    {/* <h2 className='name'>{robot.name.length > 10 ? robot.name.substring(0, 10) + '...' : robot.name}</h2> */}
                     <h2 className='name'>{robot.name}</h2>
                     <p className='price'>${utilService.numberWithCommas(robot.price)}</p>
                 </div>

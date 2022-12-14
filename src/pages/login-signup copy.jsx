@@ -48,10 +48,7 @@ export const LoginSignup = () => {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
         dispatch(login(credentials))
-        setTimeout(() => {
-            navigate("/robots")
-            clearState()
-        }, 500);
+        navigate("/robots")
     }
 
 

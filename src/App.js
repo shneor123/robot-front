@@ -22,13 +22,16 @@ function App() {
         <Routes>
           <Route element={<LoginSignUp />} path={'/login'} />
           <Route element={<LoginSignUp />} path={'/signup'} />
+
           <Route element={<RobotApp />} path={'/robots'} />
           <Route element={<RobotDetails />} path={'/robots/:id'} />
           <Route element={<RobotEdit />} path={'/robots/edit/:id'} />
           <Route element={<RobotEdit />} path={'/robots/edit/'} />
+
           <Route element={<UserProfile />} path={'/users/:id'} />
           <Route element={<UserEdit />} path={'/users/edit/:id'} />
           <Route element={<UserApp />} path={'/users'} />
+          
           <Route element={<Dashboard />} path={'/dashboard'} />
           <Route element={<HomePage />} path={'/'} />
           <Route element={<AboutPage />} path={'/about'} />

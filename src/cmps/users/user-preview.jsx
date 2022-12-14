@@ -35,7 +35,10 @@ export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionMod
                 <button className='sub-btn center-text' onClick={() => onDeleteClick(user._id, user.fullname)}>Delete</button>
             </section>
             <p className='modified-member'><strong>Member Since: </strong>{utilService.dueDateFormat(user.createdAt)}</p>
-            <p className='modified-member'><strong>Last Modified: </strong>{utilService.dueDateFormat(user.lastModified)}</p>
+            {user.lastModified ?
+                <p className='modified-member'><strong>Last Modified: </strong>{utilService.dueDateFormat(user.lastModified)}</p>
+                : <p className='modified-member' ><strong>Last Modified:</strong> {"-no-conect-acoount"}</p>
+            }
         </li>
     )
 }

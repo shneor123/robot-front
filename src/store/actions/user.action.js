@@ -4,8 +4,8 @@ import { userService } from '../../services/user.service'
 export function loadUsers() {
     return async dispatch => {
         try {
-            const users = await userService.query()
-            dispatch({ type: 'SET_USERS', users: users })
+            const users = await userService.getUsers()
+            dispatch({ type: 'SET_USERS', users })
         } catch (err) {
             console.error('Error on loading users', err)
             dispatch(({ type: 'SET_USER_MSG', msg: { type: 'danger', msg: 'Failed loading users' } }))
@@ -37,7 +37,6 @@ export function signup(credentials, isMakeHttpRequest = true, isRemember = false
         try {
             if (isMakeHttpRequest) user = await userService.signup(credentials, isRemember)
             else user = credentials
-
             dispatch({ type: 'SET_USER', user })
             return user
         } catch (err) {

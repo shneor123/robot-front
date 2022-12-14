@@ -5,51 +5,18 @@ const USER_BASE_PATH = 'user/'
 const STORAGE_KEY_LOGIN = 'robots_loggedInUser'
 
 export const userService = {
-    getLoggedInUser,
+    getUsers,
+    getById,
+    update,
+    remove,
     login,
     signup,
     logout,
-    query,
-    getById,
-    update,
-    remove
+    getLoggedInUser,
+
 }
 
-function getLoggedInUser() {
-    let user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGIN))
-    if (!user) {
-        user = JSON.parse(localStorage.getItem(STORAGE_KEY_LOGIN)) //in case the user checked 'remember me'
-        if (user) _rememberUser(user, false)
-    }
-    return user
-}
-
-async function login(credentials, isRemember) {
-    try {
-        const user = await httpService.post(AUTH_BASE_PATH + 'login', credentials)
-        // socketService.login(user._id)
-        if (user) _rememberUser(user, isRemember)
-        return user
-    } catch (err) {
-        throw err
-    }
-}
-
-async function signup(userInfo, isRemember) {
-    const user = await httpService.post(AUTH_BASE_PATH + 'signup', userInfo)
-    // socketService.signup(user._id)
-    _rememberUser(user, isRemember)
-    return user
-}
-
-async function logout() {
-    localStorage.removeItem(STORAGE_KEY_LOGIN)
-    sessionStorage.removeItem(STORAGE_KEY_LOGIN)
-    // socketService.logout()
-    return await httpService.post(AUTH_BASE_PATH + 'logout')
-}
-
-async function query() {
+async function getUsers() {
     const users = await httpService.get(USER_BASE_PATH)
     return users
 }
@@ -76,6 +43,37 @@ async function update(user, isSetAdmin) {
 
 async function remove(userId) {
     return await httpService.delete(USER_BASE_PATH + userId)
+}
+
+async function login(credentials, isRemember) {
+    try {
+        const user = await httpService.post(AUTH_BASE_PATH + 'login', credentials)
+        if (user) _rememberUser(user, isRemember)
+        return user
+    } catch (err) {
+        throw err
+    }
+}
+
+async function signup(userInfo, isRemember) {
+    const user = await httpService.post(AUTH_BASE_PATH + 'signup', userInfo)
+    _rememberUser(user, isRemember)
+    return user
+}
+
+async function logout() {
+    localStorage.removeItem(STORAGE_KEY_LOGIN)
+    sessionStorage.removeItem(STORAGE_KEY_LOGIN)
+    return await httpService.post(AUTH_BASE_PATH + 'logout')
+}
+
+function getLoggedInUser() {
+    let user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGIN))
+    if (!user) {
+        user = JSON.parse(localStorage.getItem(STORAGE_KEY_LOGIN)) //in case the user checked 'remember me'
+        if (user) _rememberUser(user, false)
+    }
+    return user
 }
 
 function _rememberUser(user, isRemember) {

@@ -62,7 +62,6 @@ export const RobotDetails = () => {
     if (!robot) return <Loader />
     const stockDesc = robot.inStock ? '' : 'Not '
     const color = robot.inStock ? 'green' : 'red'
-
     return (
         <section className="details-page-container">
             <Link className='back-btn' to={'/robots'}> Back </Link>
