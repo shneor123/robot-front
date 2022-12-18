@@ -11,9 +11,7 @@ export const ReviewPreview = ({ review, isShowWriter, isShowRobot, onRemoveRevie
     }
 
     const getStars = (num) => {
-        const str = num === 0 ?
-            '-no rate specified-' : String.fromCharCode(9733).repeat(num)
-        return str
+        return '★'.repeat(num)
     }
     
     return (

@@ -9,7 +9,6 @@ export const SOCKET_EMIT_USER_IS_TYPING = 'chat-fire-typing'
 export const SOCKET_EVENT_USER_COUNT = 'chat-subscribe-user-count'
 export const SOCKET_EMIT_USER_COUNT = 'chat-fire-user-count'
 
-
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 

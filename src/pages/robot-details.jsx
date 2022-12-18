@@ -16,6 +16,10 @@ import { loadReviews, removeReview, saveReview } from '../store/actions/review.a
 import defaultRobotImg from '../assets/img/default-robot.png'
 import outOfStockImg from '../assets/img/out-of-stock.png'
 
+
+import { AiFillWechat } from 'react-icons/ai'
+
+
 export const RobotDetails = () => {
     const params = useParams()
     const dispatch = useDispatch()
@@ -59,6 +63,12 @@ export const RobotDetails = () => {
         setIsReviewFormOpen(!isReviewFormOpen)
     }
 
+    const [toggleShow, setToggleShow] = useState(false)
+
+    const onToogleShow = () => {
+        setToggleShow(!toggleShow)
+    }
+
     if (!robot) return <Loader />
     const stockDesc = robot.inStock ? '' : 'Not '
     const color = robot.inStock ? 'green' : 'red'
@@ -83,6 +93,7 @@ export const RobotDetails = () => {
                     <img className='img' src={robot.img || defaultRobotImg} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} />
                     {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
                     <span className='data'><strong>Uploaded site: </strong>{utilService.dateToString(robot.createdAt)}</span>
+
                     {user && <div className='buttons-container'>
                         <button className='review-form-btn' onClick={() => setIsReviewFormOpen(!isReviewFormOpen)}>{isReviewFormOpen ? 'Close Form' : 'Add Review'}</button>
                         {(user.isAdmin || user._id === robot.owner._id) && <>
@@ -98,7 +109,7 @@ export const RobotDetails = () => {
                     setModalFunc={setIsQuestionModalOpen}
                 />}
             </div>
-            <ChatRoom robot={robot} loggedInUser={user} chat={robot.chat} chatRoomId={robot._id} chatTitle={robot.name} />
+            <ChatRoom loggedInUser={user} chat={robot.chat} chatRoomId={robot._id} chatTitle={robot.name} />
         </section>
     )
 }
