@@ -36,7 +36,7 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                         <img src={item.img || defaultRobotImg} alt={item.name} />
                         <Link to={`/robots/${item._id}`}>
                             <div className="col-name col-2">{item.name}</div>
-                        </Link> |
+                        </Link>
                         <div className="col-2">
                             <AddRemoveCart item={item} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} />
                         </div>
