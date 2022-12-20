@@ -64,30 +64,35 @@
     }
 
     .btn-svg {
-        z-index: 100;
+        z-index: 3;
         font-size: 1.4em;
         border-radius: 0.5rem;
-        border: 0.1rem #404040 solid;
-        background-color: #71727a;
-        cursor: pointer;
+        border: 0.1rem solid #404040;
+        border: none;
         position: absolute;
-        top: 64px;
-        right: 0;
-        padding: 7px;
+        top: 3.2em;
+        left: 6em;
+        padding: 1px;
         width: 100%;
         width: 50px;
+        cursor: pointer;
+
+        &:hover {
+            background: linear-gradient(to bottom, #476e9e 5%, #0d6efd 100%);
+        }
 
         .shop-icon {
+            display: block;
             font-size: 0.6em;
             background-color: rgb(204, 196, 196);
             border-radius: 50%;
-            height: 25px;
-            width: 25px;
+            height: 20px;
+            width: 20px;
             border: 1px solid black;
-            padding: 4px;
+            padding: 3px;
             position: absolute;
-            top: 25px;
-            left: -5px;
+            top: 1.3em;
+            right: -5px;
         }
     }
 }

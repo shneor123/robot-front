@@ -30,7 +30,11 @@
             }
 
             .robot-preview {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 width: 80%;
+                height: 75%;
             }
         }
 
@@ -80,7 +84,7 @@
 
 @media screen and (min-width: 1000px) {
     .dashboard {
-        position: fixed;
+        // position: fixed;
         justify-content: center;
         align-items: center;
         background-color: #e9d8fd;

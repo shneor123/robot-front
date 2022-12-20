@@ -1,7 +1,7 @@
 import React from 'react'
 import { RobotPreview } from './robot-preview'
 
-export const RobotList = ({ robots, onAddToCart, onRemoveCart, cartItems }) => {
+export const RobotList = ({ robots, onAddToCart, onRemoveCart }) => {
     return (
         <ul className="clean-list robot-list ">
             {robots.map(robot =>
@@ -10,7 +10,6 @@ export const RobotList = ({ robots, onAddToCart, onRemoveCart, cartItems }) => {
                         robot={robot}
                         addToCart={onAddToCart}
                         removeCart={onRemoveCart}
-                        cartItems={cartItems}
                     />
                 </li>)}
         </ul>

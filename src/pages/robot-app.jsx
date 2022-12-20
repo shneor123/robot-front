@@ -13,13 +13,12 @@ import { socketService } from '../services/socket.service';
 import { useParams } from 'react-router-dom';
 import { addToCart, checkout, removeFromCart } from '../store/actions/cart.actions';
 import { CartApp } from './cart-app';
-import { AddRemoveCart } from '../cmps/add-remove-cart';
 
 export const RobotApp = () => {
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
     const { user } = useSelector(storeState => storeState.userModule)
     const [toggleShow, setToggleShow] = useState(false)
-    const [isOpenCard, setIsOpenCard] = useState(true)
+    const [isOpenCard, setIsOpenCard] = useState(false)
     const [cartItems, setCartItems] = useState([])
     const dispatch = useDispatch()
     const params = useParams()
@@ -86,11 +85,7 @@ export const RobotApp = () => {
                 </div>}
             </div>
             <section className="main-layout ">
-                <button onClick={onToggleCard} className='btn-svg'>
-                    <FaShoppingCart />
-                    <span className='shop-icon' style={{ display: 'block' }}>{cartItems.length}</span>
-                </button>
-
+                <button onClick={onToggleCard} className='btn-svg'> <FaShoppingCart /><span className='shop-icon'>{cartItems.length}</span></button>
                 {isOpenCard && <div className='cart-app slide-in-right'>
                     <CartApp
                         cartItems={cartItems}
@@ -99,10 +94,9 @@ export const RobotApp = () => {
                         onToggleCard={onToggleCard}
                         onClearCart={onClearCart}
                     />
-                </div>
-                }
+                </div>}
             </section>
-            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} cartItems={cartItems} />}
+            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} />}
         </section >
     )
 }

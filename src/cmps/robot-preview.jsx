@@ -11,7 +11,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Typography from "@mui/material/Typography";
 
-export const RobotPreview = ({ robot, addToCart, removeCart, cartItems }) => {
+export const RobotPreview = ({ robot, addToCart, removeCart }) => {
     const { pathname } = useLocation()
     return (
         <section className='robot-preview'>
@@ -24,38 +24,13 @@ export const RobotPreview = ({ robot, addToCart, removeCart, cartItems }) => {
                 {pathname !== '/dashboard' && <p className='created'><strong>created: </strong>{utilService.dateToString(robot.createdAt)}</p>}
                 {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
             </Link>
-            {/* < button className='sp_add_cart' onClick={() => addToCart(robot)}>+ Add to Cart</button > */}
-                {/* {robot && cartItems.map((item, idx) => */}
-                    {/* <div key={idx}> */}
-            <section className='add-to-cart'>
-
-
-                        <ButtonGroup
-                            size="small"
-                            variant="outlined"
-                            aria-label="outlined button group"
-                        >
-                            <Button onClick={() => removeCart(robot)}>
-                                <RemoveIcon fontSize="small" />
-                            </Button>
-
-                            <Button disabled sx={{ p: 0, width: "auto" }}>
-                                <Typography
-                                    sx={{ color: "#757575", fontSize: 14, fontWeight: "small", m: 0 }}
-                                    variant="caption"
-                                    display="block"
-                                >
-                                    {/* {item.qty} */}
-                                </Typography>
-                            </Button>
-
-                            <Button onClick={() => addToCart(robot)}>
-                                <AddIcon fontSize="small" />
-                            </Button>
-                        </ButtonGroup>
-                    {/* </div> */}
-                {/* // )} */}
-            </section>
+            {pathname === '/robots' &&
+                <ButtonGroup size="small" variant="outlined" aria-label="outlined button group" className="add-to-cart">
+                    <Button onClick={() => removeCart(robot)}> <RemoveIcon fontSize="small" /> </Button>
+                    <Button disabled sx={{ p: 0 }}> <Typography /> </Button>
+                    <Button onClick={() => addToCart(robot)}> <AddIcon fontSize="small" /> </Button>
+                </ButtonGroup>
+            }
         </section>
     )
 }

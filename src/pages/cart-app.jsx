@@ -6,9 +6,12 @@ import { IoMdClose } from 'react-icons/io';
 import { AddRemoveCart } from '../cmps/add-remove-cart';
 import { checkout } from '../store/actions/cart.actions';
 import defaultRobotImg from '../assets/img/blue-robot.png'
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, onClearCart }) {
     const dispatch = useDispatch()
+    const { user } = useSelector(stateModule => stateModule.userModule)
 
     const onCheckout = () => {
         dispatch(checkout())
@@ -31,14 +34,12 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                 {cartItems && cartItems.map((item, idx) => (
                     <div key={idx} className="row">
                         <img src={item.img || defaultRobotImg} alt={item.name} />
-                        <div className="col-name col-2">{item.name}</div>
+                        <Link to={`/robots/${item._id}`}>
+                            <div className="col-name col-2">{item.name}</div>
+                        </Link> |
                         <div className="col-2">
-                             <AddRemoveCart
-                             item={item}
-                             onAddToCart={onAddToCart}
-                             onRemoveCart={onRemoveCart}
-                             />
-                             </div>
+                            <AddRemoveCart item={item} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} />
+                        </div>
                         <div className="col-2 text-right"> <strong>{item.qty}</strong> x <strong>${item.price}</strong></div>
                     </div>
                 ))}

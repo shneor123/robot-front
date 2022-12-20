@@ -71,7 +71,7 @@
         }
     }
 
-   .add-to-cart {
+    .add-to-cart {
         z-index: 3;
         position: absolute;
         bottom: -2rem;
@@ -79,21 +79,22 @@
         color: #fff;
         cursor: pointer;
     }
-    // .sp_add_cart {
-    //     z-index: 3;
-    //     position: absolute;
-    //     bottom: -2rem;
-    //     right: 2em;
-    //     color: #fff;
-    //     cursor: pointer;
-    //     background-color: #0d6efd;
-    //     border-color: #0d6efd;
-    //     border-radius: 5px;
-    //     padding: 6px;
-    //     width: 80%;
 
-    //     &:hover {
-    //         background: linear-gradient(to bottom, #476e9e 5%, #0d6efd 100%);
-    //     }
-    // }
+    .add-cart {
+        z-index: 3;
+        position: absolute;
+        bottom: -2rem;
+        right: 2em;
+        color: #fff;
+        cursor: pointer;
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        border-radius: 5px;
+        padding: 6px;
+        width: 80%;
+
+        &:hover {
+            background: linear-gradient(to bottom, #476e9e 5%, #0d6efd 100%);
+        }
+    }
 }
