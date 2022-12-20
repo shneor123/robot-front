@@ -3,29 +3,22 @@ const initialState = {
     cart: [],
 }
 export function cartReducer(state = initialState, action) {
-    var newState = state
     var cart
     switch (action.type) {
         case 'ADD_TO_CART':
-            newState = { ...state, cart: [...state.cart, action.shop] }
-            break
+            return { ...state, cart: [...state.cart, action.shop] }
 
         case 'REMOVE_FROM_CART':
-            cart = state.cart.filter(shop => shop._id !== action.shopId)
-            newState = { ...state, cart }
-            break
+            cart = state.cart.filter(shop => shop !== action.shopId)
+            return { ...state, cart }
 
         case 'CLEAR_CART':
-            newState = { ...state, cart: [] }
-            break
+            return { ...state, cart: [] }
 
         default:
+            return state
     }
     // For debug:
-    window.shopState = newState
-    // console.log('Prev State:', state)
-    // console.log('Action:', action)
-    // console.log('New State:', newState)
-    return newState
+    // window.shopState = state
 
 }

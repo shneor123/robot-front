@@ -51,7 +51,8 @@ export const RobotApp = () => {
     const onAddToCart = (product) => {
         const exist = cartItems.find((x) => x._id === product._id)
         if (exist) {
-            dispatch(addToCart(setCartItems(cartItems.map((x) => x._id === product._id ? { ...exist, qty: exist.qty + 1 } : x))))
+            const addInCart = setCartItems(cartItems.map((x) => x._id === product._id ? { ...exist, qty: exist.qty + 1 } : x))
+            dispatch(addToCart(addInCart))
         } else {
             dispatch(addToCart(setCartItems([...cartItems, { ...product, qty: 1 }])))
         }
