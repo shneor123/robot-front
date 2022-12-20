@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { logout } from '../../store/actions/user.action';
@@ -12,6 +12,7 @@ export const AppHeader = () => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    let menuRef = useRef()
 
     const onUserLogout = () => {
         dispatch(logout())
@@ -19,13 +20,21 @@ export const AppHeader = () => {
         navigate('/login')
     }
 
-    const handleKeyEvent = (ev) => {
-        ev.preventDefault()
-        setIsMenuOpen()
+    useEffect(() => {
+        document.addEventListener("mousedown", eventListeners)
+        return () => {
+            document.removeEventListener('mousedown', eventListeners)
+        }
+    }, [])
+
+    const eventListeners = (ev) => {
+        if (!menuRef.current?.contains(ev.target)) {
+            setIsMenuOpen(false)
+        }
     }
 
     return (
-        <section className="app-header-secend" tabIndex={"0"} onKeyDown={handleKeyEvent}>
+        <section className="app-header-secend">
             <section className="app-header">
                 <main className="main-layout">
                     <Link to={"/"} className="logo">

@@ -18,7 +18,7 @@ export const AddRemoveCart = ({ item, onRemoveCart, onAddToCart }) => {
 
             <Button disabled sx={{ p: 0, width: "auto" }}>
                 <Typography
-                    sx={{ color: "#757575", fontSize: 14, fontWeight: "small", m: 0 }}
+                    sx={{ color: "#757575", fontSize: 14, fontWeight: "small", m: 0}}
                     variant="caption"
                     display="block"
                 >

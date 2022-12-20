@@ -22,7 +22,7 @@ export const RobotApp = () => {
     const [cartItems, setCartItems] = useState([])
     const dispatch = useDispatch()
     const params = useParams()
-
+    
     useEffect(() => {
         onLoadRobots()
         setSocket()
@@ -71,7 +71,6 @@ export const RobotApp = () => {
     const onToggleCard = () => {
         setIsOpenCard(!isOpenCard)
     }
-
 
     if (!robots) return <Loader />
     return (

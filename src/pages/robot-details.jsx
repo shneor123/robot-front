@@ -63,12 +63,6 @@ export const RobotDetails = () => {
         setIsReviewFormOpen(!isReviewFormOpen)
     }
 
-    const [toggleShow, setToggleShow] = useState(false)
-
-    const onToogleShow = () => {
-        setToggleShow(!toggleShow)
-    }
-
     if (!robot) return <Loader />
     const stockDesc = robot.inStock ? '' : 'Not '
     const color = robot.inStock ? 'green' : 'red'
