@@ -30,7 +30,6 @@ export const UserProfile = () => {
             const user = await userService.getById(params.id)
             setUser(user)
             if (!user) navigate('/robots')
-            // dispatch(loadRobots({ owner: { _id: user._id }, pageIdx: 0, numOfPages: 0 })) //FIX -- make eerr white back nedd fix
             dispatch(loadRobots())
 
         })()

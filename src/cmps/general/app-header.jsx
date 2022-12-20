@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
-import logoImg from '../../assets/img/logo.png'
 import { logout } from '../../store/actions/user.action';
 import { UserImg } from './user-img';
+import logoImg from '../../assets/img/logo.png'
 
 export const AppHeader = () => {
     const { user } = useSelector(stateModule => stateModule.userModule)
@@ -20,13 +20,12 @@ export const AppHeader = () => {
     }
 
     const handleKeyEvent = (ev) => {
-        if (ev) ev.preventDefault()
-        if (ev.key === "Escape") setIsMenuOpen(false)
+        ev.preventDefault()
+        setIsMenuOpen()
     }
+
     return (
-        <section className="app-header-secend"
-            tabIndex={"0"}
-            onKeyDown={handleKeyEvent}>
+        <section className="app-header-secend" tabIndex={"0"} onKeyDown={handleKeyEvent}>
             <section className="app-header">
                 <main className="main-layout">
                     <Link to={"/"} className="logo">
@@ -73,20 +72,3 @@ export const AppHeader = () => {
         </section >
     )
 }
-
-
-// const handleKeyEvent = (e) => {
-//     if (e.key === "Escape") navigate(-1);
-//   };
-
-//   const onSaveTask = (ev = null) => {
-//     if (ev) ev.preventDefault();
-//     task.title = fields.title
-//     dispatch(saveTask(task, boardId, groupId));
-//   };
-
-//   if (task) {
-//     return (
-//       <section
-        // tabIndex={"0"}
-        // onKeyDown={handleKeyEvent}

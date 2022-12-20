@@ -12,7 +12,7 @@ export const UserMsg = () => {
 
         timeoutId.current = setTimeout(() => {
             onCloseMsg()
-        }, 5000)
+        }, 3000)
 
         return () => {
             clearTimeout(timeoutId.current)

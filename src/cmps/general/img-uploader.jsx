@@ -4,12 +4,14 @@ import { uploadService } from '../../services/upload.service'
 export class ImgUploader extends Component {
   state = {
     imgUrl: null,
+    height: 500,
+    width: 500,
     isUploading: false
   }
   uploadImg = async (ev) => {
     this.setState({ isUploading: true })
-    const { secure_url } = await uploadService.uploadImg(ev)
-    this.setState({ isUploading: false, imgUrl: secure_url })
+    const { secure_url, height, width } = await uploadService.uploadImg(ev)
+    this.setState({ isUploading: false, imgUrl: secure_url, height, width })
     this.props.onUploaded && this.props.onUploaded(secure_url)
   }
   get uploadMsg() {
@@ -18,13 +20,14 @@ export class ImgUploader extends Component {
     return isUploading ? 'Uploading....' : 'Upload Image'
   }
   render() {
-    const { imgUrl } = this.state
+    const { imgUrl} = this.state
+    console.log("🚀 ~ file: img-uploader.jsx:24 ~ ImgUploader ~ render ~ imgUrl", imgUrl)
 
     return (
-      <div className='upload-pc-container flex align-center'>
-        {imgUrl && <img src={imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
-        <label htmlFor="upload-file-pc">{this.uploadMsg}</label>
-        <input type="file" onChange={this.uploadImg} accept="img/*" id="upload-file-pc" />
+      <div className="upload-preview"  >
+        {imgUrl && <img src={imgUrl} style={{maxWidth: '200px', float: 'right'}} />}
+        <label htmlFor="imgUpload">{ this.uploadMsg }</label>
+        <input type="file" onChange={ this.uploadImg } accept="img/*" id="imgUpload" />
       </div>
     )
   }

@@ -19,8 +19,6 @@ const uploadImg = async (ev) => {
     .catch(err => console.error(err))
 }
 
-
-
 export const uploadService = {
   uploadImg
 }

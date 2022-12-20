@@ -5,9 +5,11 @@ import { PageBar } from './page-bar'
 import { robotService } from '../services/robot.service'
 import { useFormRegister } from '../hooks/useFormRegister'
 
+
+
 export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
     const [register] = useFormRegister({ ...filterBy }, onSetFilterBy)
-    const [tempFilterBy] = useState({ ...filterBy })
+    const [tempFilterBy, setTempFilterBy] = useState({ ...filterBy })
 
     const [isSelectMenuOpen, setIsSelectMenuOpen] = useState(false)
     const [sortBy, setSortBy] = useState(null)
@@ -45,22 +47,20 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
                     <p className="sub-title">Labels</p>
                     <label htmlFor="filter-labels">Labels: </label>
                     <span onClick={() => setIsSelectMenuOpen(!isSelectMenuOpen)}>
-                        <input {...register('name', 'text')} value={tempFilterBy?.labels?.join(', ') || ''} disabled />
+                        <input {...register('name', 'text')} value={tempFilterBy?.labels} disabled />
                     </span>
                     {labels && isSelectMenuOpen &&
                         <select className="labels-select" {...register('labels', 'select')} id="filter-labels" size={labels.length} multiple>
                             {labels.map(label => <option key={label}>{label}</option>)}
                         </select>}
                 </div>
-
-                <p className="sub-title sort">Sort</p>
                 <div className='sort-container margin-between' onClick={onSortByChange}>
                     <label htmlFor="">Sort: </label>
                     <button type='button' className={`sub-btn ${sortBy === 'name' ? 'active' : ''}`} name='name' >Name</button>
                     <button type='button' className={`sub-btn ${sortBy === 'price' ? 'active' : ''}`} name='price' >Price</button>
                     <button type='button' className={`sub-btn ${sortBy === 'createdAt' ? 'active' : ''}`} name='createdAt' >Created Date</button>
                 </div>
-                
+
                 <p className="sub-title">Search</p>
                 <button className='main-btn' type="submit">Search</button>
             </form>

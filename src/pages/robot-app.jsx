@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AiOutlineSearch } from "react-icons/ai"
 import { IoMdClose } from "react-icons/io";
+import { FaShoppingCart } from "react-icons/fa";
 
 import { Loader } from '../cmps/general/loader'
 import { RobotFilter } from '../cmps/robot-filter'
@@ -10,11 +11,16 @@ import { RobotList } from '../cmps/robot-list'
 import { loadRobots } from '../store/actions/robot.action'
 import { socketService } from '../services/socket.service';
 import { useParams } from 'react-router-dom';
+import { addToCart, checkout, removeFromCart } from '../store/actions/cart.actions';
+import { CartApp } from './cart-app';
+import { AddRemoveCart } from '../cmps/add-remove-cart';
 
 export const RobotApp = () => {
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
     const { user } = useSelector(storeState => storeState.userModule)
     const [toggleShow, setToggleShow] = useState(false)
+    const [isOpenCard, setIsOpenCard] = useState(true)
+    const [cartItems, setCartItems] = useState([])
     const dispatch = useDispatch()
     const params = useParams()
 
@@ -43,6 +49,30 @@ export const RobotApp = () => {
         dispatch(loadRobots(currFilterBy))
     }
 
+    const onAddToCart = (product) => {
+        const exist = cartItems.find((x) => x._id === product._id)
+        if (exist) {
+            dispatch(addToCart(setCartItems(cartItems.map((x) => x._id === product._id ? { ...exist, qty: exist.qty + 1 } : x))))
+        } else {
+            dispatch(addToCart(setCartItems([...cartItems, { ...product, qty: 1 }])))
+        }
+    }
+    const onRemoveCart = (product) => {
+        const exist = cartItems.find((x) => x._id === product._id)
+        if (exist.qty === 1) {
+            dispatch(removeFromCart(setCartItems(cartItems.filter((x) => x._id !== product._id))))
+        } else {
+            dispatch(removeFromCart(setCartItems(cartItems.map((x) => x._id === product._id ? { ...exist, qty: exist.qty - 1 } : x))))
+        }
+    }
+    const onClearCart = (productToRemove) => {
+        dispatch(checkout(setCartItems(cartItems.filter(product => product._id === productToRemove))))
+    }
+    const onToggleCard = () => {
+        setIsOpenCard(!isOpenCard)
+    }
+
+
     if (!robots) return <Loader />
     return (
         <section className="robot-app main-layout ">
@@ -55,7 +85,24 @@ export const RobotApp = () => {
                     <RobotFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} user={user} />
                 </div>}
             </div>
-            {robots?.length > 0 && <RobotList robots={robots} />}
+            <section className="main-layout ">
+                <button onClick={onToggleCard} className='btn-svg'>
+                    <FaShoppingCart />
+                    <span className='shop-icon' style={{ display: 'block' }}>{cartItems.length}</span>
+                </button>
+
+                {isOpenCard && <div className='cart-app slide-in-right'>
+                    <CartApp
+                        cartItems={cartItems}
+                        onAddToCart={onAddToCart}
+                        onRemoveCart={onRemoveCart}
+                        onToggleCard={onToggleCard}
+                        onClearCart={onClearCart}
+                    />
+                </div>
+                }
+            </section>
+            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} cartItems={cartItems} />}
         </section >
     )
 }

@@ -96,7 +96,7 @@ async function getStatistics() {
 function getEmptyRobot() {
 	return {
 		name: '',
-		price: 0,
+		price: '',
 		labels: [],
 		inStock: false,
 		img: '',

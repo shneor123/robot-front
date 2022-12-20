@@ -14,7 +14,7 @@ export function removeFromCart(shopId) {
         })
     }
 }
-export function Checkout() {
+export function checkout() {
     return async (dispatch) => {
         try {
             dispatch({ type: 'CLEAR_CART' })

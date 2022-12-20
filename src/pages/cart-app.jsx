@@ -1,15 +1,17 @@
 import React from 'react';
 import Swal from 'sweetalert2'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { IoMdClose } from 'react-icons/io';
 
-import { Checkout } from '../store/actions/cart.actions';
+import { AddRemoveCart } from '../cmps/add-remove-cart';
+import { checkout } from '../store/actions/cart.actions';
 import defaultRobotImg from '../assets/img/blue-robot.png'
 
 export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, onClearCart }) {
     const dispatch = useDispatch()
 
-    const checkout = () => {
-        dispatch(Checkout())
+    const onCheckout = () => {
+        dispatch(checkout())
     }
     const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
     const taxPrice = itemsPrice * 0.17
@@ -18,6 +20,10 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
 
     return (
         <aside className="block col-1">
+            {cartItems.length > 0 && <button className="admin-clear-cart " onClick={onClearCart}>Clear Cart</button>}
+            <span style={{ top: '7px' }} onClick={onToggleCard} className="modal-close-btn">
+                <IoMdClose size={25} />
+            </span>
             <header style={{ marginTop: '30px' }} className="row"><h1>Small Shopping Cart</h1></header>
             <h2>Cart Items</h2>
             <div>
@@ -27,9 +33,12 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                         <img src={item.img || defaultRobotImg} alt={item.name} />
                         <div className="col-name col-2">{item.name}</div>
                         <div className="col-2">
-                            <button onClick={() => onRemoveCart(item)} className="remove"> - </button>{" "}
-                            <button onClick={() => onAddToCart(item)} className="add"> + </button>
-                        </div>
+                             <AddRemoveCart
+                             item={item}
+                             onAddToCart={onAddToCart}
+                             onRemoveCart={onRemoveCart}
+                             />
+                             </div>
                         <div className="col-2 text-right"> <strong>{item.qty}</strong> x <strong>${item.price}</strong></div>
                     </div>
                 ))}
@@ -55,9 +64,9 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                         </div>
                         <hr />
                         <div className="row" >
-                            <button onClick={() =>
+                            <button className='btn-cart' onClick={() =>
                                 setTimeout(() => {
-                                    checkout()
+                                    onCheckout()
                                     onClearCart()
                                     onToggleCard()
                                     Swal.fire({
