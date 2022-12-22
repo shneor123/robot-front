@@ -10,7 +10,7 @@ import { ReviewList } from '../reviews/review-list'
 
 import { userService } from '../../services/user.service'
 import { loadRobots } from '../../store/actions/robot.action'
-import { removeReview } from '../../store/actions/review.action'
+import { loadReviews, removeReview } from '../../store/actions/review.action'
 
 import editImg from '../../assets/img/edit-icon.png'
 import { Link } from 'react-router-dom'
@@ -26,12 +26,15 @@ export const UserProfile = () => {
     const params = useParams()
 
     useEffect(() => {
-        ; (async function () {
+        (async function () {
             const user = await userService.getById(params.id)
             setUser(user)
-            if (!user) navigate('/robots')
-            dispatch(loadRobots())
-
+            if (!user) {
+                navigate('/robots')
+                return
+            }
+            dispatch(loadReviews({ byUserId: user._id }))
+            dispatch(loadRobots({ owner: { _id: user._id }, pageIdx: 0, numOfPages: 0 }))
         })()
     }, [params.id])
 
