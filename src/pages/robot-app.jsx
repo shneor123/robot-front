@@ -21,27 +21,26 @@ export const RobotApp = () => {
     const [isOpenCard, setIsOpenCard] = useState(false)
     const [cartItems, setCartItems] = useState([])
     const dispatch = useDispatch()
-    const params = useParams()
-    
+
     useEffect(() => {
         onLoadRobots()
-        setSocket()
-        socketService.off('update-board')
-        socketService.on('update-board', async (boardFromSocket) => {
-            onLoadRobots(boardFromSocket._id)
-        })
+        // setSocket()
+        // socketService.off('update-board')
+        // socketService.on('update-board', async (boardFromSocket) => {
+        //     onLoadRobots(boardFromSocket._id)
+        // })
     }, [])
 
     const setSocket = () => {
         try {
-            socketService.emit('join-board', params._id);
+            socketService.emit('join-board');
         } catch (err) {
             console.log('Cannot load board', err)
         }
     }
 
     const onLoadRobots = () => {
-        dispatch(loadRobots(params._id))
+        dispatch(loadRobots())
     }
 
     const onSetFilterBy = (currFilterBy) => {
@@ -96,7 +95,7 @@ export const RobotApp = () => {
                     />
                 </div>}
             </section>
-            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} />}
+            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart}onLoadRobots={onLoadRobots} />}
         </section >
     )
 }

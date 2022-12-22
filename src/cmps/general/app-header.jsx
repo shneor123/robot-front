@@ -16,22 +16,22 @@ export const AppHeader = () => {
 
     const onUserLogout = () => {
         dispatch(logout())
-        setIsMenuOpen(false)
+        setIsMenuOpen(false) 
         navigate('/login')
     }
 
-    useEffect(() => {
-        document.addEventListener("mousedown", eventListeners)
-        return () => {
-            document.removeEventListener('mousedown', eventListeners)
-        }
-    }, [])
+    // useEffect(() => {
+    //     document.addEventListener("mousedown", eventListeners)
+    //     return () => {
+    //         document.removeEventListener('mousedown', eventListeners)
+    //     }
+    // }, [])
 
-    const eventListeners = (ev) => {
-        if (!menuRef.current?.contains(ev.target)) {
-            setIsMenuOpen(false)
-        }
-    }
+    // const eventListeners = (ev) => {
+    //     if (!menuRef.current?.contains(ev.target)) {
+    //         setIsMenuOpen(false)
+    //     }
+    // }
 
     return (
         <section className="app-header-secend">

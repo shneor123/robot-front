@@ -97,6 +97,21 @@
       }
     }
 
+    .log-cart {
+      margin-top: 1.5em;
+      padding: 0.5em 1em;
+      float: right;
+      color: $primary-clr-900;
+      border: 1px solid $primary-clr-900;
+      border-radius: 6em;
+      background-color: $primary-clr-100;
+
+      &:hover {
+        color: $primary-clr-100;
+        background-color: $primary-clr-500;
+      }
+    }
+
     .admin-clear-cart {
       font-size: 0.8rem;
       position: absolute;

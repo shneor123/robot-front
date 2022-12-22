@@ -65,7 +65,8 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                         </div>
                         <hr />
                         <div className="row" >
-                            <button className='btn-cart' onClick={() =>
+                            {!user && <Link to="/login" className="log-cart">Login To Buy</Link>}
+                            {user && <button className='btn-cart' onClick={() =>
                                 setTimeout(() => {
                                     onCheckout()
                                     onClearCart()
@@ -77,7 +78,7 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                                         timer: 1500,
                                     })
                                 }, 1000)
-                            }> Checkout </button>
+                            }> Checkout </button>}
                         </div>
                     </>
                 )}
