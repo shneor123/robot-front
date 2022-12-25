@@ -9,8 +9,6 @@ import { RobotFilter } from '../cmps/robot-filter'
 import { RobotList } from '../cmps/robot-list'
 
 import { loadRobots } from '../store/actions/robot.action'
-import { socketService } from '../services/socket.service';
-import { useParams } from 'react-router-dom';
 import { addToCart, checkout, removeFromCart } from '../store/actions/cart.actions';
 import { CartApp } from './cart-app';
 
@@ -24,20 +22,7 @@ export const RobotApp = () => {
 
     useEffect(() => {
         onLoadRobots()
-        // setSocket()
-        // socketService.off('update-board')
-        // socketService.on('update-board', async (boardFromSocket) => {
-        //     onLoadRobots(boardFromSocket._id)
-        // })
     }, [])
-
-    const setSocket = () => {
-        try {
-            socketService.emit('join-board');
-        } catch (err) {
-            console.log('Cannot load board', err)
-        }
-    }
 
     const onLoadRobots = () => {
         dispatch(loadRobots())
@@ -46,7 +31,6 @@ export const RobotApp = () => {
     const onSetFilterBy = (currFilterBy) => {
         dispatch(loadRobots(currFilterBy))
     }
-
     const onAddToCart = (product) => {
         const exist = cartItems.find((x) => x._id === product._id)
         if (exist) {
@@ -63,6 +47,9 @@ export const RobotApp = () => {
         } else {
             dispatch(removeFromCart(setCartItems(cartItems.map((x) => x._id === product._id ? { ...exist, qty: exist.qty - 1 } : x))))
         }
+    }
+    const onRemoveAllItemCart = (product) => {
+        dispatch(removeFromCart(setCartItems(cartItems.filter((x) => x._id !== product._id))))
     }
     const onClearCart = (productToRemove) => {
         dispatch(checkout(setCartItems(cartItems.filter(product => product._id === productToRemove))))
@@ -92,10 +79,11 @@ export const RobotApp = () => {
                         onRemoveCart={onRemoveCart}
                         onToggleCard={onToggleCard}
                         onClearCart={onClearCart}
+                        RemoveItem={onRemoveAllItemCart}
                     />
                 </div>}
             </section>
-            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart}onLoadRobots={onLoadRobots} />}
+            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} onLoadRobots={onLoadRobots} />}
         </section >
     )
 }

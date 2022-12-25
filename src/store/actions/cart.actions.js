@@ -14,6 +14,7 @@ export function removeFromCart(shopId) {
         })
     }
 }
+
 export function checkout() {
     return async (dispatch) => {
         try {

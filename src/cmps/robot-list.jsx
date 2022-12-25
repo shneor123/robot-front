@@ -1,7 +1,7 @@
 import React from 'react'
 import { RobotPreview } from './robot-preview'
 
-export const RobotList = ({ robots, onAddToCart, onRemoveCart,onLoadRobots }) => {
+export const RobotList = ({ robots, onAddToCart, onRemoveCart, onLoadRobots}) => {
     return (
         <ul className="clean-list robot-list ">
             {robots.map(robot =>

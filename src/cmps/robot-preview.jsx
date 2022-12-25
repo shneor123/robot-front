@@ -46,15 +46,13 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
                 <ButtonGroup size="small" variant="outlined" aria-label="outlined button group" className="add-to-cart">
                     <Button onClick={() => removeCart(robot)}> <RemoveIcon fontSize="small" /> </Button>
                     <Button disabled sx={{ p: 0 }}>
-
                         <Typography
                             sx={{ paddingLeft: 1, paddingRight: 1, color: "#757575", fontSize: 14, fontWeight: "small", m: 0 }}
                             variant="caption"
                             display="block"
                         >
-                            + Add a cart
+                            + Add In Cart
                         </Typography>
-
                     </Button>
                     <Button onClick={() => addToCart(robot)}> <AddIcon fontSize="small" /> </Button>
                 </ButtonGroup>

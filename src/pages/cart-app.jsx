@@ -8,10 +8,13 @@ import { checkout } from '../store/actions/cart.actions';
 import defaultRobotImg from '../assets/img/blue-robot.png'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, onClearCart }) {
-    const dispatch = useDispatch()
+
+export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, onClearCart, RemoveItem }) {
     const { user } = useSelector(stateModule => stateModule.userModule)
+    const dispatch = useDispatch()
 
     const onCheckout = () => {
         dispatch(checkout())
@@ -37,10 +40,13 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                         <Link to={`/robots/${item._id}`}>
                             <div className="col-name col-2">{item.name}</div>
                         </Link>
-                        <div className="col-2">
+                        <div className="col-3">
                             <AddRemoveCart item={item} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} />
                         </div>
                         <div className="col-2 text-right"> <strong>{item.qty}</strong> x <strong>${item.price}</strong></div>
+                        <IconButton aria-label="delete" sx={{ p: 0 }}>
+                            <DeleteIcon  onClick={() => RemoveItem(item)} />
+                        </IconButton>
                     </div>
                 ))}
                 {cartItems.length !== 0 && (

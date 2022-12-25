@@ -13,7 +13,6 @@ export const userService = {
     signup,
     logout,
     getLoggedInUser,
-
 }
 
 async function getUsers() {

@@ -29,10 +29,7 @@ export const UserProfile = () => {
         (async function () {
             const user = await userService.getById(params.id)
             setUser(user)
-            if (!user) {
-                navigate('/robots')
-                return
-            }
+            if (!user) navigate('/robots')
             dispatch(loadReviews({ byUserId: user._id }))
             dispatch(loadRobots({ owner: { _id: user._id }, pageIdx: 0, numOfPages: 0 }))
         })()

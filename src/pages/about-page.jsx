@@ -22,12 +22,12 @@ export const AboutPage = () => {
                     <p>We ship our products all over the world.</p>
                     <p>The company's stores are located in Israel.</p>
                 </div>
-                    <p className='p'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit a voluptatum aut dolores aperiam reiciendis tenetur, rem, natus architecto laboriosam distinctio quo iusto molestiae. Dicta ipsum ratione hic tempore doloribus!</p>
+                <p className='p'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit a voluptatum aut dolores aperiam reiciendis tenetur, rem, natus architecto laboriosam distinctio quo iusto molestiae. Dicta ipsum ratione hic tempore doloribus!</p>
                 {
                     <div className='visit-us-container'>
                         <h2>Our Place To Visit:</h2>
                         {markers.current.map(branch =>
-                            <h3 key={branch.lat}>
+                            <h3 title={branch.lat} key={branch.lat}>
                                 {branch.title}
                             </h3>
                         )}

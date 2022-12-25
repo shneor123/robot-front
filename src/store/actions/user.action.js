@@ -1,6 +1,5 @@
 import { userService } from '../../services/user.service'
 
-
 export function loadUsers() {
     return async dispatch => {
         try {
@@ -12,7 +11,6 @@ export function loadUsers() {
         }
     }
 }
-
 
 export function login(credentials, isMakeHttpRequest = true, isRemember = false) {
     return async (dispatch) => {
