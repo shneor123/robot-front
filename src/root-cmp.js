@@ -1,5 +1,5 @@
 import React from "react"
-import { HashRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import { AboutPage } from "./pages/about-page"
 import { HomePage } from "./pages/home-page"
@@ -31,7 +31,7 @@ function App() {
           <Route element={<UserProfile />} path={'/users/:id'} />
           <Route element={<UserEdit />} path={'/users/edit/:id'} />
           <Route element={<UserApp />} path={'/users'} />
-          
+
           <Route element={<Dashboard />} path={'/dashboard'} />
           <Route element={<HomePage />} path={'/'} />
           <Route element={<AboutPage />} path={'/about'} />

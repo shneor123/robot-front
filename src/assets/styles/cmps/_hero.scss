@@ -1,0 +1,118 @@
+.hero-2 {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: rem(220px);
+
+    .languages-wrapper {
+        background-color: #F7FBFF;
+        position: absolute;
+        top: 0;
+        display: flex;
+
+        button {
+            background-color: unset;
+            border: none;
+            width: rem(50px);
+        }
+
+        .languages {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+
+            li {
+                cursor: pointer;
+                width: 40px;
+                height: 20px;
+            }
+        }
+
+        &.rtl {
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+
+        &.ltr {
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        &.open.rtl,
+        &.open.ltr {
+            transform: translateX(0);
+        }
+
+        transition: all 0.5s ease;
+    }
+
+    @include for-mobile-layout() {
+        .languages-wrapper {
+            flex-direction: row-reverse;
+
+            &.rtl {
+                right: 0;
+                transform: translateX(112px);
+
+                button {
+                    border-right: 1px solid #83838355;
+                }
+            }
+
+            &.ltr {
+                transform: translateX(-112px);
+                left: 0;
+
+                button {
+                    border-left: 1px solid #83838355;
+                }
+            }
+        }
+    }
+
+    @include for-narrow-layout() {
+        overflow-x: hidden;
+
+        .languages-wrapper {
+            flex-direction: row;
+
+            &.rtl {
+                transform: translateX(-112px);
+                right: unset;
+                left: 0;
+                border-bottom-right-radius: 10px;
+                border-top-right-radius: 10px;
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+
+                button {
+                    border-left: 1px solid #83838355;
+                }
+            }
+
+            &.ltr {
+                transform: translateX(112px);
+                left: unset;
+                right: 0;
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 10px;
+                border-top-left-radius: 10px;
+
+                button {
+                    border-right: 1px solid #83838355;
+                }
+            }
+        }
+    }
+
+    @include for-narrow-layout {
+        .text-wrapper {
+
+            h1 {
+                font-size: rem(26px);
+            }
+        }
+    }
+}

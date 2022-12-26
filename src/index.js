@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 
 import App from './root-cmp';
 import './assets/styles/main.scss'
+import "./services/basic/i18n"
+
 import { store } from './store/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

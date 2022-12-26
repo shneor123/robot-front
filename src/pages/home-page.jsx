@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import { robotService } from '../services/robot.service'
 import defaultRobotImg from '../assets/img/blue-robot.png'
 import { useSelector } from 'react-redux'
+import { Hero } from '../hew/hero'
+
+import "/node_modules/flag-icons/css/flag-icons.min.css"
 
 
 export const HomePage = () => {
@@ -27,6 +30,7 @@ export const HomePage = () => {
     return (
         <section className="home-page main-layout">
             <section className='hero'>
+            <Hero/>
                 <div>
                     <h1>Robo Store</h1>
                     <h2>The best place to get your robot</h2>

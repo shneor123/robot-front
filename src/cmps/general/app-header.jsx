@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { logout } from '../../store/actions/user.action';
 import { UserImg } from './user-img';
 import logoImg from '../../assets/img/logo.png'
+import { useTranslation } from 'react-i18next';
 
 export const AppHeader = () => {
     const { user } = useSelector(stateModule => stateModule.userModule)
@@ -12,6 +13,7 @@ export const AppHeader = () => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    let menuRef = useRef()
 
     const onUserLogout = () => {
         dispatch(logout())
@@ -19,18 +21,28 @@ export const AppHeader = () => {
         navigate('/login')
     }
 
-    // useEffect(() => {
-    //     document.addEventListener("mousedown", eventListeners)
-    //     return () => {
-    //         document.removeEventListener('mousedown', eventListeners)
-    //     }
-    // }, [])
+    const linkList =
+        [
+            {
+                to: '/',
+                trans: 'header_home'
+            }, {
+                to: '/robots',
+                trans: 'header_robot'
+            }, {
+                to: '/users',
+                trans: 'header_users'
+            }, {
+                to: '/dashboard',
+                trans: 'header_dashboard'
+            }, {
+                to: '/about',
+                trans: 'header_about'
+            }
+        ]
 
-    // const eventListeners = (ev) => {
-    //     if (!menuRef.current?.contains(ev.target)) {
-    //         setIsMenuOpen(false)
-    //     }
-    // }
+    const [lang, setLang] = useState('he')
+    const { t: translate } = useTranslation()
 
     return (
         <section className="app-header-secend">
@@ -42,6 +54,12 @@ export const AppHeader = () => {
                     </Link>
                     <section className='header-navbar'>
                         <nav className='full-screen-nav'>
+
+                            {/* {linkList.map(link => {
+                                const { to, trans } = link
+                                return <a key={to} href={to}>{translate(trans)}</a>
+                            })} */}
+
                             <NavLink to="/"> Home </NavLink>
                             <NavLink to="/robots"> Robots </NavLink>
                             {user?.isAdmin && <NavLink to="/users"> Users </NavLink>}
@@ -81,3 +99,17 @@ export const AppHeader = () => {
         </section >
     )
 }
+
+
+// useEffect((ev) => {
+    // document.addEventListener("mousedown", eventListeners)
+    // return () => {
+    //     document.removeEventListener('mousedown', eventListeners)
+    // }
+// }, [])
+
+// const eventListeners = (ev) => {
+//     if (!menuRef.current?.contains(ev.target)) {
+//         setIsMenuOpen(false)
+//     }
+// }

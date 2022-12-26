@@ -71,7 +71,6 @@ export const RobotApp = () => {
                 </div>}
             </div>
             <div className={`screen ${toggleShow ? 'open' : ''}`} onClick={() => setToggleShow(!toggleShow)}></div>
-
             <section className="main-layout ">
                 <button onClick={onToggleCard} className='btn-svg'> <FaShoppingCart /><span className='shop-icon'>{cartItems.length}</span></button>
                 {isOpenCard && <div className='cart-app slide-in-right'>
