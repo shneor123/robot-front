@@ -1,4 +1,4 @@
-import { httpService } from './http.service'
+import { httpService } from './basic/http.service'
 
 const BASE_PATH = 'review'
 

@@ -97,3 +97,17 @@
         }
     }
 }
+
+
+.screen {
+    inset: 0;
+    background-color: unset;
+    position: fixed;
+    z-index: -10;
+    transition: background-color 0.5s ease;
+
+    &.open {
+        z-index: 5;
+        // background-color: darken($primary-clr-800, 70%);
+    }
+}

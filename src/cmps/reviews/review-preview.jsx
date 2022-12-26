@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { utilService } from '../../services/util.service'
+import { utilService } from '../../services/basic/util.service'
 import { QuestionModal } from '../general/question-modal'
 
 export const ReviewPreview = ({ review, isShowWriter, isShowRobot, onRemoveReview }) => {

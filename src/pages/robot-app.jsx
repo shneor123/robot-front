@@ -70,6 +70,8 @@ export const RobotApp = () => {
                     <RobotFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} user={user} />
                 </div>}
             </div>
+            <div className={`screen ${toggleShow ? 'open' : ''}`} onClick={() => setToggleShow(!toggleShow)}></div>
+
             <section className="main-layout ">
                 <button onClick={onToggleCard} className='btn-svg'> <FaShoppingCart /><span className='shop-icon'>{cartItems.length}</span></button>
                 {isOpenCard && <div className='cart-app slide-in-right'>
@@ -82,6 +84,7 @@ export const RobotApp = () => {
                         RemoveItem={onRemoveAllItemCart}
                     />
                 </div>}
+                <div className={`screen ${isOpenCard ? 'open' : ''}`} onClick={onToggleCard}></div>
             </section>
             {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} onLoadRobots={onLoadRobots} />}
         </section >

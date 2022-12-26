@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { utilService } from '../services/util.service'
+import { utilService } from '../services/basic/util.service'
 import {
     socketService, SOCKET_EMIT_SET_ROOM,
     SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_SEND_MSG,
     SOCKET_EVENT_USER_IS_TYPING, SOCKET_EMIT_USER_IS_TYPING,
     SOCKET_EVENT_USER_COUNT
-} from '../services/socket.service'
+} from '../services/basic/socket.service'
 
 
 import chatBW from '../assets/img/chat-black-and-white.png'

@@ -1,5 +1,5 @@
 import io from 'socket.io-client'
-import { userService } from './user.service'
+import { userService } from '../user.service'
 
 export const SOCKET_EMIT_SET_ROOM = 'chat-set-room'
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'

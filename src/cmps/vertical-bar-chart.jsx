@@ -10,7 +10,7 @@ import {
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { utilService } from '../services/util.service';
+import { utilService } from '../services/basic/util.service';
 
 ChartJS.register(
     CategoryScale,

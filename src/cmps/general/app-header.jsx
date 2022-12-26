@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { logout } from '../../store/actions/user.action';
@@ -12,11 +12,10 @@ export const AppHeader = () => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    let menuRef = useRef()
 
     const onUserLogout = () => {
         dispatch(logout())
-        setIsMenuOpen(false) 
+        setIsMenuOpen(false)
         navigate('/login')
     }
 
@@ -69,6 +68,7 @@ export const AppHeader = () => {
                                     </nav>
                                     {user && <button className="logout-btn" onClick={() => onUserLogout()}>Logout</button>}
                                 </main>}
+                            <div className={`screen ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}></div>
                         </div>
                     </section>
                 </main>

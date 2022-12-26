@@ -23,7 +23,6 @@ export const useForm = (initialFields, cb) => {
 
     useEffectUpdate(() => {
         if (cb) cb(fields)
-
     }, [fields])
 
     // if(cb) cb()

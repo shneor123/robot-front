@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { utilService } from '../services/util.service'
+import { utilService } from '../services/basic/util.service'
+import { socketService } from '../services/basic/socket.service'
 
 import outOfStockImg from '../assets/img/out-of-stock.png'
 import defaultRobotImg from '../assets/img/default-robot.png'
@@ -10,7 +11,6 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Typography from "@mui/material/Typography";
-import { socketService } from '../services/socket.service'
 
 export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => {
     const { pathname } = useLocation()

@@ -1,4 +1,4 @@
-import { httpService } from './http.service'
+import { httpService } from './basic/http.service'
 
 const AUTH_BASE_PATH = 'auth/'
 const USER_BASE_PATH = 'user/'

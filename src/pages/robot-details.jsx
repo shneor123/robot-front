@@ -8,7 +8,7 @@ import { ChatRoom } from '../cmps/chat-room'
 import { ReviewList } from '../cmps/reviews/review-list'
 import { ReviewForm } from '../cmps/reviews/review-form'
 
-import { utilService } from '../services/util.service'
+import { utilService } from '../services/basic/util.service'
 import { robotService } from '../services/robot.service'
 import { removeRobot } from '../store/actions/robot.action'
 import { loadReviews, removeReview, saveReview } from '../store/actions/review.action'
