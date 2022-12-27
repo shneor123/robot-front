@@ -133,22 +133,22 @@
             }
         }
     }
-}
 
 
-.toggle-darkmode-icon {
-    font-size: 22px;
-    line-height: 22px;
-    cursor: pointer;
-    position: absolute;
-    top: 68%;
+    .toggle-darkmode-icon {
+        font-size: 22px;
+        line-height: 22px;
+        cursor: pointer;
+        position: absolute;
+        top: 88%;
 
-    &.sun {
-        color: rgb(253, 226, 72);
-    }
+        &.sun {
+            color: rgb(253, 226, 72);
+        }
 
-    &.moon {
-        color: rgb(153, 153, 153);
+        &.moon {
+            color: rgb(153, 153, 153);
+        }
     }
 }
 
@@ -181,5 +181,10 @@
             }
         }
 
+        .toggle-darkmode-icon {
+            top: 75%;
+        }
+
     }
+
 }

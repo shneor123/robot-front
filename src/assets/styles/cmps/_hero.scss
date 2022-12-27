@@ -42,6 +42,10 @@
         &.open.rtl,
         &.open.ltr {
             transform: translateX(0);
+
+            button {
+                border-left: 1px solid #83838355;
+            }
         }
 
         transition: all 0.5s ease;
@@ -52,21 +56,11 @@
             flex-direction: row-reverse;
 
             &.rtl {
-                right: 0;
-                transform: translateX(112px);
-
-                button {
-                    border-right: 1px solid #83838355;
-                }
+                transform: translateX(-112px);
             }
 
             &.ltr {
                 transform: translateX(-112px);
-                left: 0;
-
-                button {
-                    border-left: 1px solid #83838355;
-                }
             }
         }
     }
@@ -81,10 +75,6 @@
                 transform: translateX(112px);
                 right: 0;
                 left: unset;
-
-                button {
-                    // border-left: 1px solid #83838355;
-                }
             }
 
             &.ltr {

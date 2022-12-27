@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { logout } from '../../store/actions/user.action';
-import { UserImg } from './user-img';
-import logoImg from '../../assets/img/logo.png'
 import { useTranslation } from 'react-i18next';
+
+import { logout } from '../../store/actions/user.action';
 import { DarkMode } from './dark-mode';
+import { UserImg } from './user-img';
+
+import logoImg from '../../assets/img/logo.png'
 
 export const AppHeader = () => {
     const { user } = useSelector(stateModule => stateModule.userModule)
@@ -56,7 +58,7 @@ export const AppHeader = () => {
                                         {user?.isAdmin && <NavLink to="/users" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>{t("header_users")}</NavLink>}
                                         <NavLink to="/dashboard" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>{t("header_dashboard")}</NavLink>
                                         <NavLink to="/about" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>{t("header_about")}</NavLink>
-                                        <DarkMode/>
+                                        <DarkMode />
                                     </nav>
                                     {user && <button className="logout-btn" onClick={() => onUserLogout()}>{t("header_logout")}</button>}
                                 </main>}
