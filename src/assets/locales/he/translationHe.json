@@ -6,16 +6,26 @@
     "header_about": " אודות",
     "header_logo": " חנות רובוטים",
     "header_robot_length": "רובוטים",
+
     "home_text": "המקום הטוב ביותר להשיג את הרובוט שלך",
     "login": "התחברות ",
     "home_start": "התחל בעילום שם ",
     "home_take_me": "קח אותי פנימה",
     
     "about_hadera": "חדרה",
+    "about_tel_aviv": "תל אביב",
+    "about_bat_yam": "בת ים",
+    "about_jerusalem": "ירושלים",
+    "about_kiryat_malachi": "קרית מלאכי",
+    "about_new_york": "ניו יורק",
     "about_haeder": "עלינו",
+    "about_haeder_is_a": "הוא",
+    "about_haeder_fake": "מְזוּיָף",
+    "about_haeder_retailer": "קמעונאי רובוטים",
+    "about_haeder_2": "המקום שלנו לבקר בו",
     "about_p_1": "אנו שולחים את המוצרים שלנו לכל רחבי העולם.",
     "about_p_2": "חנויות החברה ממוקמות בישראל.",
-    
+
     "robot_filter": "סינון",
     "filter_btn_name": "שם",
     "filter_btn_price":"מחיר",
@@ -24,6 +34,45 @@
     "filter_sort": "סוג",
     "filter_labels": "תוויות",
     "filter_p": "חיפוש כרטיסים, במלאי, תוויות ועוד",
-    "filter_btn": "הוסף רובוט חדש"
+    "filter_btn": "הוסף רובוט חדש",
+
+    "dashboard_on_site": "רובוטים באתר",
+    "dashboard_most": "רובו הכי יקר",
+    "dashboard_least": "רובוט הכי פחות יקר",
+    "dashboard_highest": "רובו עם הדירוג הגבוה ביותר",
+    "dashboard_title_price": "מחירים ממוצעים לתווית רובוט",
+    "dashboard_title_in_stock": "אחוז במלאי לכל תווית רובוט",
+
+    
+    "details_back": "חזור",
+    "details_reviews_header": "ביקורת",
+    "details_reviews_no": "אף אחד לא כתב ביקורת על הרובוט הזה.",
+    "details_reviews_be": "תהיה",
+    "details_reviews_create": "צור חשבון",
+    "details_reviews_and": "ותהיה",
+    "details_reviews_first": "הראשון ",
+    "details_label_stock": "במלאי ",
+    "details_label_stock_not": "לא ",
+    "details_label_uploaded": "הועלה לאתר ",
+    "details_btn_delete": "מחק",
+    "details_btn_edit": "ערוך",
+    "details_btn_close": "סגור",
+    "details_btn_add": "הוסף ביקורת",
+
+
+    "cart_header_1": "עגלת קניות קטנה",
+    "cart_header_2": "פריטי עגלה",
+    "cart_header_3": "עגלת הקניות ריקה",
+    "cart_details_price": "מחיר פריטים",
+    "cart_details_tax": "מחיר מס",
+    "cart_details_shipping": "מחיר משלוח",
+    "cart_details_total": "מחיר סופי",
+    "cart_details_clear": "נקה עגלה",
+    "cart_details_checkout": "סיים קניה",
+    "cart_details_thx": "תודה על הקנייה ב-Robot Fake Store",
+
+    "robo_prev":"נוצר",
+    "robo_prev_add":"הוסך לעגלה"
+
 
 }

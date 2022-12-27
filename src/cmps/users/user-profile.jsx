@@ -7,6 +7,7 @@ import { Loader } from '../general/loader'
 import { UserImg } from '../general/user-img'
 import { RobotList } from '../robot-list'
 import { ReviewList } from '../reviews/review-list'
+import { ScrollToTop } from '../general/scroll-to-top'
 
 import { userService } from '../../services/user.service'
 import { loadRobots } from '../../store/actions/robot.action'
@@ -66,6 +67,7 @@ export const UserProfile = () => {
                 {reviews?.length > 0 && <ReviewList reviews={reviews} isShowWriter={false} isShowRobot={true} onRemoveReview={onRemoveReview} />}
                 {!reviews?.length > 0 && <p>The user didn't write reviews yet.</p>}
             </section>
+            <ScrollToTop />
         </section>
     )
 }

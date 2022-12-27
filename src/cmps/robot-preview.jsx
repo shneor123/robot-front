@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Typography from "@mui/material/Typography";
+import { useTranslation } from 'react-i18next'
 
 export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => {
     const { pathname } = useLocation()
@@ -31,6 +32,7 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
         }
     }
 
+    const { t } = useTranslation()
     return (
         <section className='robot-preview'>
             <Link to={`/robots/${robot._id}`} className="info" >
@@ -39,7 +41,7 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
                     <p className='price'>${utilService.numberWithCommas(robot.price)}</p>
                 </div>
                 <div className='img'><img src={robot.img} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} /></div>
-                {pathname !== '/dashboard' && <p className='created'><strong>created: </strong>{utilService.dateToString(robot.createdAt)}</p>}
+                {pathname !== '/dashboard' && <p className='created'><strong>{t("robo_prev")}: </strong>{utilService.dateToString(robot.createdAt)}</p>}
                 {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
             </Link>
             {pathname === '/robots' &&
@@ -51,7 +53,7 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
                             variant="caption"
                             display="block"
                         >
-                            + Add In Cart
+                            + {t("robo_prev_add")}
                         </Typography>
                     </Button>
                     <Button onClick={() => addToCart(robot)}> <AddIcon fontSize="small" /> </Button>

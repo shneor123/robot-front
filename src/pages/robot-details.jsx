@@ -15,9 +15,7 @@ import { loadReviews, removeReview, saveReview } from '../store/actions/review.a
 
 import defaultRobotImg from '../assets/img/default-robot.png'
 import outOfStockImg from '../assets/img/out-of-stock.png'
-
-
-import { AiFillWechat } from 'react-icons/ai'
+import { useTranslation } from 'react-i18next'
 
 
 export const RobotDetails = () => {
@@ -63,38 +61,41 @@ export const RobotDetails = () => {
         setIsReviewFormOpen(!isReviewFormOpen)
     }
 
+    const { t: translate } = useTranslation()
+
+
     if (!robot) return <Loader />
-    const stockDesc = robot.inStock ? '' : 'Not '
+    const stockDesc = robot.inStock ? '' : translate("details_label_stock_not")
     const color = robot.inStock ? 'green' : 'red'
     return (
         <section className="details-page-container">
-            <Link className='back-btn' to={'/robots'}> Back </Link>
+            <Link className='back-btn' to={'/robots'}> {translate("details_back")} </Link>
             <div className="details-section">
 
                 <div className="reviews-container">
-                    <h1>Reviews:</h1>
+                    <h1>{translate("details_reviews_header")}:</h1>
                     <ReviewForm isOpen={isReviewFormOpen} onAddReview={onAddReview} onToggleModal={onToggleModal} />
                     {reviews?.length > 0 && <ReviewList reviews={reviews} isShowWriter={true} isShowRobot={false} onRemoveReview={onRemoveReview} />}
                     {!reviews?.length > 0 && !isReviewFormOpen &&
-                        <p>No one wrote a review for this robot. {user ? 'Be ' : <Link to="/signup" className='signup-link'>Create an account</Link>}{user ? '' : ' and be '}the first one!</p>
+                        <p>{translate("details_reviews_no")} {user ? translate("details_reviews_be") : <Link to="/signup" className='signup-link'>{translate("details_reviews_create")}</Link>} {user ? '' : translate("details_reviews_and")} {translate("details_reviews_first")}!</p>
                     }
-                            <div className={`screen ${isReviewFormOpen ? 'open' : ''}`} onClick={onToggleModal}></div>
-                    </div>
+                    <div className={`screen ${isReviewFormOpen ? 'open' : ''}`} onClick={onToggleModal}></div>
+                </div>
 
                 <div className="details-container">
-                    <p className="name"><strong>Name: </strong>{robot.name}</p>
-                    <p className='labels'><strong>Labels: </strong>{robot.labels.join(' ,')}</p>
-                    <p className="price"><strong>Price: </strong>US ${robot.price}</p>
-                    <h5 style={{ color }}>{stockDesc}in stock</h5>
+                    <p className="name"><strong>{translate("filter_btn_name")}: </strong>{robot.name}</p>
+                    <p className='labels'><strong>{translate("filter_labels")}: </strong>{robot.labels.join(' ,')}</p>
+                    <p className="price"><strong>{translate("filter_btn_price")}: </strong>US ${robot.price}</p>
+                    <h5 style={{ color }}>{stockDesc} {translate("details_label_stock")}</h5>
                     <img className='img' src={robot.img || defaultRobotImg} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} />
                     {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
-                    <span className='data'><strong>Uploaded site: </strong>{utilService.dateToString(robot.createdAt)}</span>
+                    <span className='data'><strong>{translate("details_label_uploaded")}: </strong>{utilService.dateToString(robot.createdAt)}</span>
 
                     {user && <div className='buttons-container'>
-                        <button className='review-form-btn' onClick={() => setIsReviewFormOpen(!isReviewFormOpen)}>{isReviewFormOpen ? 'Close Form' : 'Add Review'}</button>
+                        <button className='review-form-btn' onClick={() => setIsReviewFormOpen(!isReviewFormOpen)}>{isReviewFormOpen ?  translate("details_btn_close") : translate("details_btn_add")}</button>
                         {(user.isAdmin || user._id === robot.owner._id) && <>
-                            <Link to={`/robots/edit/${robot._id}`}>Edit</Link>
-                            <button onClick={() => setIsQuestionModalOpen(true)}>Delete</button>
+                            <Link to={`/robots/edit/${robot._id}`}>{translate("details_btn_edit")}</Link>
+                            <button onClick={() => setIsQuestionModalOpen(true)}>{translate("details_btn_delete")}</button>
                         </>}
                     </div>}
                 </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Swal from 'sweetalert2'
 import { useDispatch } from 'react-redux';
 import { IoMdClose } from 'react-icons/io';
@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useTranslation } from 'react-i18next';
 
 
 export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, onClearCart, RemoveItem }) {
@@ -24,16 +25,17 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
     const shippingPrice = itemsPrice > 600 ? 0 : 20
     const totalPrice = itemsPrice + taxPrice + shippingPrice
 
+    const { t } = useTranslation()
     return (
         <aside className="block col-1">
-            {cartItems.length > 0 && <button className="admin-clear-cart " onClick={onClearCart}>Clear Cart</button>}
+            {cartItems.length > 0 && <button className="admin-clear-cart " onClick={onClearCart}>{t("cart_details_clear")}</button>}
             <span style={{ top: '7px' }} onClick={onToggleCard} className="modal-close-btn">
                 <IoMdClose size={25} />
             </span>
-            <header style={{ marginTop: '30px' }} className="row"><h1>Small Shopping Cart</h1></header>
-            <h2>Cart Items</h2>
+            <header style={{ marginTop: '30px' }} className="row"><h1>{t("cart_header_1")}</h1></header>
+            <h2>{t("cart_header_2")}</h2>
             <div>
-                {cartItems.length === 0 && <div>Cart is empty</div>}
+                {cartItems.length === 0 && <div>{t("cart_header_3")}</div>}
                 {cartItems && cartItems.map((item, idx) => (
                     <div key={idx} className="row">
                         <img src={item.img || defaultRobotImg} alt={item.name} />
@@ -45,28 +47,29 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                         </div>
                         <div className="col-2 text-right"> <strong>{item.qty}</strong> x <strong>${item.price}</strong></div>
                         <IconButton aria-label="delete" sx={{ p: 0 }}>
-                            <DeleteIcon  onClick={() => RemoveItem(item)} />
+                            <DeleteIcon onClick={() => RemoveItem(item)} />
                         </IconButton>
                     </div>
                 ))}
+
                 {cartItems.length !== 0 && (
                     <>
                         <hr></hr>
                         <div className="row">
-                            <div className="col-2">Items Price</div>
+                            <div className="col-2">{t("cart_details_price")}</div>
                             <div className="col-1 text-right">${itemsPrice.toFixed(2)}</div>
                         </div>
                         <div className="row">
-                            <div className="col-2">Tax Price</div>
+                            <div className="col-2">{t("cart_details_tax")}</div>
                             <div className="col-1 text-right">${taxPrice.toFixed(2)}</div>
                         </div>
                         <div className="row">
-                            <div className="col-2">Shipping Price</div>
+                            <div className="col-2">{t("cart_details_shipping")}</div>
                             <div className="col-1 text-right">${shippingPrice.toFixed(2)}</div>
                         </div>
 
                         <div className="row">
-                            <div className="col-2"><strong>Total Price</strong></div>
+                            <div className="col-2"><strong>{t("cart_details_total")}</strong></div>
                             <div className="col-1 text-right"><strong>${totalPrice.toFixed(2)}</strong></div>
                         </div>
                         <hr />
@@ -79,12 +82,12 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                                     onToggleCard()
                                     Swal.fire({
                                         icon: 'success',
-                                        title: `Thanks for buying in Robot Fake Store $${totalPrice.toFixed(2)}`,
+                                        title: `${t("cart_details_thx")} $${totalPrice.toFixed(2)}`,
                                         showConfirmButton: false,
                                         timer: 1500,
                                     })
                                 }, 1000)
-                            }> Checkout </button>}
+                            }> {t("cart_details_checkout")} </button>}
                         </div>
                     </>
                 )}

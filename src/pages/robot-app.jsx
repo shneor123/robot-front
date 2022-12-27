@@ -12,6 +12,8 @@ import { loadRobots } from '../store/actions/robot.action'
 import { addToCart, checkout, removeFromCart } from '../store/actions/cart.actions';
 import { CartApp } from './cart-app';
 import { useTranslation } from 'react-i18next';
+import { ScrollToTop } from '../cmps/general/scroll-to-top';
+
 
 export const RobotApp = () => {
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
@@ -89,6 +91,8 @@ export const RobotApp = () => {
                 <div className={`screen ${isOpenCard ? 'open' : ''}`} onClick={onToggleCard}></div>
             </section>
             {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} onLoadRobots={onLoadRobots} />}
+
+            <ScrollToTop />
         </section >
     )
 }

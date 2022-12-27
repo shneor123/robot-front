@@ -7,27 +7,27 @@ export const AboutPage = () => {
     const { t: translate } = useTranslation()
 
     const markers = useRef([
-        { title: 'Tel-Aviv', lat: 32.109333, lng: 34.855499 },
+        { title: translate("about_tel_aviv"), lat: 32.109333, lng: 34.855499 },
         { title: translate("about_hadera"), lat: 32.434046, lng: 34.919652 },
-        { title: 'Bat Yam', lat: 32.013186, lng: 34.748019 },
-        { title: 'Jerusalem', lat: 31.771959, lng: 35.217018 },
-        { title: 'Kiryat Malachi', lat: 31.73, lng: 34.75, },
-        { title: 'New York', lat: 40.730610, lng: -73.935242 }
+        { title: translate("about_bat_yam"), lat: 32.013186, lng: 34.748019 },
+        { title: translate("about_jerusalem"), lat: 31.771959, lng: 35.217018 },
+        { title: translate("about_kiryat_malachi"), lat: 31.73, lng: 34.75, },
+        { title: translate("about_new_york"), lat: 40.730610, lng: -73.935242 }
     ])
 
+    
     return (
         <main className="about-page-container">
             <div className='about-container'>
                 <div>
                     <h2 className='page-header'>{translate('about_haeder')}</h2>
-                    <p><Link to='/robots'>{translate("header_logo")}</Link> is a <span className='fake'>fake</span> robot retailer.</p>
+                    <p><Link to='/robots'>{translate("header_logo")}</Link> {translate("about_haeder_is_a")} <span className='fake'>{translate("about_haeder_fake")}</span> {translate("about_haeder_retailer")}</p>
                     <p>{translate("about_p_1")}</p>
                     <p>{translate("about_p_2")}</p>
                 </div>
-                <p className='p'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit a voluptatum aut dolores aperiam reiciendis tenetur, rem, natus architecto laboriosam distinctio quo iusto molestiae. Dicta ipsum ratione hic tempore doloribus!</p>
                 {
                     <div className='visit-us-container'>
-                        <h2>Our Place To Visit:</h2>
+                        <h2>:{translate("about_haeder_2")}</h2>
                         {markers.current.map(branch =>
                             <h3 title={branch.lat} key={branch.lat}>
                                 {branch.title}
