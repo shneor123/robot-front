@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Swal from 'sweetalert2'
 import { useDispatch } from 'react-redux';
 import { IoMdClose } from 'react-icons/io';

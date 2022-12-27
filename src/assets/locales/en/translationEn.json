@@ -3,5 +3,25 @@
     "header_robot": "Robot",
     "header_users": "Users",
     "header_dashboard": "Dashboard",
-    "header_about": "About"
+    "header_about": "About",
+    "header_logo": "Robo Store ",
+    "header_robot_length": "Robots ",
+    "home_text": "The best place to get your robot ",
+    "login": "Login ",
+    "home_start": "Start Anonymously ",
+    "home_take_me": "Take me in ",
+    "robot_filter": "Filter cards",
+    "about_hadera": "Hadera",
+    "about_haeder": "About us",
+    "about_p_1": "We ship our products all over the world.",
+    "about_p_2": "The company's stores are located in Israel.",
+
+    "filter_btn_name": "Name",
+    "filter_btn_price":"Price",
+    "filter_btn_created": "Created Date",
+    "filter_btn_search": "Search",
+    "filter_sort": "Sort",
+    "filter_labels": "Labels",
+    "filter_p": "Search cards, In Stock, labels, and more.",
+    "filter_btn": "Add new Robot"
 }

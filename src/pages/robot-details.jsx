@@ -77,7 +77,9 @@ export const RobotDetails = () => {
                     {reviews?.length > 0 && <ReviewList reviews={reviews} isShowWriter={true} isShowRobot={false} onRemoveReview={onRemoveReview} />}
                     {!reviews?.length > 0 && !isReviewFormOpen &&
                         <p>No one wrote a review for this robot. {user ? 'Be ' : <Link to="/signup" className='signup-link'>Create an account</Link>}{user ? '' : ' and be '}the first one!</p>
-                    }</div>
+                    }
+                            <div className={`screen ${isReviewFormOpen ? 'open' : ''}`} onClick={onToggleModal}></div>
+                    </div>
 
                 <div className="details-container">
                     <p className="name"><strong>Name: </strong>{robot.name}</p>

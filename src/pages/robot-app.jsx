@@ -11,6 +11,7 @@ import { RobotList } from '../cmps/robot-list'
 import { loadRobots } from '../store/actions/robot.action'
 import { addToCart, checkout, removeFromCart } from '../store/actions/cart.actions';
 import { CartApp } from './cart-app';
+import { useTranslation } from 'react-i18next';
 
 export const RobotApp = () => {
     const { robots, filterBy } = useSelector(storeState => storeState.robotModule)
@@ -58,19 +59,21 @@ export const RobotApp = () => {
         setIsOpenCard(!isOpenCard)
     }
 
+    const { t: translate } = useTranslation()
+
     if (!robots) return <Loader />
     return (
         <section className="robot-app main-layout ">
+            {/* <div className={`screen ${toggleShow ? 'open' : ''}`} onClick={() => setToggleShow(!toggleShow)}></div> */}
             <div className={`${toggleShow ? "sidebar open" : "sidebar"}`}>
                 <button onClick={() => setToggleShow(!toggleShow)} className={`sidebar-toggle ${toggleShow ? "hide" : ""}`} >
-                    <AiOutlineSearch /> Filter cards
+                    <AiOutlineSearch /> {translate("robot_filter")}
                 </button>
                 {toggleShow && <div className='menu-content-wrapper'>
                     <span onClick={() => setToggleShow(!toggleShow)} className="modal-close-btn"> <IoMdClose size={25} /> </span>
                     <RobotFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} user={user} />
                 </div>}
             </div>
-            <div className={`screen ${toggleShow ? 'open' : ''}`} onClick={() => setToggleShow(!toggleShow)}></div>
             <section className="main-layout ">
                 <button onClick={onToggleCard} className='btn-svg'> <FaShoppingCart /><span className='shop-icon'>{cartItems.length}</span></button>
                 {isOpenCard && <div className='cart-app slide-in-right'>

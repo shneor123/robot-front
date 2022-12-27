@@ -92,7 +92,6 @@ export const ChatRoom = ({ loggedInUser, chat, chatRoomId, chatTitle }) => {
     return (
         <section className={`chat-room ${isOpenMode ? 'open' : 'close'}`}>
             <img className='chat-close slide-in-right ' src={isUnreadMsg ? chatColor : chatBW} alt="chat" onClick={onToggleChatMode} />
-
             {isOpenMode && <section className='chat-open'>
                 <header>
                     <div className="title">

@@ -2,6 +2,28 @@
     "header_home": "דף ראשי",
     "header_robot": "רובוט",
     "header_users":"משתמשים",
-    "header_dashboard": "לוּחַ מַחווָנִים",
-    "header_about": "אודות"
+    "header_dashboard": " לוּחַ מַחווָנִים" ,
+    "header_about": " אודות",
+    "header_logo": " חנות רובוטים",
+    "header_robot_length": "רובוטים",
+    "home_text": "המקום הטוב ביותר להשיג את הרובוט שלך",
+    "login": "התחברות ",
+    "home_start": "התחל בעילום שם ",
+    "home_take_me": "קח אותי פנימה",
+    
+    "about_hadera": "חדרה",
+    "about_haeder": "עלינו",
+    "about_p_1": "אנו שולחים את המוצרים שלנו לכל רחבי העולם.",
+    "about_p_2": "חנויות החברה ממוקמות בישראל.",
+    
+    "robot_filter": "סינון",
+    "filter_btn_name": "שם",
+    "filter_btn_price":"מחיר",
+    "filter_btn_created": "תאריך יצירה",
+    "filter_btn_search": "חפש",
+    "filter_sort": "סוג",
+    "filter_labels": "תוויות",
+    "filter_p": "חיפוש כרטיסים, במלאי, תוויות ועוד",
+    "filter_btn": "הוסף רובוט חדש"
+
 }

@@ -13,7 +13,6 @@ export const AppHeader = () => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    let menuRef = useRef()
 
     const onUserLogout = () => {
         dispatch(logout())
@@ -21,27 +20,25 @@ export const AppHeader = () => {
         navigate('/login')
     }
 
-    const linkList =
-        [
-            {
-                to: '/',
-                trans: 'header_home'
-            }, {
-                to: '/robots',
-                trans: 'header_robot'
-            }, {
-                to: '/users',
-                trans: 'header_users'
-            }, {
-                to: '/dashboard',
-                trans: 'header_dashboard'
-            }, {
-                to: '/about',
-                trans: 'header_about'
-            }
-        ]
+    const linkList = [
+        {
+            to: '/',
+            trans: 'header_home'
+        }, {
+            to: '/robots',
+            trans: 'header_robot'
+        }, {
+            to: '/users',
+            trans: 'header_users'
+        }, {
+            to: '/dashboard',
+            trans: 'header_dashboard'
+        }, {
+            to: '/about',
+            trans: 'header_about'
+        }
+    ]
 
-    const [lang, setLang] = useState('he')
     const { t: translate } = useTranslation()
 
     return (
@@ -50,21 +47,22 @@ export const AppHeader = () => {
                 <main className="main-layout">
                     <Link to={"/"} className="logo">
                         <img src={logoImg} alt="Robo Store logo" />
-                        <h2>Robo Store</h2>
+                        <h2>{translate('header_logo')}</h2>
                     </Link>
                     <section className='header-navbar'>
                         <nav className='full-screen-nav'>
 
-                            {/* {linkList.map(link => {
+                            {linkList.map(link => {
                                 const { to, trans } = link
-                                return <a key={to} href={to}>{translate(trans)}</a>
-                            })} */}
+                                // { user?.isAdmin && <NavLink to="/users"> Users </NavLink> }
+                                return <NavLink key={to} to={to}>{translate(trans)}</NavLink>
+                            })}
 
-                            <NavLink to="/"> Home </NavLink>
+                            {/* <NavLink to="/"> Home </NavLink>
                             <NavLink to="/robots"> Robots </NavLink>
                             {user?.isAdmin && <NavLink to="/users"> Users </NavLink>}
                             <NavLink to="/dashboard"> Dashboard </NavLink>
-                            <NavLink to="/about"> About </NavLink>
+                            <NavLink to="/about"> About </NavLink> */}
                         </nav>
                         <div className='hamburger-menu'>
                             <div className='menu-btn'>
@@ -93,7 +91,7 @@ export const AppHeader = () => {
             </section >
             <div className="header-titles-container">
                 <div className="header-inf">
-                    {pathname !== '/robots' && pathname !== '/users' ? <h3></h3> : <h3>Robots: {robots.length}</h3>}
+                    {pathname !== '/robots' && pathname !== '/users' ? <h3></h3> : <h3>{translate("header_robot_length")}: {robots.length}</h3>}
                 </div>
             </div>
         </section >

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { PageBar } from './page-bar'
 import { robotService } from '../services/robot.service'
 import { useFormRegister } from '../hooks/useFormRegister'
+import { useTranslation } from 'react-i18next'
 
 
 
@@ -33,19 +34,21 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
         onSetFilterBy(updatedFilterBy)
     }
 
+    const { t: translate } = useTranslation()
+
     return (
         <section className='filter-container'>
-            {user && <Link className='add-robot-btn main-btn center-text' to='/robots/edit'>Add new Robot</Link>}
+            {user && <Link className='add-robot-btn main-btn center-text' to='/robots/edit'>{translate("filter_btn")}</Link>}
             <div className='page-bar-container'>
                 <PageBar filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
             </div>
             <form onSubmit={onSubmit}>
                 <input className="search-container"{...register('name', 'text')} placeholder='Robot name' />
-                <p className="sub-info-title">Search cards, In Stock, labels, and more.</p>
+                <p className="sub-info-title">{translate("filter_p")}</p>
 
                 <div className='margin-between labels-container '>
-                    <p className="sub-title">Labels</p>
-                    <label htmlFor="filter-labels">Labels: </label>
+                    <p className="sub-title">{translate("filter_sort")}</p>
+                    <label htmlFor="filter-labels">{translate("filter_labels")}: </label>
                     <span onClick={() => setIsSelectMenuOpen(!isSelectMenuOpen)}>
                         <input {...register('name', 'text')} value={tempFilterBy?.labels} disabled />
                     </span>
@@ -55,14 +58,14 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
                         </select>}
                 </div>
                 <div className='sort-container margin-between' onClick={onSortByChange}>
-                    <label htmlFor="">Sort: </label>
-                    <button type='button' className={`sub-btn ${sortBy === 'name' ? 'active' : ''}`} name='name' >Name</button>
-                    <button type='button' className={`sub-btn ${sortBy === 'price' ? 'active' : ''}`} name='price' >Price</button>
-                    <button type='button' className={`sub-btn ${sortBy === 'createdAt' ? 'active' : ''}`} name='createdAt' >Created Date</button>
+                    <label htmlFor="">{translate("filter_sort")}: </label>
+                    <button type='button' className={`sub-btn ${sortBy === 'name' ? 'active' : ''}`} name='name' >{translate("filter_btn_name")}</button>
+                    <button type='button' className={`sub-btn ${sortBy === 'price' ? 'active' : ''}`} name='price' >{translate("filter_btn_price")}</button>
+                    <button type='button' className={`sub-btn ${sortBy === 'createdAt' ? 'active' : ''}`} name='createdAt' >{translate("filter_btn_created")}</button>
                 </div>
 
-                <p className="sub-title">Search</p>
-                <button className='main-btn' type="submit">Search</button>
+                <p className="sub-title">{translate("filter_btn_search")}</p>
+                <button className='main-btn' type="submit">{translate("filter_btn_search")}</button>
             </form>
         </section >
     )

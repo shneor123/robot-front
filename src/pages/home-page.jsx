@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { robotService } from '../services/robot.service'
 import defaultRobotImg from '../assets/img/blue-robot.png'
 import { useSelector } from 'react-redux'
-import { Hero } from '../hew/hero'
+import { Hero } from '../i18-leng/hero'
 
 import "/node_modules/flag-icons/css/flag-icons.min.css"
+import { useTranslation } from 'react-i18next'
 
 
 export const HomePage = () => {
@@ -27,13 +28,15 @@ export const HomePage = () => {
         }
     }, [])
 
+    const { t: translate } = useTranslation()
+
     return (
         <section className="home-page main-layout">
             <section className='hero'>
             <Hero/>
                 <div>
-                    <h1>Robo Store</h1>
-                    <h2>The best place to get your robot</h2>
+                    <h1>{translate("header_logo")}</h1>
+                    <h2>{translate("home_text")}</h2>
                 </div>
                 <img className={`robot-img blink-img ${blinkImgClass ? 'visible' : 'invisible'}`}
                     onLoad={() => setBlinkImgClass(true)} src={robotImg} alt="robot"
@@ -41,11 +44,11 @@ export const HomePage = () => {
                 />
             </section>
             {!loggedInUser && <section className='login'>
-                <Link to='/login' className='login'>Login</Link>
-                <Link to='/robots'>Start Anonymously</Link>
+                <Link to='/login' className='login'>{translate("login")}</Link>
+                <Link to='/robots'>{translate("home_start")}</Link>
             </section>}
             {loggedInUser && <section className='get-started'>
-                <Link to='/robots'>Take me in</Link>
+                <Link to='/robots'>{translate("home_take_me")}</Link>
             </section>}
         </section>
     )
