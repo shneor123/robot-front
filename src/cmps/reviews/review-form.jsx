@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next';
 import { IoMdClose } from "react-icons/io";
 import { StarRatePicker } from './star-rate'
 
@@ -23,10 +24,12 @@ export const ReviewForm = ({ isOpen, onAddReview, onToggleModal }) => {
         onAddReview(review)
         setReview({ title: '', rate: 1, content: '' })
     }
+
+    const { t } = useTranslation()
     return (
         <section className={`review-form ${isOpen ? 'open' : 'close'}`}>
             <span className='modal-close-btn' onClick={onToggleModal}><IoMdClose size={25} /></span>
-            <h2 className='sub-header'>Add a review</h2>
+            <h2 className='sub-header'>{t("review_add")}</h2>
             <form onSubmit={onSubmit}>
                 <ul className='clean-list'>
                     <li>
@@ -54,7 +57,7 @@ export const ReviewForm = ({ isOpen, onAddReview, onToggleModal }) => {
                         ></textarea>
                     </li>
                 </ul>
-                <button className='main-btn'>Add</button>
+                <button className='main-btn'>{t("edit_haeder_add")}</button>
             </form>
         </section>
     )

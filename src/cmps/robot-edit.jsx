@@ -8,6 +8,7 @@ import { robotService } from '../services/robot.service'
 import { Loader } from '../cmps/general/loader'
 import { saveRobot } from '../store/actions/robot.action'
 import defaultRobotImg from '../assets/img/default-robot.png'
+import { useTranslation } from 'react-i18next'
 
 export const RobotEdit = () => {
     const params = useParams()
@@ -62,47 +63,49 @@ export const RobotEdit = () => {
         navigate('/robots')
     }
 
+    const { t } = useTranslation()
+
     if (!robot) return <Loader />
     return (
         <section className="robot-edit main-layout">
-            <h2 className='page-header'>{robot._id ? 'Edit' : 'Add'} Robot</h2>
+            <h2 className='page-header'>{robot._id ? t("edit_haeder_edit") : t("edit_haeder_add")} {t("robot_edit_haeder")}</h2>
             <Link to={`/robots/${robot._id}`}>
-                <button className='back-btn'>Back</button>
+                <button className='back-btn'>{t("details_back")}</button>
             </Link>
 
             <form className='edit-container' onSubmit={onSaveRobot}>
                 <div className="basic-details-container">
 
                     <label>
-                        <h3>Name</h3>
+                        <h3>{t("filter_btn_name")}</h3>
                         <input type="text" name='name' id='edit-name' onChange={handleChange} value={robot.name} />
                     </label>
 
                     <label>
-                        <h3>Price</h3>
+                        <h3>{t("filter_btn_price")}</h3>
                         <input type="number" min={1} name='price' id='edit-price' onChange={handleChange} value={robot.price} />
                     </label>
 
                     <label>
-                        <h3>Image link</h3>
+                        <h3>{t("edit_haeder_link")}</h3>
                         <input type="url" name='img' id='edit-img' onChange={handleChange} value={robot.img} />
                         <img className='img-edit' src={robot.img || defaultRobotImg} onError={({ target }) => target.src = defaultRobotImg} alt="default robot" />
                     </label>
 
                 </div>
                 <div className="stock-labels-container">
-                    <label><h3>Is in stock?</h3>
-                        <label>Yes
+                    <label><h3>{t("edit_haeder_is_stock")}</h3>
+                        <label>{t("users_users_question_yes")}
                             <input type="radio" name="inStock" id="edit-in-stock-yes" value={true} onChange={handleChange} checked={robot.inStock} />
                         </label>
-                        <label> No
+                        <label> {t("users_users_question_no")}
                             <input type="radio" name="inStock" id="edit-in-stock-no" value={false} onChange={handleChange} checked={!robot.inStock} />
                         </label>
                     </label>
 
                     <div className='labels'>
                         {labels && <>
-                            <label htmlFor={labels[0] || ''}>Labels: </label>
+                            <label htmlFor={labels[0] || ''}>{t("filter_labels")}: </label>
                             <ul className='clean-list gap'>
                                 {labels.map(label => <li key={label}>
                                     <input type="checkbox" name='labels' id={label} onChange={onChangeInput} value={label} checked={robot.labels.includes(label)} />
@@ -113,7 +116,7 @@ export const RobotEdit = () => {
                     </div>
 
                 </div>
-                <button className="save-btn" type="submit">Save</button>
+                <button className="save-btn" type="submit">{t("user_edit_save")}</button>
             </form>
         </section>
     )

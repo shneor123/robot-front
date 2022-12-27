@@ -45,7 +45,6 @@
     "dashboard_title_price": "Average prices per robot label",
     "dashboard_title_in_stock": "In stock percentage per robot label",
 
-
     "details_back": "Back",
     "details_reviews_header": "Reviews",
     "details_reviews_no": "No one wrote a review for this robot. ",
@@ -60,6 +59,7 @@
     "details_btn_edit": "Edit",
     "details_btn_close": "Close Form",
     "details_btn_add": "Add Review",
+    "details_question": "Are you sure you want to delete this robot?",
 
     "cart_header_1": "Small Shopping Cart",
     "cart_header_2": "Cart Items",
@@ -91,7 +91,6 @@
     "user_edit_no_match":"Password doesn't match. Please try again.",
     "user_edit_save":"Save",
 
-
     "users_details":"Edit",
     "users_edit":"Details",
     "users_delete":"Delete",
@@ -101,5 +100,18 @@
     "users_modified":"Last Modified",
     "users_question":"Are you sure you want to remove",
     "users_users_question_yes":"OK",
-    "users_users_question_no":"Cancel"
+    "users_users_question_no":"Cancel",
+
+
+    "users_question_admin":"Are you sure you want to remove admin authorizations from ",
+    "users_question_admin_2":"Are you sure you want to set ",
+    "users_question_admin_2_2":"as admin",
+
+    "robot_edit_haeder":"Robot",
+    "edit_haeder_edit":"Edit",
+    "edit_haeder_add":"Add",
+    "edit_haeder_link":"Image link",
+    "edit_haeder_is_stock":"Is in stock",
+
+    "review_add":"Add a review"
 }

@@ -61,6 +61,7 @@
     "details_btn_edit": "ערוך",
     "details_btn_close": "סגור",
     "details_btn_add": "הוסף ביקורת",
+    "details_question": " האם אתה בטוח שברצונך למחוק את הרובוט הזה?",
 
 
     "cart_header_1": "עגלת קניות קטנה",
@@ -100,7 +101,21 @@
     "users_modified":"שונה לאחרונה",
     "users_question":"אתה בטוח שאתה רוצה למחוק",
     "users_users_question_yes":"כן",
-    "users_users_question_no":"לא"
+    "users_users_question_no":"לא",
+
+
+    "users_question_admin":" האם אתה בטוח שברצונך להסיר הרשאות מנהל",
+    "users_question_admin_2":"האם אתה בטוח שאתה רוצה להגדיר",
+    "users_question_admin_2_2":"כמנהל",
+
+
+    "robot_edit_haeder":"רובוט",
+    "edit_haeder_edit":"ערוך",
+    "edit_haeder_add":"הוסף",
+    "edit_haeder_link":"קישור לתמונה",
+    "edit_haeder_is_stock":"זה במלאי?",
+
+    "review_add":"הוסף ביקורת"
  
 
 

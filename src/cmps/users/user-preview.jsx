@@ -9,12 +9,14 @@ export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionMod
 
     const { t } = useTranslation()
 
+    
+
     const onAdminClick = (userId, isAdmin, fullname) => {
         const question = isAdmin ?
-            `Are you sure you want to remove admin authorizations from ${fullname}?` :
-            `Are you sure you want to set ${fullname} as admin?`
+            `${t("users_question_admin")} ${fullname}?` :
+            `${t("users_question_admin_2")} ${fullname} ${t("users_question_admin_2_2")}?`
 
-        openQuestionModal(question, ['Cancel', 'OK'], [null, () => onToggleAdmin(userId, isAdmin)])
+        openQuestionModal(question, [t("users_users_question_no"), t("users_users_question_yes")], [null, () => onToggleAdmin(userId, isAdmin)])
     }
 
     const onDeleteClick = (userId, fullname) => {
