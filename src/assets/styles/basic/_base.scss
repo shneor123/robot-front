@@ -9,9 +9,9 @@ body {
     font-family: Roboto;
     background-color: var(--main-bg-clr);
 
-    &.dark {
+    // &.dark {
         --main-bg-clr: #e9d8fd;
-    }
+    // }
 }
 
 h1,
