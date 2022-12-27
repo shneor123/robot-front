@@ -1,11 +1,14 @@
 {
     "header_home": "דף ראשי",
     "header_robot": "רובוט",
-    "header_users":"משתמשים",
-    "header_dashboard": " לוּחַ מַחווָנִים" ,
+    "header_users":" משתמשים",
+    "header_dashboard": "מחוונים" ,
     "header_about": " אודות",
     "header_logo": " חנות רובוטים",
     "header_robot_length": "רובוטים",
+    "header_profile": "הפרופיל שלי ",
+    "header_logout": "להתנתק ",
+    
 
     "home_text": "המקום הטוב ביותר להשיג את הרובוט שלך",
     "login": "התחברות ",
@@ -72,7 +75,34 @@
     "cart_details_thx": "תודה על הקנייה ב-Robot Fake Store",
 
     "robo_prev":"נוצר",
-    "robo_prev_add":"הוסך לעגלה"
+    "robo_prev_add":"הוסך לעגלה",
+
+    "user_profile_robo":"המשתמש עדיין לא הוסיף רובוטים.",
+    "user_profile_review":"המשתמש עדיין לא כתב ביקורות",
+
+
+    "user_edit_header":"ערוך משתמש",
+    "user_edit_current":"סיסמה נוכחית",
+    "user_edit_wrong":"סיסמה שגויה",
+    "user_edit_name":"שם מלא",
+    "user_edit_change":"אני רוצה לשנות את הסיסמה שלי",
+    "user_edit_new":"סיסמה חדשה",
+    "user_edit_verify":"אמת את הסיסמה",
+    "user_edit_no_match":"הסיסמה לא תואמת. בבקשה נסה שוב",
+    "user_edit_save":"שמור",
+
+    "users_edit":"ערוך",
+    "users_delete":"לִמְחוֹק",
+    "users_details":"פרטים",
+    "users_edit_admin_remove":"הסר מנהל",
+    "users_edit_admin_set":"הגדר מנהל",
+    "users_since":"חבר מאז",
+    "users_modified":"שונה לאחרונה",
+    "users_question":"אתה בטוח שאתה רוצה למחוק",
+    "users_users_question_yes":"כן",
+    "users_users_question_no":"לא"
+ 
+
 
 
 }

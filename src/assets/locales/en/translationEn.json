@@ -6,11 +6,15 @@
     "header_about": "About",
     "header_logo": "Robo Store ",
     "header_robot_length": "Robots ",
+    "header_profile": "My Profile ",
+    "header_logout": "Logout ",
+    
     "home_text": "The best place to get your robot ",
     "login": "Login ",
     "home_start": "Start Anonymously ",
     "home_take_me": "Take me in ",
     "robot_filter": "Filter cards",
+    
     "about_hadera": "Hadera",
     "about_tel_aviv'": "Tel-Aviv'",
     "about_bat_yam": "Bat Yam",
@@ -24,6 +28,7 @@
     "about_haeder_retailer": "robot retailer.",
     "about_p_1": "We ship our products all over the world.",
     "about_p_2": "The company's stores are located in Israel.",
+    
     "filter_btn_name": "Name",
     "filter_btn_price": "Price",
     "filter_btn_created": "Created Date",
@@ -32,6 +37,7 @@
     "filter_labels": "Labels",
     "filter_p": "Search cards, In Stock, labels, and more.",
     "filter_btn": "Add new Robot",
+
     "dashboard_on_site": "Robots on site",
     "dashboard_most": "Most expensive robo",
     "dashboard_least": "Least expensive robot",
@@ -68,6 +74,32 @@
 
 
     "robo_prev":"created",
-    "robo_prev_add":"Add In Cart"
+    "robo_prev_add":"Add In Cart",
 
+
+    "user_profile_robo":"The user didn't add robots yet.",
+    "user_profile_review":"The user didn't write reviews yet.",
+
+
+    "user_edit_header":"Edit user",
+    "user_edit_current":"Current password:",
+    "user_edit_wrong":"Wrong password:",
+    "user_edit_name":" Full name::",
+    "user_edit_change":"I want to change my password:",
+    "user_edit_new":"New password:",
+    "user_edit_verify":"Verify password: ",
+    "user_edit_no_match":"Password doesn't match. Please try again.",
+    "user_edit_save":"Save",
+
+
+    "users_details":"Edit",
+    "users_edit":"Details",
+    "users_delete":"Delete",
+    "users_edit_admin_remove":"Remove admin",
+    "users_edit_admin_set":"Set admin",
+    "users_since":"Member Since",
+    "users_modified":"Last Modified",
+    "users_question":"Are you sure you want to remove",
+    "users_users_question_yes":"OK",
+    "users_users_question_no":"Cancel"
 }

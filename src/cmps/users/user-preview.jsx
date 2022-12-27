@@ -3,8 +3,11 @@ import { UserImg } from '../general/user-img'
 import { NavLink } from 'react-router-dom'
 import { utilService } from '../../services/basic/util.service'
 import adminImg from '../../assets/img/admin.png'
+import { useTranslation } from 'react-i18next'
 
 export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionModal }) => {
+
+    const { t } = useTranslation()
 
     const onAdminClick = (userId, isAdmin, fullname) => {
         const question = isAdmin ?
@@ -15,8 +18,8 @@ export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionMod
     }
 
     const onDeleteClick = (userId, fullname) => {
-        const question = `Are you sure you want to remove ${fullname}?`
-        openQuestionModal(question, ['Cancel', 'OK'], [null, () => onDeleteUser(userId)])
+        const question = `${t("users_question")} ${fullname}?`
+        openQuestionModal(question, [t("users_users_question_no"), t("users_users_question_yes")], [null, () => onDeleteUser(userId)])
     }
 
     return (
@@ -27,17 +30,17 @@ export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionMod
                 <p>{user.fullname}</p>
             </section>
             <section className='buttons'>
-                <NavLink className='sub-btn center-text' to={`/users/${user._id}`}>Details</NavLink>
-                <NavLink className='sub-btn center-text' to={`/users/edit/${user._id}`}>Edit</NavLink>
+                <NavLink className='sub-btn center-text' to={`/users/${user._id}`}>{t("users_details")}</NavLink>
+                <NavLink className='sub-btn center-text' to={`/users/edit/${user._id}`}>{t("users_edit")}</NavLink>
                 <button className='sub-btn center-text' onClick={() => onAdminClick(user._id, user.isAdmin, user.fullname)}>
-                    {user.isAdmin ? 'Remove admin' : 'Set admin'}
+                    {user.isAdmin ? t("users_edit_admin_remove") : t("users_edit_admin_set")}
                 </button>
-                <button className='sub-btn center-text' onClick={() => onDeleteClick(user._id, user.fullname)}>Delete</button>
+                <button className='sub-btn center-text' onClick={() => onDeleteClick(user._id, user.fullname)}>{t("users_delete")}</button>
             </section>
-            <p className='modified-member'><strong>Member Since: </strong>{utilService.dueDateFormat(user.createdAt)}</p>
+            <p className='modified-member'><strong>{t("users_since")} </strong>{utilService.dueDateFormat(user.createdAt)}</p>
             {user.lastModified ?
-                <p className='modified-member'><strong>Last Modified: </strong>{utilService.dueDateFormat(user.lastModified)}</p>
-                : <p className='modified-member' ><strong>Last Modified:</strong> {"-no-conect-acoount"}</p>
+                <p className='modified-member'><strong>{t("users_modified")} </strong>{utilService.dueDateFormat(user.lastModified)}</p>
+                : <p className='modified-member' ><strong>{t("users_modified")}</strong> {"-no-conect-acoount"}</p>
             }
         </li>
     )

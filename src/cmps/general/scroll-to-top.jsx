@@ -20,11 +20,11 @@ export const ScrollToTop = () => {
         })
     }
     return (
-        <div className="top-to-btm">
+        <div className=" top-to-btm">
             {" "}
             {showTopBtn && (
                 <FaAngleUp
-                    className="icon-position icon-style"
+                    className="icon-position icon-style "
                     onClick={goToTop}
                 />
             )}{" "}

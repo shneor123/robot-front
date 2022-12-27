@@ -5,6 +5,7 @@ import { logout } from '../../store/actions/user.action';
 import { UserImg } from './user-img';
 import logoImg from '../../assets/img/logo.png'
 import { useTranslation } from 'react-i18next';
+import { DarkMode } from './dark-mode';
 
 export const AppHeader = () => {
     const { user } = useSelector(stateModule => stateModule.userModule)
@@ -20,26 +21,7 @@ export const AppHeader = () => {
         navigate('/login')
     }
 
-    const linkList = [
-        {
-            to: '/',
-            trans: 'header_home'
-        }, {
-            to: '/robots',
-            trans: 'header_robot'
-        }, {
-            to: '/users',
-            trans: 'header_users'
-        }, {
-            to: '/dashboard',
-            trans: 'header_dashboard'
-        }, {
-            to: '/about',
-            trans: 'header_about'
-        }
-    ]
-
-    const { t: translate } = useTranslation()
+    const { t } = useTranslation()
 
     return (
         <section className="app-header-secend">
@@ -47,22 +29,15 @@ export const AppHeader = () => {
                 <main className="main-layout">
                     <Link to={"/"} className="logo">
                         <img src={logoImg} alt="Robo Store logo" />
-                        <h2>{translate('header_logo')}</h2>
+                        <h2>{t('header_logo')}</h2>
                     </Link>
                     <section className='header-navbar'>
                         <nav className='full-screen-nav'>
-
-                            {linkList.map(link => {
-                                const { to, trans } = link
-                                // { user?.isAdmin && <NavLink to="/users"> Users </NavLink> }
-                                return <NavLink key={to} to={to}>{translate(trans)}</NavLink>
-                            })}
-
-                            {/* <NavLink to="/"> Home </NavLink>
-                            <NavLink to="/robots"> Robots </NavLink>
-                            {user?.isAdmin && <NavLink to="/users"> Users </NavLink>}
-                            <NavLink to="/dashboard"> Dashboard </NavLink>
-                            <NavLink to="/about"> About </NavLink> */}
+                            <NavLink to="/"> {t("header_home")} </NavLink>
+                            <NavLink to="/robots"> {t("header_robot")} </NavLink>
+                            {user?.isAdmin && <NavLink to="/users"> {t("header_users")} </NavLink>}
+                            <NavLink to="/dashboard"> {t("header_dashboard")}</NavLink>
+                            <NavLink to="/about"> {t("header_about")} </NavLink>
                         </nav>
                         <div className='hamburger-menu'>
                             <div className='menu-btn'>
@@ -74,15 +49,16 @@ export const AppHeader = () => {
                                 <main>
                                     {user && <header className='container'><UserImg user={user} /> <h1>Hi {user.fullname}</h1></header>}
                                     <nav className='hamburger-nav'>
-                                        {user && <NavLink to={`/users/${user._id}`} onClick={() => setIsMenuOpen(false)}>My Profile</NavLink>}
-                                        {!user && <NavLink to="/login" onClick={() => setIsMenuOpen(false)}>Login</NavLink>}
-                                        <NavLink to="/" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
-                                        <NavLink to="/robots" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Robots</NavLink>
-                                        {user?.isAdmin && <NavLink to="/users" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Users</NavLink>}
-                                        <NavLink to="/dashboard" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>Dashboard</NavLink>
-                                        <NavLink to="/about" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>About</NavLink>
+                                        {user && <NavLink to={`/users/${user._id}`} onClick={() => setIsMenuOpen(false)}>{t("header_profile")}</NavLink>}
+                                        {!user && <NavLink to="/login" onClick={() => setIsMenuOpen(false)}>{t("login")}</NavLink>}
+                                        <NavLink to="/" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>{t("header_home")}</NavLink>
+                                        <NavLink to="/robots" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>{t("header_robot")}</NavLink>
+                                        {user?.isAdmin && <NavLink to="/users" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>{t("header_users")}</NavLink>}
+                                        <NavLink to="/dashboard" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>{t("header_dashboard")}</NavLink>
+                                        <NavLink to="/about" className="small-screen-nav-item" onClick={() => setIsMenuOpen(false)}>{t("header_about")}</NavLink>
+                                        <DarkMode/>
                                     </nav>
-                                    {user && <button className="logout-btn" onClick={() => onUserLogout()}>Logout</button>}
+                                    {user && <button className="logout-btn" onClick={() => onUserLogout()}>{t("header_logout")}</button>}
                                 </main>}
                             <div className={`screen ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}></div>
                         </div>
@@ -91,7 +67,7 @@ export const AppHeader = () => {
             </section >
             <div className="header-titles-container">
                 <div className="header-inf">
-                    {pathname !== '/robots' && pathname !== '/users' ? <h3></h3> : <h3>{translate("header_robot_length")}: {robots.length}</h3>}
+                    {pathname !== '/robots' && pathname !== '/users' ? <h3></h3> : <h3>{t("header_robot_length")}: {robots.length}</h3>}
                 </div>
             </div>
         </section >

@@ -34,6 +34,12 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
         onSetFilterBy(updatedFilterBy)
     }
 
+    const onInputChange = ({ target: { name, value, selectedOptions } }) => {
+        if (name === 'labels') value = Array.from(selectedOptions).map(option => option.value)
+        else if (name === 'inStock') value = value === 'all' ? 'all' : value === 'true'
+        setTempFilterBy({ ...tempFilterBy, [name]: value })
+    }
+
     const { t: translate } = useTranslation()
 
     return (
@@ -45,7 +51,7 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
             <form onSubmit={onSubmit}>
                 <input className="search-container"{...register('name', 'text')} placeholder='Robot name' />
                 <p className="sub-info-title">{translate("filter_p")}</p>
-
+                {/* 
                 <div className='margin-between labels-container '>
                     <p className="sub-title">{translate("filter_sort")}</p>
                     <label htmlFor="filter-labels">{translate("filter_labels")}: </label>
@@ -56,6 +62,17 @@ export const RobotFilter = ({ user, filterBy, onSetFilterBy }) => {
                         <select className="labels-select" {...register('labels', 'select')} id="filter-labels" size={labels.length} multiple>
                             {labels.map(label => <option key={label}>{label}</option>)}
                         </select>}
+                </div> */}
+
+                <div className='margin-between labels-container '>
+                    <p className="sub-title">{translate("filter_sort")}</p>
+                    <label htmlFor="filter-labels">{translate("filter_labels")} </label>
+                    <span onClick={() => setIsSelectMenuOpen(!isSelectMenuOpen)}>
+                        <input type="text" value={tempFilterBy?.labels?.join(', ') || ''} disabled />
+                    </span>
+                    {labels && isSelectMenuOpen && <select className="labels-select" name="labels" id="filter-labels" multiple onChange={onInputChange} size={labels.length}>
+                        {labels.map(label => <option key={label}>{label}</option>)}
+                    </select>}
                 </div>
                 <div className='sort-container margin-between' onClick={onSortByChange}>
                     <label htmlFor="">{translate("filter_sort")}: </label>

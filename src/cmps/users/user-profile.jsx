@@ -15,6 +15,7 @@ import { loadReviews, removeReview } from '../../store/actions/review.action'
 
 import editImg from '../../assets/img/edit-icon.png'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 
 export const UserProfile = () => {
@@ -44,6 +45,8 @@ export const UserProfile = () => {
         dispatch(removeReview(reviewId))
     }
 
+    const { t } = useTranslation()
+
     if (!user) return <Loader />
     return (
         <section className="user-profile main-layout">
@@ -55,17 +58,17 @@ export const UserProfile = () => {
                 </Link>}
             </header>
             <section className='robots'>
-                <h2 className='sub-header'>Robots</h2>
+                <h2 className='sub-header'>{t("header_robot_length")}</h2>
                 {(robots?.length > 0) && <>
                     {filterBy.numOfPages > 1 && < PageBar filterBy={filterBy} onSetFilterBy={onChangePage} />}
                     <RobotList robots={robots} />
                 </>}
-                {!robots?.length && <p>The user didn't add robots yet.</p>}
+                {!robots?.length && <p>{t("user_profile_robo")}</p>}
             </section>
             <section className='reviews'>
-                <h2 className='sub-header'>Reviews</h2>
+                <h2 className='sub-header'>{t("details_reviews_header")}</h2>
                 {reviews?.length > 0 && <ReviewList reviews={reviews} isShowWriter={false} isShowRobot={true} onRemoveReview={onRemoveReview} />}
-                {!reviews?.length > 0 && <p>The user didn't write reviews yet.</p>}
+                {!reviews?.length > 0 && <p>{t("user_profile_review")}</p>}
             </section>
             <ScrollToTop />
         </section>

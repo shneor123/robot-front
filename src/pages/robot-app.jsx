@@ -66,7 +66,6 @@ export const RobotApp = () => {
     if (!robots) return <Loader />
     return (
         <section className="robot-app main-layout ">
-            {/* <div className={`screen ${toggleShow ? 'open' : ''}`} onClick={() => setToggleShow(!toggleShow)}></div> */}
             <div className={`${toggleShow ? "sidebar open" : "sidebar"}`}>
                 <button onClick={() => setToggleShow(!toggleShow)} className={`sidebar-toggle ${toggleShow ? "hide" : ""}`} >
                     <AiOutlineSearch /> {translate("robot_filter")}

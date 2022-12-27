@@ -14,7 +14,7 @@
         button {
             background-color: unset;
             border: none;
-            width: rem(50px);
+            width: rem(40px);
         }
 
         .languages {
@@ -47,29 +47,29 @@
         transition: all 0.5s ease;
     }
 
-    // @include for-mobile-layout() {
-    //     .languages-wrapper {
-    //         flex-direction: row-reverse;
+    @include for-mobile-layout() {
+        .languages-wrapper {
+            flex-direction: row-reverse;
 
-    //         &.rtl {
-    //             right: 0;
-    //             transform: translateX(112px);
+            &.rtl {
+                right: 0;
+                transform: translateX(112px);
 
-    //             button {
-    //                 border-right: 1px solid #83838355;
-    //             }
-    //         }
+                button {
+                    border-right: 1px solid #83838355;
+                }
+            }
 
-    //         &.ltr {
-    //             transform: translateX(-112px);
-    //             left: 0;
+            &.ltr {
+                transform: translateX(-112px);
+                left: 0;
 
-    //             button {
-    //                 border-left: 1px solid #83838355;
-    //             }
-    //         }
-    //     }
-    // }
+                button {
+                    border-left: 1px solid #83838355;
+                }
+            }
+        }
+    }
 
     @include for-narrow-layout() {
         overflow-x: hidden;
@@ -78,18 +78,12 @@
             flex-direction: row;
 
             &.rtl {
-                transform: translateX(-112px);
-                // right: unset;
-                // left: 0;
+                transform: translateX(112px);
                 right: 0;
                 left: unset;
-                border-bottom-right-radius: 10px;
-                border-top-right-radius: 10px;
-                border-bottom-left-radius: 0;
-                border-top-left-radius: 0;
 
                 button {
-                    border-left: 1px solid #83838355;
+                    // border-left: 1px solid #83838355;
                 }
             }
 

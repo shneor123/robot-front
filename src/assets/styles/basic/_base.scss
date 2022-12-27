@@ -7,7 +7,11 @@
 body {
     min-height: 100vh;
     font-family: Roboto;
-    background-color: $primary-clr-200;
+    background-color: var(--main-bg-clr);
+
+    &.dark {
+        --main-bg-clr: #e9d8fd;
+    }
 }
 
 h1,

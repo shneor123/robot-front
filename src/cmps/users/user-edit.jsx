@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -74,14 +75,16 @@ export const UserEdit = () => {
         }, 1000);
     }
 
+    const { t } = useTranslation()
+
     return (
         <section className="user-edit main-layout">
-            <h2 className='page-header'>Edit user</h2>
-            <Link className='back-btn' to={'/users'}>Back</Link>
+            <h2 className='page-header'>{t("user_edit_header")}</h2>
+            <Link className='back-btn' to={'/users'}>{t("details_back")}</Link>
             <form onSubmit={onSubmit}>
                 <ul className='clean-list'>
                     <li>
-                        <label htmlFor="curr-password">Current password: </label>
+                        <label htmlFor="curr-password">{t("user_edit_current")} </label>
                         <input type="password"
                             name="currPassword"
                             id="curr-password"
@@ -89,10 +92,10 @@ export const UserEdit = () => {
                             value={currPassword}
                             onChange={onInputChange}
                             required />
-                        {isWrongPassword && <span className='error-msg'>Wrong password</span>}
+                        {isWrongPassword && <span className='error-msg'>{t("user_edit_wrong")}</span>}
                     </li>
                     <li className='clean-list'>
-                        <label htmlFor="fullname">Full name: </label>
+                        <label htmlFor="fullname">{t("user_edit_name")} </label>
                         <input type="text"
                             name="fullname"
                             id="fullname"
@@ -102,10 +105,10 @@ export const UserEdit = () => {
                     </li>
 
                     <input type="checkbox" name="isPassword" id="change-password" checked={isPassword} onChange={onInputChange} />
-                    <label htmlFor="change-password">I want to change my password</label>
+                    <label htmlFor="change-password">{t("user_edit_change")}</label>
                     <fieldset disabled={!isPassword}>
                         <li className='clean-list'>
-                            <label htmlFor="password1">New password: </label>
+                            <label htmlFor="password1">{t("user_edit_new")} </label>
                             <input type="password"
                                 name="password1"
                                 id="password1"
@@ -115,7 +118,7 @@ export const UserEdit = () => {
                                 required />
                         </li>
                         <li className='clean-list'>
-                            <label htmlFor="password2">Verify password: </label>
+                            <label htmlFor="password2">{t("user_edit_verify")} </label>
                             <input type="password"
                                 name="password2"
                                 id="password2"
@@ -124,10 +127,10 @@ export const UserEdit = () => {
                                 minLength={3}
                                 required />
                         </li>
-                        {isWrongNewPassword && <p className='error-msg'>Password doesn't match. Please try again.</p>}
+                        {isWrongNewPassword && <p className='error-msg'>{t("user_edit_no_match")}</p>}
                     </fieldset>
                 </ul>
-                <button className='main-btn'>Save</button>
+                <button className='main-btn'>{t("user_edit_save")}</button>
             </form>
         </section>
     )

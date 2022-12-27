@@ -3,7 +3,7 @@ import i18n from '../services/basic/i18n';
 import languages from './languages';
 import Globe from '../icons/globe'
 
-export const Hero = () => {
+export const HeroPage = () => {
   const [language, setLanguage] = useState('he')
   const [isLanguagePickerOpen, setLanguagePicker] = useState(false)
 
