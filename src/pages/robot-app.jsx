@@ -89,8 +89,7 @@ export const RobotApp = () => {
                 </div>}
                 <div className={`screen ${isOpenCard ? 'open' : ''}`} onClick={onToggleCard}></div>
             </section>
-            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} onLoadRobots={onLoadRobots} />}
-
+            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} onLoadRobots={onLoadRobots} onToggleCard={onToggleCard} />}
             <ScrollToTop />
         </section >
     )

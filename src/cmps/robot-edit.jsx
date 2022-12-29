@@ -69,7 +69,7 @@ export const RobotEdit = () => {
     return (
         <section className="robot-edit main-layout">
             <h2 className='page-header'>{robot._id ? t("edit_haeder_edit") : t("edit_haeder_add")} {t("robot_edit_haeder")}</h2>
-            <Link to={`/robots/${robot._id}`}>
+            <Link to={'/robots/'}>
                 <button className='back-btn'>{t("details_back")}</button>
             </Link>
 

@@ -29,8 +29,8 @@ export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionMod
                 <p>{user.fullname}</p>
             </section>
             <section className='buttons'>
-                <NavLink className='sub-btn center-text' to={`/users/${user._id}`}>{t("users_details")}</NavLink>
-                <NavLink className='sub-btn center-text' to={`/users/edit/${user._id}`}>{t("users_edit")}</NavLink>
+                <NavLink className='sub-btn center-text' to={`/users/${user._id}`}>{t("users_edit")}</NavLink>
+                <NavLink className='sub-btn center-text' to={`/users/edit/${user._id}`}>{t("users_details")}</NavLink>
                 <button className='sub-btn center-text' onClick={() => onAdminClick(user._id, user.isAdmin, user.fullname)}>
                     {user.isAdmin ? t("users_edit_admin_remove") : t("users_edit_admin_set")}
                 </button>

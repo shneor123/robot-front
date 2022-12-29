@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { utilService } from '../services/basic/util.service'
 import { socketService } from '../services/basic/socket.service'
 
@@ -14,16 +13,18 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from 'react-i18next'
 import { EditPreview } from './edit/edit-preview'
-import { removeRobot, saveRobot } from '../store/actions/robot.action'
-
 import { BsPencil } from "react-icons/bs";
-import { useForm } from '../hooks/useForm'
+import { useDispatch } from 'react-redux'
+import { removeRobot } from '../store/actions/robot.action'
 
 
-export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => {
+export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onToggleCard }) => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [isEdit, setIsEdit] = useState(false)
+    const { t } = useTranslation()
+
 
     useEffect(() => {
         setSocket()
@@ -41,14 +42,14 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
         }
     }
 
+    const openQuickEdit = (ev) => {
+        ev.stopPropagation();
+        setIsEdit(!isEdit)
+    }
     const onDeleteRobot = (ev) => {
         ev.stopPropagation();
         setIsEdit(false)
         dispatch(removeRobot(robot._id))
-    }
-    const openQuickEdit = (ev) => {
-        ev.stopPropagation();
-        setIsEdit(!isEdit)
     }
     const onOpenTaskDetails = () => {
         setIsEdit(false)
@@ -62,26 +63,19 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
         setIsEdit(!isEdit)
     }
 
-
-    const [fields, handleChange, clearFields] = useForm(null)
-
-    const onSaveRobot = (ev) => {
-        ev.preventDefault()
-        dispatch(saveRobot(robot))
-    }
-    const { t } = useTranslation()
-    const [isEdit, setIsEdit] = useState(false)
     return (
-        <>{isEdit ? <EditPreview
-            onDeleteRobot={onDeleteRobot}
-            closeQuickEdit={openQuickEdit}
-            onOpenTaskDetails={onOpenTaskDetails}
-            onOpenCardEdit={onOpenCardEdit}
-            onCloseQuickEdit={onCloseQuickEdit}
-            robot={robot}
-        /> :
-            <section className='robot-preview '>
-                <Link to={`/robots/${robot._id}`} className="info" >
+        <>{isEdit ?
+            <EditPreview
+                openQuickEdit={openQuickEdit}
+                onDeleteRobot={onDeleteRobot}
+                onOpenTaskDetails={onOpenTaskDetails}
+                onOpenCardEdit={onOpenCardEdit}
+                onCloseQuickEdit={onCloseQuickEdit}
+                robot={robot}
+                onToggleCard={onToggleCard}
+            /> :
+            <section className='robot-preview'>
+                <Link to={`/robots/${robot._id}`} className="info">
                     <div className='robo_row'>
                         <h2 className='name'>{robot.name}</h2>
                         <p className='price'>${utilService.numberWithCommas(robot.price)}</p>
@@ -105,7 +99,6 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
                         <Button onClick={() => addToCart(robot)}> <AddIcon fontSize="small" /> </Button>
                     </ButtonGroup>
                 }
-
                 <div className="task-preview-edit-icon" onClick={openQuickEdit}>
                     <BsPencil />
                 </div>

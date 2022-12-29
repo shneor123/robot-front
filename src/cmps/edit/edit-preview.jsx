@@ -1,18 +1,20 @@
 import React from 'react'
 import { EditBtn } from './edit-btn'
 
-export const EditPreview = ({ onOpenTaskDetails, onDeleteRobot, closeQuickEdit, onOpenCardEdit, robot, onCloseQuickEdit }) => {
+export const EditPreview = ({ robot, onDeleteRobot, onOpenTaskDetails, onOpenCardEdit, onCloseQuickEdit ,onToggleCard}) => {
     return (
         <>
             <div className="edit-preview-container">
                 <EditBtn
-                    onOpenTaskDetails={onOpenTaskDetails}
+                    robot={robot}
                     deleteRobot={onDeleteRobot}
-                    closeQuickEdit={closeQuickEdit}
+                    onOpenTaskDetails={onOpenTaskDetails}
                     onOpenCardEdit={onOpenCardEdit}
+                    onCloseQuickEdit={onCloseQuickEdit}
+                    onToggleCard={onToggleCard}
                 />
             </div>
-            <div className="edit-preview" onClick={closeQuickEdit}></div>
+            <div className="edit-preview" onClick={onCloseQuickEdit}></div>
         </>
     )
 }

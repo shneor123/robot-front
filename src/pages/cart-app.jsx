@@ -21,15 +21,6 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
         dispatch(checkout())
     }
 
-    // const [language, setLanguage] = useState('he')
-
-    // useEffect(() => {
-    //     if (language === 'he') document.body.dir = 'rtl'
-    //     else if (language === 'en') document.body.dir = 'ltr'
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [language])
-
-
     const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
     const taxPrice = itemsPrice * 0.17
     const shippingPrice = itemsPrice > 600 ? 0 : 20
@@ -105,3 +96,11 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
         </aside >
     )
 }
+
+
+   // const [language, setLanguage] = useState('he')
+    // useEffect(() => {
+    //     if (language === 'he') document.body.dir = 'rtl'
+    //     else if (language === 'en') document.body.dir = 'ltr'
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [language])
