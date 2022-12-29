@@ -1,0 +1,64 @@
+.task-preview-edit-icon {
+    position: absolute;
+    top: 65px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.edit-preview {
+    background: #0009;
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    cursor: auto;
+}
+
+.edit-btn {
+    width: 240px;
+    height: 270px;
+    z-index: 400;
+    // background-color: #0000ffad;
+    position: absolute;
+    top: 150px;
+    left: 50.5%;
+    margin-left: 249px;
+    cursor: auto;
+}
+
+.edit-preview-container {
+    position: absolute;
+    z-index: 50;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.quick-card-editor-buttons-item {
+    display: flex;
+    justify-self: flex-start;
+    align-items: center;
+    background: #0009;
+    border-radius: 3px;
+    clear: both;
+    color: #e6e6e6;
+    float: left;
+    margin: 0 0 4px 8px;
+    padding: 6px 12px 6px 8px;
+    text-decoration: none;
+    transition: transform 85ms ease-in;
+    cursor: pointer;
+
+}
+
+.quick-card-editor-buttons-item svg {
+    margin-right: 4px;
+}
+
+.quick-card-editor-buttons-item:hover {
+    background: #000c;
+    color: #fff;
+    transform: translateX(5px);
+}

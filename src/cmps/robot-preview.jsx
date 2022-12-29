@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { utilService } from '../services/basic/util.service'
 import { socketService } from '../services/basic/socket.service'
 
@@ -12,9 +13,16 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from 'react-i18next'
+import { EditPreview } from './edit/edit-preview'
+import { removeRobot } from '../store/actions/robot.action'
+
+import { BsPencil } from "react-icons/bs";
+
 
 export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => {
     const { pathname } = useLocation()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         setSocket()
@@ -32,33 +40,68 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
         }
     }
 
+    const onDeleteRobot = (ev) => {
+        ev.stopPropagation();
+        setIsEdit(false)
+        dispatch(removeRobot(robot._id))
+    }
+    const openQuickEdit = (ev) => {
+        ev.stopPropagation();
+        setIsEdit(!isEdit)
+    }
+    const onOpenTaskDetails = () => {
+        setIsEdit(false)
+        navigate(`/robots/${robot._id}`)
+    }
+    const onOpenCardEdit = () => {
+        setIsEdit(false)
+        navigate(`/robots/edit/${robot._id}`)
+    }
+    const onCloseQuickEdit = () => {
+        setIsEdit(!isEdit)
+    }
     const { t } = useTranslation()
+    const [isEdit, setIsEdit] = useState(false)
     return (
-        <section className='robot-preview'>
-            <Link to={`/robots/${robot._id}`} className="info" >
-                <div className='robo_row'>
-                    <h2 className='name'>{robot.name}</h2>
-                    <p className='price'>${utilService.numberWithCommas(robot.price)}</p>
+        <>{isEdit ? <EditPreview
+            onDeleteRobot={onDeleteRobot}
+            closeQuickEdit={openQuickEdit}
+            onOpenTaskDetails={onOpenTaskDetails}
+            onOpenCardEdit={onOpenCardEdit}
+            onCloseQuickEdit={onCloseQuickEdit}
+
+        /> :
+            <section className='robot-preview'>
+                <Link to={`/robots/${robot._id}`} className="info" >
+                    <div className='robo_row'>
+                        <h2 className='name'>{robot.name}</h2>
+                        <p className='price'>${utilService.numberWithCommas(robot.price)}</p>
+                    </div>
+                    <div className='img'><img src={robot.img} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} /></div>
+                    {pathname !== '/dashboard' && <p className='created'><strong>{t("robo_prev")}: </strong>{utilService.dateToString(robot.createdAt)}</p>}
+                    {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
+                </Link>
+                {pathname === '/robots' &&
+                    <ButtonGroup size="small" variant="outlined" aria-label="outlined button group" className="add-to-cart">
+                        <Button onClick={() => removeCart(robot)}> <RemoveIcon fontSize="small" /> </Button>
+                        <Button disabled sx={{ p: 0 }}>
+                            <Typography
+                                sx={{ paddingLeft: 1, paddingRight: 1, color: "#757575", fontSize: 14, fontWeight: "small", m: 0 }}
+                                variant="caption"
+                                display="block"
+                            >
+                                + {t("robo_prev_add")}
+                            </Typography>
+                        </Button>
+                        <Button onClick={() => addToCart(robot)}> <AddIcon fontSize="small" /> </Button>
+                    </ButtonGroup>
+                }
+
+                <div className="task-preview-edit-icon" onClick={openQuickEdit}>
+                    <BsPencil />
                 </div>
-                <div className='img'><img src={robot.img} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} /></div>
-                {pathname !== '/dashboard' && <p className='created'><strong>{t("robo_prev")}: </strong>{utilService.dateToString(robot.createdAt)}</p>}
-                {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
-            </Link>
-            {pathname === '/robots' &&
-                <ButtonGroup size="small" variant="outlined" aria-label="outlined button group" className="add-to-cart">
-                    <Button onClick={() => removeCart(robot)}> <RemoveIcon fontSize="small" /> </Button>
-                    <Button disabled sx={{ p: 0 }}>
-                        <Typography
-                            sx={{ paddingLeft: 1, paddingRight: 1, color: "#757575", fontSize: 14, fontWeight: "small", m: 0 }}
-                            variant="caption"
-                            display="block"
-                        >
-                            + {t("robo_prev_add")}
-                        </Typography>
-                    </Button>
-                    <Button onClick={() => addToCart(robot)}> <AddIcon fontSize="small" /> </Button>
-                </ButtonGroup>
-            }
-        </section>
+            </section>
+        }
+        </>
     )
 }

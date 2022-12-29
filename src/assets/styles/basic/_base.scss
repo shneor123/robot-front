@@ -8,10 +8,12 @@
 body {
     min-height: 100vh;
     font-family: Roboto;
-    background-color: var(--main-bg-clr);
+    // background-color: var(--main-bg-clr);
 
     // &.dark {
-        --main-bg-clr: #e9d8fd;
+    // --main-bg-clr: #e9d8fd;
+    background: linear-gradient(1deg, #ffffff 0%, #eae6ff 80%);
+
     // }
 }
 
