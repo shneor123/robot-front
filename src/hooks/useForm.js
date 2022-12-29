@@ -11,13 +11,6 @@ export const useForm = (initialFields, cb) => {
         if (field === 'inStock') value = value === 'all' ? 'all' : value === 'true'
         if (field === 'price') value = +value
         if (field === 'labels') value = Array.from(target.selectedOptions).map(option => option.value)
-
-        if (field === 'labels') {
-            let updatedLabels = [...value.labels]
-            if (updatedLabels.includes(value)) updatedLabels = updatedLabels.filter(label => label !== value)
-            else updatedLabels.push(value)
-            value = updatedLabels.sort()
-        }
         setFields((prevFields) => ({ ...prevFields, [field]: value }))
     }
 

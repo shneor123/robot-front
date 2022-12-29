@@ -1,7 +1,7 @@
 import React from 'react'
 import { EditBtn } from './edit-btn'
 
-export const EditPreview = ({ onOpenTaskDetails, onDeleteRobot, closeQuickEdit ,onOpenCardEdit}) => {
+export const EditPreview = ({ onOpenTaskDetails, onDeleteRobot, closeQuickEdit, onOpenCardEdit, robot, onCloseQuickEdit }) => {
     return (
         <>
             <div className="edit-preview-container">

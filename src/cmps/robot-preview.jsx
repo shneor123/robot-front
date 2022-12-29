@@ -14,9 +14,10 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from 'react-i18next'
 import { EditPreview } from './edit/edit-preview'
-import { removeRobot } from '../store/actions/robot.action'
+import { removeRobot, saveRobot } from '../store/actions/robot.action'
 
 import { BsPencil } from "react-icons/bs";
+import { useForm } from '../hooks/useForm'
 
 
 export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => {
@@ -60,6 +61,14 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
     const onCloseQuickEdit = () => {
         setIsEdit(!isEdit)
     }
+
+
+    const [fields, handleChange, clearFields] = useForm(null)
+
+    const onSaveRobot = (ev) => {
+        ev.preventDefault()
+        dispatch(saveRobot(robot))
+    }
     const { t } = useTranslation()
     const [isEdit, setIsEdit] = useState(false)
     return (
@@ -69,9 +78,9 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots }) => 
             onOpenTaskDetails={onOpenTaskDetails}
             onOpenCardEdit={onOpenCardEdit}
             onCloseQuickEdit={onCloseQuickEdit}
-
+            robot={robot}
         /> :
-            <section className='robot-preview'>
+            <section className='robot-preview '>
                 <Link to={`/robots/${robot._id}`} className="info" >
                     <div className='robo_row'>
                         <h2 className='name'>{robot.name}</h2>

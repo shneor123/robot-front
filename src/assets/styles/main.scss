@@ -49,3 +49,24 @@
 @import './cmps/vertical-bar-chart';
 @import './cmps/hero';
 @import './cmps/edit-preview';
+
+
+.group-preview-title {
+    background: #0000;
+    border: 0;
+    border-radius: 3px;
+    color: #172b4d;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+      Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+    font-weight: 600;
+    height: 28px;
+    outline: 0;
+    width: 100%;
+    padding-left: 8px;
+    padding-bottom: 2px;
+
+    &:focus {
+      background-color: #fdfefe;
+      box-shadow: inset 0 0 0 2px #0079bf;
+    }
+  }
