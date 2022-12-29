@@ -17,6 +17,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 
 let theme = createTheme({
     palette: {
@@ -87,6 +88,8 @@ export function LoginSignUp() {
         navigate('/robots')
     }
 
+    const { t } = useTranslation()
+
     return (
         <section className='login-signup'>
             <ThemeProvider theme={theme}>
@@ -99,8 +102,12 @@ export function LoginSignUp() {
                             alignItems: 'center',
                         }}
                     >
+
+
+
+
                         <Avatar sx={{ m: 1, bgcolor: 'rgb(84, 10, 138)' }} />
-                        <Typography component="h1" variant="h5">{isLogin ? 'Login' : 'Sign up'}</Typography>
+                        <Typography component="h1" variant="h5">{isLogin ? t("login") : t("signup")}</Typography>
                         <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
                             <Grid container spacing={2}>
                                 {!isLogin && <>
@@ -156,7 +163,7 @@ export function LoginSignUp() {
                                 <Grid item xs={12}>
                                     <FormControlLabel
                                         control={<Checkbox defaultChecked={true} value={true} color="primary" name="remember" />}
-                                        label="Remember me"
+                                        label={t("remember")}
                                     />
                                 </Grid>
                             </Grid>
@@ -171,7 +178,7 @@ export function LoginSignUp() {
                             <Grid container justifyContent="flex-end">
                                 <Grid item>
                                     <Link className="login-mode-switch" href={isLogin ? '/#/signup' : '/#/login'} variant="body2" onClick={() => setErrorMsg('')}>
-                                        {isLogin ? 'Don\'t have an account? Sign Up' : 'Already have an account? Log In'}
+                                        {isLogin ? t("Dont_account") : t("already")}
                                     </Link>
                                 </Grid>
                             </Grid>

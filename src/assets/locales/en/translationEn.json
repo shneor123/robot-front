@@ -11,6 +11,11 @@
     
     "home_text": "The best place to get your robot ",
     "login": "Login ",
+    "signup": "Sign up ",
+    "remember": "Remember me ",
+    "already": "Already have an account? Log In ",
+    "Dont_account": "Don't have an account? Sign Up ",
+
     "home_start": "Start Anonymously ",
     "home_take_me": "Take me in ",
     "robot_filter": "Filter cards",
