@@ -8,11 +8,12 @@ import { Loader } from '../cmps/general/loader'
 import { RobotFilter } from '../cmps/robot-filter'
 import { RobotList } from '../cmps/robot-list'
 
-import { loadRobots } from '../store/actions/robot.action'
+import { loadRobots, saveRobot } from '../store/actions/robot.action'
 import { addToCart, checkout, removeFromCart } from '../store/actions/cart.actions';
 import { CartApp } from './cart-app';
 import { useTranslation } from 'react-i18next';
 import { ScrollToTop } from '../cmps/general/scroll-to-top';
+import QRCode from 'react-qr-code';
 
 
 export const RobotApp = () => {
@@ -60,7 +61,6 @@ export const RobotApp = () => {
     const onToggleCard = () => {
         setIsOpenCard(!isOpenCard)
     }
-
     const { t: translate } = useTranslation()
 
     if (!robots) return <Loader />
@@ -91,6 +91,7 @@ export const RobotApp = () => {
             </section>
             {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} onLoadRobots={onLoadRobots} onToggleCard={onToggleCard} />}
             <ScrollToTop />
+
         </section >
     )
 }

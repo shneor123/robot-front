@@ -17,7 +17,6 @@ import { BsPencil } from "react-icons/bs";
 import { useDispatch } from 'react-redux'
 import { removeRobot } from '../store/actions/robot.action'
 
-
 export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onToggleCard }) => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
@@ -62,6 +61,8 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onTog
     const onCloseQuickEdit = () => {
         setIsEdit(!isEdit)
     }
+
+    const [isQRShown, setIsQRShown] = useState(false);
 
     return (
         <>{isEdit ?
