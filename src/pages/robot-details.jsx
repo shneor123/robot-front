@@ -89,6 +89,7 @@ export const RobotDetails = () => {
                     <h5 style={{ color }}>{stockDesc} {t("details_label_stock")}</h5>
                     <img className='img' src={robot.img || defaultRobotImg} alt={robot.name} onError={({ target }) => target.src = defaultRobotImg} />
                     {!robot.inStock && <img className='out-of-stock' src={outOfStockImg} alt="out of stock" />}
+                     {/* <p className='data'><strong>{t("users_modified")} </strong>{utilService.dateToString(user.lastModified)}</p> */}
                     <span className='data'><strong>{t("details_label_uploaded")}: </strong>{utilService.dateToString(robot.createdAt)}</span>
 
                     {user && <div className='buttons-container'>

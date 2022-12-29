@@ -6,10 +6,7 @@ import adminImg from '../../assets/img/admin.png'
 import { useTranslation } from 'react-i18next'
 
 export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionModal }) => {
-
     const { t } = useTranslation()
-
-    
 
     const onAdminClick = (userId, isAdmin, fullname) => {
         const question = isAdmin ?
@@ -41,7 +38,7 @@ export const UserPreview = ({ user, onToggleAdmin, onDeleteUser, openQuestionMod
             </section>
             <p className='modified-member'><strong>{t("users_since")} </strong>{utilService.dueDateFormat(user.createdAt)}</p>
             {user.lastModified ?
-                <p className='modified-member'><strong>{t("users_modified")} </strong>{utilService.dueDateFormat(user.lastModified)}</p>
+                <p className='modified-member'><strong>{t("users_modified")} </strong>{utilService.dateToString(user.lastModified)}</p>
                 : <p className='modified-member' ><strong>{t("users_modified")}</strong> {"-no-conect-acoount"}</p>
             }
         </li>

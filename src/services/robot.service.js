@@ -13,18 +13,12 @@ export const robotService = {
 	getEmptyRobot,
 	getRandomRobotImg,
 	getLabels,
-	queryCart,
 }
 
 // const STORAGE_KEY = 'robotsDb'
 const BASE_PATH = 'robot'
 
 
-async function queryCart() {
-	let carts = await storageService.query('cart')
-	return carts
-
-}
 async function query(filterBy) {
 	let robots = await httpService.get(BASE_PATH, filterBy)
 	return robots

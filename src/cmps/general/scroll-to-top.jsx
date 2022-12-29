@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { FaAngleUp } from "react-icons/fa"
 
-
 export const ScrollToTop = () => {
     const [showTopBtn, setShowTopBtn] = useState(false)
+
     useEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY > 400) {
@@ -13,6 +13,7 @@ export const ScrollToTop = () => {
             }
         })
     }, [])
+
     const goToTop = () => {
         window.scrollTo({
             top: 0,
