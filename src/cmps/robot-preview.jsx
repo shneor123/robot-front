@@ -17,7 +17,7 @@ import { BsPencil } from "react-icons/bs";
 import { useDispatch } from 'react-redux'
 import { removeRobot } from '../store/actions/robot.action'
 
-export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onToggleCard }) => {
+export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onToggleCard,onToggleFilter}) => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -74,6 +74,7 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onTog
                 onCloseQuickEdit={onCloseQuickEdit}
                 robot={robot}
                 onToggleCard={onToggleCard}
+                onToggleFilter={onToggleFilter}
             /> :
             <section className='robot-preview'>
                 <Link to={`/robots/${robot._id}`} className="info">

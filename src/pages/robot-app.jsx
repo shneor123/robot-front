@@ -61,17 +61,20 @@ export const RobotApp = () => {
     const onToggleCard = () => {
         setIsOpenCard(!isOpenCard)
     }
+    const onToggleFilter = () => {
+        setToggleShow(!toggleShow)
+    }
     const { t: translate } = useTranslation()
 
     if (!robots) return <Loader />
     return (
         <section className="robot-app main-layout ">
             <div className={`${toggleShow ? "sidebar open" : "sidebar"}`}>
-                <button onClick={() => setToggleShow(!toggleShow)} className={`sidebar-toggle ${toggleShow ? "hide" : ""}`} >
+                <button onClick={onToggleFilter} className={`sidebar-toggle ${toggleShow ? "hide" : ""}`} >
                     <AiOutlineSearch /> {translate("robot_filter")}
                 </button>
                 {toggleShow && <div className='menu-content-wrapper'>
-                    <span onClick={() => setToggleShow(!toggleShow)} className="modal-close-btn"> <IoMdClose size={25} /> </span>
+                    <span onClick={onToggleFilter} className="modal-close-btn"> <IoMdClose size={25} /> </span>
                     <RobotFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} user={user} />
                 </div>}
             </div>
@@ -89,7 +92,14 @@ export const RobotApp = () => {
                 </div>}
                 <div className={`screen ${isOpenCard ? 'open' : ''}`} onClick={onToggleCard}></div>
             </section>
-            {robots?.length > 0 && <RobotList robots={robots} onAddToCart={onAddToCart} onRemoveCart={onRemoveCart} onLoadRobots={onLoadRobots} onToggleCard={onToggleCard} />}
+            {robots?.length > 0 && <RobotList
+             robots={robots}
+              onAddToCart={onAddToCart} 
+             onRemoveCart={onRemoveCart} 
+             onLoadRobots={onLoadRobots} 
+             onToggleCard={onToggleCard} 
+             onToggleFilter={onToggleFilter}
+             />}
             <ScrollToTop />
 
         </section >

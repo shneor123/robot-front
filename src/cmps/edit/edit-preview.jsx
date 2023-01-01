@@ -1,7 +1,7 @@
 import React from 'react'
 import { EditBtn } from './edit-btn'
 
-export const EditPreview = ({ robot, onDeleteRobot, onOpenTaskDetails, onOpenCardEdit, onCloseQuickEdit ,onToggleCard}) => {
+export const EditPreview = ({ robot, onDeleteRobot, onOpenTaskDetails, onOpenCardEdit, onCloseQuickEdit ,onToggleCard,onToggleFilter}) => {
     return (
         <>
             <div className="edit-preview-container">
@@ -12,6 +12,7 @@ export const EditPreview = ({ robot, onDeleteRobot, onOpenTaskDetails, onOpenCar
                     onOpenCardEdit={onOpenCardEdit}
                     onCloseQuickEdit={onCloseQuickEdit}
                     onToggleCard={onToggleCard}
+                    onToggleFilter={onToggleFilter}
                 />
             </div>
             <div className="edit-preview" onClick={onCloseQuickEdit}></div>

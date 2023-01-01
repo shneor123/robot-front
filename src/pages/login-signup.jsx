@@ -92,6 +92,13 @@ export function LoginSignUp() {
 
     return (
         <section className='login-signup'>
+            <div className="alert-success">
+                <div>
+                    <strong className='space'>Demo Admin User: </strong> Admin |{" "}
+                    <strong className='space'>Password:{""} </strong> Admin1234
+                </div>
+            </div>
+
             <ThemeProvider theme={theme}>
                 <Container component="main" maxWidth="xs">
                     <Box
@@ -102,10 +109,6 @@ export function LoginSignUp() {
                             alignItems: 'center',
                         }}
                     >
-
-
-
-
                         <Avatar sx={{ m: 1, bgcolor: 'rgb(84, 10, 138)' }} />
                         <Typography component="h1" variant="h5">{isLogin ? t("login") : t("signup")}</Typography>
                         <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
