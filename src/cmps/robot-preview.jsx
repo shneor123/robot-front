@@ -17,7 +17,10 @@ import { BsPencil } from "react-icons/bs";
 import { useDispatch } from 'react-redux'
 import { removeRobot } from '../store/actions/robot.action'
 
-export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onToggleCard,onToggleFilter}) => {
+import starFullImg from '../assets/img/star-full.png'
+
+
+export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onToggleCard, onToggleFilter }) => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -94,7 +97,7 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onTog
                                 sx={{ paddingLeft: 1, paddingRight: 1, color: "#757575", fontSize: 14, fontWeight: "small", m: 0 }}
                                 variant="caption"
                                 display="block"
-                            >
+                                >
                                 + {t("robo_prev_add")}
                             </Typography>
                         </Button>
@@ -109,3 +112,7 @@ export const RobotPreview = ({ robot, addToCart, removeCart, onLoadRobots, onTog
         </>
     )
 }
+{/* {pathname === '/robots' && <div className='star-rate'>
+    <p>{statisticData.highestRate.avgRate.toFixed(1)}</p>
+    <img src={starFullImg} alt="star-full" />
+</div>} */}

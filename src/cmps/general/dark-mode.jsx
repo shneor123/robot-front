@@ -16,10 +16,20 @@ export const DarkMode = () => {
 
     return (
         <section>
-                <div className='header-content flex justify-between align-center'>
-                    {isDark && <BsFillSunFill className='toggle-darkmode-icon sun' onClick={() => { onToggleDarkMode() }} />}
-                    {!isDark && <BsMoonStarsFill className='toggle-darkmode-icon moon' onClick={() => { onToggleDarkMode() }} />}
-                </div>
+            <div className='header-content flex justify-between align-center'>
+                {isDark && <BsFillSunFill className='toggle-darkmode-icon sun' onClick={() => { onToggleDarkMode() }} />}
+                {!isDark && <BsMoonStarsFill className='toggle-darkmode-icon moon' onClick={() => { onToggleDarkMode() }} />}
+            </div>
+
+            {/* <label className="vm__checkbox my-2">
+                <input
+                    type="checkbox"
+                    id="switch"
+                    onChange={() => onToggleDarkMode(!isDark)}
+                    checked={isDark ? 1 : 0}
+                />
+                <div className="slider"></div>
+            </label> */}
         </section>
     )
 }

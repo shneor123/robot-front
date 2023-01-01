@@ -13,6 +13,7 @@ import { UserProfile } from "./cmps/users/user-profile"
 import { UserEdit } from "./cmps/users/user-edit"
 import { UserApp } from "./pages/user-app"
 import { Dashboard } from "./pages/Dashboard"
+import { ShareProj } from "./cmps/share-pro"
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         </Routes>
         <UserMsg />
       </Router>
+      {/* <ShareProj /> */}
     </section>
   )
 }
