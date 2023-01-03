@@ -118,5 +118,12 @@
     "edit_haeder_link":"Image link",
     "edit_haeder_is_stock":"Is in stock",
 
-    "review_add":"Add a review"
+    "review_add":"Add a review",
+
+
+    "edit_btn_card":"Open card",
+    "edit_btn_cart":"Open cart",
+    "edit_btn_filter":"Open filter",
+    "edit_btn_edit":"Edit robot",
+    "edit_btn_fdelete":"Delete Robot"
 }

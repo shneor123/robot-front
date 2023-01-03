@@ -8,12 +8,11 @@ import { DarkMode } from './dark-mode';
 import { UserImg } from './user-img';
 
 import logoImg from '../../assets/img/logo.png'
+import { ShareProj } from '../share-pro';
 
 export const AppHeader = () => {
     const { user } = useSelector(stateModule => stateModule.userModule)
-    const { robots } = useSelector(stateModule => stateModule.robotModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -67,15 +66,14 @@ export const AppHeader = () => {
                     </section>
                 </main>
             </section >
-            <div className="header-titles-container">
-                <div className="header-inf">
-                    {pathname !== '/robots' && pathname !== '/users' ? <h3></h3> : <h3>{t("header_robot_length")}: {robots.length}</h3>}
-                </div>
-            </div>
+                {/* <ShareProj /> */}
         </section >
     )
 }
 
+{/* <div className="qrcode">
+<QRCode value="https://ca-robot-react.onrender.com/" size="150" />
+</div> */}
 
 // useEffect((ev) => {
     // document.addEventListener("mousedown", eventListeners)

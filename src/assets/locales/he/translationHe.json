@@ -121,9 +121,13 @@
     "edit_haeder_link":"קישור לתמונה",
     "edit_haeder_is_stock":"זה במלאי?",
 
-    "review_add":"הוסף ביקורת"
- 
+    "review_add":"הוסף ביקורת",
 
 
 
+    "edit_btn_card":"פתח כרטיס",
+    "edit_btn_cart":"פתח עגלה",
+    "edit_btn_filter":"פתח סינון",
+    "edit_btn_edit":"ערוך רובוט",
+    "edit_btn_fdelete":"מחק רובוט"
 }
